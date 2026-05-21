@@ -5,7 +5,7 @@ function Footer() {
   return (
     <footer className="footer">
       <p className="footer-copy">
-        © 2026 VehicleGuard. All rights reserved.
+        2026 VehicleGuard. All rights reserved.
       </p>
     </footer>
   );

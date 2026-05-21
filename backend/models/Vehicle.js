@@ -31,7 +31,7 @@ const vehicleSchema = new mongoose.Schema(
 
     // ── Date & Time ─────────────────────────────
     entryDate: {
-      type: String,                        // stored as "YYYY-MM-DD"
+      type: String,                       
       required: [true, "Entry date is required"],
     },
     entryTime: {

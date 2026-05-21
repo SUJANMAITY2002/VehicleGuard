@@ -14,7 +14,7 @@ const STATUS_STYLE = {
   Exited: { background: "#f1f5f9", color: "#64748b", border: "1px solid #e2e8f0" },
 };
 
-const todayStr = () => new Date().toISOString().split("T")[0]; // "YYYY-MM-DD"
+const todayStr = () => new Date().toISOString().split("T")[0]; 
 
 const EMPTY_FORM = {
   vehicleNo:   "",
@@ -22,14 +22,14 @@ const EMPTY_FORM = {
   entryGate:   "Gate A",
   driverName:  "",
   purpose:     "Visitor",
-  entryDate:   todayStr(),                          // ← new field
+  entryDate:   todayStr(),                          
   entryTime:   new Date().toTimeString().slice(0, 5),
   exitTime:    "",
   status:      "Inside",
   remarks:     "",
 };
 
-// Format "YYYY-MM-DD" → "DD MMM YYYY" for display
+
 function fmtDate(str) {
   if (!str) return "—";
   const [y, m, d] = str.split("-");
@@ -52,7 +52,7 @@ function Home() {
   const [search,       setSearch]       = useState("");
   const [filterType,   setFilterType]   = useState("All");
   const [filterStatus, setFilterStatus] = useState("All");
-  const [filterDate,   setFilterDate]   = useState("");  // "YYYY-MM-DD" or ""
+  const [filterDate,   setFilterDate]   = useState("");  
   const [dateFrom,     setDateFrom]     = useState("");
   const [dateTo,       setDateTo]       = useState("");
 
