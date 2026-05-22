@@ -2,7 +2,7 @@
 import React, { useState, useEffect, useRef } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
-import "./ItemEntry.css";
+import "./Itementry.css";
 
 const API = import.meta.env.VITE_API_URL || "http://localhost:5000";
 
