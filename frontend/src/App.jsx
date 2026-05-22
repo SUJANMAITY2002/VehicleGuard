@@ -3,10 +3,11 @@ import { Routes, Route, Navigate } from "react-router-dom";
 import "./index.css";
 import Header from "./components/Header";
 import Footer from "./components/Footer";
-import Home from "./pages/Home";
-import Signin from "./pages/Signin";
-import Signup from "./pages/Signup";
-
+import VehicleEntry from "./pages/VehicleEntry";
+import ItemEntry    from "./pages/ItemEntry";
+import Records      from "./pages/Records";
+import Signin       from "./pages/Signin";
+import Signup       from "./pages/Signup";
 
 function ProtectedRoute({ children }) {
   const token = localStorage.getItem("token");
@@ -21,14 +22,15 @@ function App() {
         <Routes>
           <Route path="/signin" element={<Signin />} />
           <Route path="/signup" element={<Signup />} />
-          <Route
-            path="/"
-            element={
-              <ProtectedRoute>
-                <Home />
-              </ProtectedRoute>
-            }
-          />
+          <Route path="/" element={
+            <ProtectedRoute><VehicleEntry /></ProtectedRoute>
+          } />
+          <Route path="/item" element={
+            <ProtectedRoute><ItemEntry /></ProtectedRoute>
+          } />
+          <Route path="/records" element={
+            <ProtectedRoute><Records /></ProtectedRoute>
+          } />
           <Route path="*" element={<Navigate to="/" replace />} />
         </Routes>
       </main>

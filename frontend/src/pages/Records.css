@@ -1,0 +1,318 @@
+/* ═══════════════════════════════════
+   RECORDS PAGE — Enhanced Styles
+═══════════════════════════════════ */
+
+/* ── Stats Grid (4 cards) ─────────── */
+.stats-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 16px;
+}
+
+.stat-card {
+  background: white;
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  padding: 20px 22px;
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  position: relative;
+  overflow: hidden;
+}
+
+/* Coloured left border accent */
+.stat-card.blue   { border-left: 4px solid var(--blue); }
+.stat-card.green  { border-left: 4px solid var(--green); }
+.stat-card.amber  { border-left: 4px solid var(--amber); }
+.stat-card.purple { border-left: 4px solid #7c3aed; }
+
+/* Subtle tinted icon background */
+.stat-icon-wrap {
+  width: 48px;
+  height: 48px;
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 22px;
+  flex-shrink: 0;
+}
+
+.stat-card.blue   .stat-icon-wrap { background: #eff6ff; }
+.stat-card.green  .stat-icon-wrap { background: #f0fdf4; }
+.stat-card.amber  .stat-icon-wrap { background: #fffbeb; }
+.stat-card.purple .stat-icon-wrap { background: #f5f3ff; }
+
+/* fallback for plain .stat-icon (no wrapper) */
+.stat-icon { font-size: 26px; }
+
+.stat-big {
+  font-family: var(--font-display);
+  font-size: 28px;
+  font-weight: 800;
+  color: var(--navy);
+  line-height: 1;
+}
+
+.stat-lbl {
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--muted);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  margin-top: 5px;
+}
+
+/* ── Mini stats row ──────────────── */
+.mini-stats-row {
+  display: flex;
+  gap: 14px;
+  flex-wrap: wrap;
+}
+
+.mini-stat {
+  background: white;
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: 14px 22px;
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  flex: 1;
+  min-width: 180px;
+}
+
+.mini-label {
+  font-size: 12px;
+  color: var(--muted);
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.4px;
+  white-space: nowrap;
+}
+
+.mini-value {
+  font-family: var(--font-display);
+  font-size: 18px;
+  font-weight: 800;
+  color: var(--navy);
+  margin-left: auto;
+}
+
+/* ── Table Card ──────────────────── */
+.table-card {
+  background: white;
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  padding: 0;
+  overflow: hidden;
+}
+
+/* ── Tabs ────────────────────────── */
+.tabs {
+  display: flex;
+  gap: 0;
+  border-bottom: 2px solid var(--border);
+  background: #f8fafc;
+  padding: 0 24px;
+}
+
+.tab-btn {
+  padding: 14px 20px;
+  background: transparent;
+  border: none;
+  border-bottom: 3px solid transparent;
+  margin-bottom: -2px;
+  font-family: var(--font-body);
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--muted);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  white-space: nowrap;
+}
+
+.tab-btn:hover { color: var(--navy); }
+
+.tab-btn.active {
+  color: var(--blue);
+  border-bottom-color: var(--blue);
+  background: transparent;
+}
+
+.tab-count {
+  background: #e2e8f0;
+  color: var(--muted);
+  font-size: 11px;
+  font-weight: 700;
+  padding: 2px 8px;
+  border-radius: 20px;
+  min-width: 22px;
+  text-align: center;
+}
+
+.tab-btn.active .tab-count {
+  background: var(--blue);
+  color: white;
+}
+
+/* ── Controls bar ────────────────── */
+.table-controls-bar {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  flex-wrap: wrap;
+  padding: 16px 24px;
+  border-bottom: 1px solid var(--border);
+  background: white;
+}
+
+.date-range-wrap {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  flex-wrap: wrap;
+}
+
+.date-input {
+  padding: 8px 12px;
+  border: 1.5px solid var(--border);
+  border-radius: 8px;
+  font-family: var(--font-body);
+  font-size: 13px;
+  color: var(--text);
+  background: white;
+  outline: none;
+  cursor: pointer;
+  color-scheme: light;
+}
+.date-input:focus { border-color: var(--blue); }
+
+.range-sep {
+  font-size: 14px;
+  color: var(--muted);
+  padding: 0 2px;
+}
+
+.clear-date-btn {
+  padding: 7px 12px;
+  background: #fee2e2;
+  border: 1px solid #fecaca;
+  color: var(--red);
+  font-size: 12px;
+  font-weight: 700;
+  border-radius: 8px;
+  cursor: pointer;
+}
+.clear-date-btn:hover {
+  background: var(--red);
+  color: white;
+  border-color: var(--red);
+}
+
+/* ── Table body area ─────────────── */
+.table-body-area {
+  padding: 0 0 8px;
+}
+
+/* Override shared table styles for Records */
+.table-card .table-wrap {
+  border: none;
+  border-radius: 0;
+}
+
+.table-card .data-table thead {
+  background: #f8fafc;
+}
+
+.table-card .data-table thead th {
+  padding: 11px 16px;
+  font-size: 11px;
+  font-weight: 700;
+  color: var(--muted);
+  letter-spacing: 0.7px;
+  text-transform: uppercase;
+  border-bottom: 1px solid var(--border);
+  white-space: nowrap;
+}
+
+.table-card .data-table tbody td {
+  padding: 13px 16px;
+  border-bottom: 1px solid #f8fafc;
+}
+
+.table-card .data-table tbody tr:last-child td {
+  border-bottom: none;
+}
+
+.table-card .data-table tbody tr:hover {
+  background: #fafbff;
+}
+
+/* ── Pills ───────────────────────── */
+.category-pill {
+  display: inline-block;
+  background: #f5f3ff;
+  color: #6d28d9;
+  border: 1px solid #ddd6fe;
+  border-radius: 20px;
+  padding: 3px 12px;
+  font-size: 12px;
+  font-weight: 600;
+  white-space: nowrap;
+}
+
+.net-pill {
+  display: inline-block;
+  padding: 4px 12px;
+  border-radius: 20px;
+  font-family: var(--font-display);
+  font-size: 13px;
+  font-weight: 700;
+  white-space: nowrap;
+}
+.net-pill.net-pos {
+  background: #f0fdf4;
+  color: #15803d;
+  border: 1px solid #bbf7d0;
+}
+.net-pill.net-neg {
+  background: #fef2f2;
+  color: #dc2626;
+  border: 1px solid #fecaca;
+}
+
+/* ── State boxes inside table card ── */
+.table-card .state-box {
+  padding: 64px 20px;
+}
+
+/* ── Responsive ──────────────────── */
+@media (max-width: 1100px) {
+  .stats-grid { grid-template-columns: repeat(2, 1fr); }
+}
+
+@media (max-width: 900px) {
+  .table-controls-bar {
+    flex-direction: column;
+    align-items: stretch;
+    padding: 12px 16px;
+  }
+  .search-wrap { max-width: 100%; }
+  .date-range-wrap { flex-wrap: wrap; }
+}
+
+@media (max-width: 700px) {
+  .tabs { padding: 0 12px; overflow-x: auto; }
+  .table-controls-bar { padding: 12px; }
+}
+
+@media (max-width: 600px) {
+  .stats-grid { grid-template-columns: 1fr 1fr; gap: 10px; }
+  .stat-big { font-size: 22px; }
+  .mini-stats-row { flex-direction: column; }
+  .mini-stat { min-width: unset; }
+}

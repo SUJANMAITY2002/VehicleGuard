@@ -1,0 +1,107 @@
+/* VehicleEntry.css */
+
+/* ── Stats ── */
+.stats-row {
+  display: flex;
+  gap: 14px;
+  flex-wrap: wrap;
+}
+
+.stat-box {
+  background: white;
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: 16px 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  min-width: 120px;
+}
+
+.stat-box .stat-num {
+  font-family: var(--font-display);
+  font-size: 30px;
+  font-weight: 800;
+  color: var(--navy);
+}
+
+.stat-box .stat-label {
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--muted);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+/* ── Form card ── */
+.form-card {
+  background: white;
+  border: 1px solid var(--border);
+  border-top: 3px solid var(--blue);
+  border-radius: 12px;
+  padding: 24px 28px;
+}
+
+.form-card-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 20px;
+}
+
+.form-card-header h2 {
+  font-family: var(--font-display);
+  font-size: 18px;
+  font-weight: 700;
+  color: var(--navy);
+}
+
+.form-note {
+  font-size: 12px;
+  color: var(--muted);
+  background: #f1f5f9;
+  padding: 4px 10px;
+  border-radius: 6px;
+}
+
+/* ── Table card ── */
+.table-card {
+  background: white;
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 22px 24px;
+}
+
+.table-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 14px;
+  flex-wrap: wrap;
+  margin-bottom: 16px;
+}
+
+.table-top h2 {
+  font-family: var(--font-display);
+  font-size: 17px;
+  font-weight: 700;
+  color: var(--navy);
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.record-badge {
+  background: #eff6ff;
+  color: var(--blue);
+  font-size: 12px;
+  font-weight: 700;
+  padding: 2px 8px;
+  border-radius: 20px;
+  font-family: var(--font-body);
+}
+
+/* ── Responsive ── */
+@media (max-width: 768px) {
+  .table-top { flex-direction: column; align-items: stretch; }
+}
