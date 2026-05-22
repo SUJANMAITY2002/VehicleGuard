@@ -80,11 +80,7 @@ function Records() {
   const todayItems     = itemEntries.filter(e => e.entryDate === today).length;
   const todayVehicles  = vehicleEntries.filter(e => e.entryDate === today).length;
 
-  const categoryMap = {};
-  itemEntries.forEach(e => {
-    categoryMap[e.itemCategory] = (categoryMap[e.itemCategory] || 0) + 1;
-  });
-  const topCategory = Object.entries(categoryMap).sort((a, b) => b[1] - a[1])[0];
+
 
   const hasDateFilter = dateFrom || dateTo;
   const clearDate = () => { setDateFrom(""); setDateTo(""); };
@@ -152,10 +148,7 @@ function Records() {
           <span className="mini-label">Today's Item Entries</span>
           <span className="mini-value">{todayItems}</span>
         </div>
-        <div className="mini-stat">
-          <span className="mini-label">Top Category</span>
-          <span className="mini-value">{topCategory ? topCategory[0] : "—"}</span>
-        </div>
+
         <div className="mini-stat">
           <span className="mini-label">Avg Net Weight</span>
           <span className="mini-value">
