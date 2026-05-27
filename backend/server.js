@@ -7,25 +7,27 @@ dotenv.config();
 
 const app = express();
 
-app.use(cors());
+app.use(cors({
+  origin: process.env.CLIENT_URL || "http://localhost:5173",
+  credentials: true,
+}));
 app.use(express.json());
 
-// Routes
-app.use("/api/auth",    require("./routes/authRoutes"));
-app.use("/api/entry",   require("./routes/entryRoutes"));   // new vehicle entry page
-app.use("/api/item",    require("./routes/itemRoutes"));     // new item entry page
+// Active routes
+app.use("/api/auth",       require("./routes/authRoutes"));
+app.use("/api/gatepass",   require("./routes/gatePassRoutes"));
+app.use("/api/itemmaster", require("./routes/ItemMasterRoutes"));
 
-app.get("/", (req, res) => {
-  res.json({ message: "Vehicle Entry API" });
-});
+app.get("/", (req, res) => res.json({ message: "VehicleGuard API ✅" }));
 
 mongoose
   .connect(process.env.MONGO_URI)
   .then(() => {
-    console.log("MongoDB Connected");
+    console.log("✅ MongoDB Connected");
     const PORT = process.env.PORT || 5000;
-    app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
+    app.listen(PORT, () => console.log(`✅ Server running on http://localhost:${PORT}`));
   })
-  .catch((err) => {
-    console.log("MongoDB Error:", err.message);
+  .catch(err => {
+    console.error("❌ MongoDB Error:", err.message);
+    process.exit(1);
   });

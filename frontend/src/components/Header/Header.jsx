@@ -3,14 +3,13 @@ import { Link, useNavigate, useLocation } from "react-router-dom";
 import "./Header.css";
 
 function Header() {
-  const [user, setUser]         = useState(null);
+  const [user,     setUser]     = useState(null);
   const [scrolled, setScrolled] = useState(false);
-  const navigate  = useNavigate();
-  const location  = useLocation();
+  const navigate = useNavigate();
+  const location = useLocation();
 
   useEffect(() => {
-    const storedUser = JSON.parse(localStorage.getItem("user") || "null");
-    setUser(storedUser);
+    setUser(JSON.parse(localStorage.getItem("user") || "null"));
   }, [location]);
 
   useEffect(() => {
@@ -27,9 +26,12 @@ function Header() {
   };
 
   const isAuth = location.pathname === "/signin" || location.pathname === "/signup";
+  const path   = location.pathname;
 
   return (
     <nav className={`navbar ${scrolled ? "scrolled" : ""}`}>
+
+      {/* Logo */}
       <div className="nav-logo">
         <Link to="/">
           <span className="logo-icon">🛡️</span>
@@ -37,21 +39,22 @@ function Header() {
         </Link>
       </div>
 
-      {/* Page navigation links */}
+      {/* Nav tabs — only shown when logged in */}
       {!isAuth && user && (
-        <div className="nav-links">
-          <Link to="/"        className={`nav-link ${location.pathname === "/"        ? "active" : ""}`}>
-            🚛 Vehicle Entry
+        <div className="nav-tabs">
+          <Link to="/"           className={`nav-tab ${path === "/"           ? "active" : ""}`}>
+            <span className="nav-tab-icon">📋</span> FORM
           </Link>
-          <Link to="/item"    className={`nav-link ${location.pathname === "/item"    ? "active" : ""}`}>
-            📦 Item Entry
+          <Link to="/database"   className={`nav-tab ${path === "/database"   ? "active" : ""}`}>
+            <span className="nav-tab-icon">🗄️</span> DATABASE
           </Link>
-          <Link to="/records" className={`nav-link ${location.pathname === "/records" ? "active" : ""}`}>
-            📋 Records
+          <Link to="/itemmaster" className={`nav-tab ${path === "/itemmaster" ? "active" : ""}`}>
+            <span className="nav-tab-icon">📦</span> ITEM MASTER
           </Link>
         </div>
       )}
 
+      {/* Right side: user chip + logout OR login/signup */}
       <div className="nav-buttons">
         {!isAuth && user ? (
           <>
@@ -68,6 +71,7 @@ function Header() {
           </>
         ) : null}
       </div>
+
     </nav>
   );
 }

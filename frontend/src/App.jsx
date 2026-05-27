@@ -1,40 +1,26 @@
 import React from "react";
-import { Routes, Route, Navigate } from "react-router-dom";
-import "./index.css";
-import Header from "./components/Header";
-import Footer from "./components/Footer";
-import VehicleEntry from "./pages/VehicleEntry";
-import ItemEntry    from "./pages/ItemEntry";
-import Records      from "./pages/Records";
-import Signin       from "./pages/Signin";
-import Signup       from "./pages/Signup";
 
-function ProtectedRoute({ children }) {
-  const token = localStorage.getItem("token");
-  return token ? children : <Navigate to="/signin" replace />;
-}
+import "./index.css";
+
+import Header from "./components/Header/Header";
+import Footer from "./components/Footer/Footer";
+
+import AppRoutes from "./routes/AppRoutes";
 
 function App() {
   return (
     <div className="app-container">
+
       <Header />
+
       <main className="main-content">
-        <Routes>
-          <Route path="/signin" element={<Signin />} />
-          <Route path="/signup" element={<Signup />} />
-          <Route path="/" element={
-            <ProtectedRoute><VehicleEntry /></ProtectedRoute>
-          } />
-          <Route path="/item" element={
-            <ProtectedRoute><ItemEntry /></ProtectedRoute>
-          } />
-          <Route path="/records" element={
-            <ProtectedRoute><Records /></ProtectedRoute>
-          } />
-          <Route path="*" element={<Navigate to="/" replace />} />
-        </Routes>
+
+        <AppRoutes />
+
       </main>
+
       <Footer />
+
     </div>
   );
 }
