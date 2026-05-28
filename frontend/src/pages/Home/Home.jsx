@@ -40,7 +40,7 @@ const Home = () => {
       number: "6",
       title: "CCM O/P",
       icon: "🏭",
-      path: "/ccm-op",
+      path: "/ccm-production-module",
     },
     {
       number: "7",

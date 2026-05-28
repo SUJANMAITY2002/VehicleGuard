@@ -2,7 +2,7 @@ import React from "react";
 
 import { Route } from "react-router-dom";
 
-import PurchaseLayout from "../layouts/PurchaseLayout";
+import PurchaseLayout from "../layouts/purchaselayout/PurchaseLayout";
 
 import CreatePO from "../pages/purchase/CreatePO";
 import PurchaseList from "../pages/purchase/PurchaseList";

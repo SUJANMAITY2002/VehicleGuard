@@ -6,7 +6,7 @@ import {
 } from "react-router-dom";
 
 import WeighBridgeLayout
-from "../layouts/WeighBridgeLayout";
+from "../layouts/weighbridgelayout/WeighBridgeLayout";
 
 import GrossWeight
 from "../pages/weighbridge/GrossWeight";

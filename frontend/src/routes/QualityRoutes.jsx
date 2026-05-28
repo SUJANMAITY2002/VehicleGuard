@@ -6,7 +6,7 @@ import {
 } from "react-router-dom";
 
 import QualityLayout
-from "../layouts/QualityLayout";
+from "../layouts/qualitylayout/QualityLayout";
 
 import IncomingQC
 from "../pages/quality/IncomingQC";

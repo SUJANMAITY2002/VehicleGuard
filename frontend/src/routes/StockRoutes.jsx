@@ -6,7 +6,7 @@ import {
 } from "react-router-dom";
 
 import StockLayout
-from "../layouts/StockLayout";
+from "../layouts/stocklayout/StockLayout";
 
 import CreateGRN
 from "../pages/stock/CreateGRN";

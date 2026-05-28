@@ -12,6 +12,7 @@ import GateEntryRoutes from "./GateEntryRoutes";
 import WeighBridgeRoutes from "./WeighBridgeRoutes";
 import QualityRoutes from "./QualityRoutes";
 import StockRoutes from "./StockRoutes";
+import CCMRoutes from "./CCMRoutes";
 
 const AppRoutes = () => {
   return (
@@ -38,6 +39,8 @@ const AppRoutes = () => {
       {QualityRoutes()}
 
       {StockRoutes()}
+
+      {CCMRoutes()}
 
     </Routes>
   );

@@ -2,7 +2,7 @@ import React from "react";
 
 import { Route } from "react-router-dom";
 
-import GateEntryLayout from "../layouts/GateEntryLayout";
+import GateEntryLayout from "../layouts/gateentrylayout/GateEntryLayout";
 
 import VehicleIn from "../pages/gateentry/VehicleIn";
 import VehicleOut from "../pages/gateentry/VehicleOut";
