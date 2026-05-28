@@ -15,8 +15,7 @@ app.use(express.json());
 
 // Active routes
 app.use("/api/auth",       require("./routes/authRoutes"));
-app.use("/api/gatepass",   require("./routes/gatePassRoutes"));
-app.use("/api/itemmaster", require("./routes/ItemMasterRoutes"));
+
 
 app.get("/", (req, res) => res.json({ message: "VehicleGuard API ✅" }));
 
