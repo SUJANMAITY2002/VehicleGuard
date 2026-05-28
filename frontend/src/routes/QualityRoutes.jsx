@@ -9,22 +9,22 @@ import QualityLayout
 from "../layouts/qualitylayout/QualityLayout";
 
 import IncomingQC
-from "../pages/quality/IncomingQC";
+from "../pages/Quality/IncomingQC";
 
 import GradeCheck
-from "../pages/quality/GradeCheck";
+from "../pages/Quality/GradeCheck";
 
 import LabReport
-from "../pages/quality/LabReport";
+from "../pages/Quality/LabReport";
 
 import QCApproval
-from "../pages/quality/QCApproval";
+from "../pages/Quality/QCApproval";
 
 import RejectedMaterial
-from "../pages/quality/RejectedMaterial";
+from "../pages/Quality/RejectedMaterial";
 
 import QCReports
-from "../pages/quality/QCReports";
+from "../pages/Quality/QCReports";
 
 const QualityRoutes = () => {
   return (

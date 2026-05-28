@@ -9,25 +9,25 @@ import StockLayout
 from "../layouts/stocklayout/StockLayout";
 
 import CreateGRN
-from "../pages/stock/CreateGRN";
+from "../pages/Stock/CreateGRN";
 
 import StockIn
-from "../pages/stock/StockIn";
+from "../pages/Stock/StockIn";
 
 import Warehouse
-from "../pages/stock/Warehouse";
+from "../pages/Stock/Warehouse";
 
 import Inventory
-from "../pages/stock/Inventory";
+from "../pages/Stock/Inventory";
 
 import StockTransfer
-from "../pages/stock/StockTransfer";
+from "../pages/Stock/StockTransfer";
 
 import LowStockAlert
-from "../pages/stock/LowStockAlert";
+from "../pages/Stock/LowStockAlert";
 
 import GRNReports
-from "../pages/stock/GRNReports";
+from "../pages/Stock/GRNReports";
 
 const StockRoutes = () => {
   return (

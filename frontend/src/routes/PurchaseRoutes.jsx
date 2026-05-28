@@ -4,15 +4,15 @@ import { Route } from "react-router-dom";
 
 import PurchaseLayout from "../layouts/purchaselayout/PurchaseLayout";
 
-import CreatePO from "../pages/purchase/CreatePO";
-import PurchaseList from "../pages/purchase/PurchaseList";
-import PendingPO from "../pages/purchase/PendingPO";
-import ApprovedPO from "../pages/purchase/ApprovedPO";
+import CreatePO from "../pages/Purchase/CreatePO";
+import PurchaseList from "../pages/Purchase/PurchaseList";
+import PendingPO from "../pages/Purchase/PendingPO";
+import ApprovedPO from "../pages/Purchase/ApprovedPO";
 
-import VendorManagement from "../pages/purchase/VendorManagement";
-import RateChart from "../pages/purchase/RateChart";
-import MaterialMaster from "../pages/purchase/MaterialMaster";
-import Reports from "../pages/purchase/Reports";
+import VendorManagement from "../pages/Purchase/VendorManagement";
+import RateChart from "../pages/Purchase/RateChart";
+import MaterialMaster from "../pages/Purchase/MaterialMaster";
+import Reports from "../pages/Purchase/Reports";
 
 const PurchaseRoutes = () => {
   return (
