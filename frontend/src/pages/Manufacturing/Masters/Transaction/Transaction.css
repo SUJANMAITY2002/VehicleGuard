@@ -1,0 +1,225 @@
+.transaction-page {
+  min-height: 100vh;
+  background: #f4f4f4;
+}
+
+/* HEADER */
+.transaction-topbar {
+  background: white;
+  border-bottom: 1px solid #dcdcdc;
+  padding: 15px 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.transaction-topbar h1 {
+  font-size: 28px;
+  font-weight: 500;
+  color: #444;
+}
+
+/* CREATE BUTTON */
+.create-btn {
+  border: none;
+  background: transparent;
+  color: #43bfe7;
+  font-size: 16px;
+  cursor: pointer;
+  font-weight: 500;
+}
+
+/* SEARCH BOX */
+.search-container {
+  width: 95%;
+  margin: 20px auto;
+  background: white;
+  border: 1px solid #d8d8d8;
+  min-height: 600px;
+}
+
+/* TITLE */
+.search-title {
+  padding: 15px 20px;
+  border-bottom: 1px solid #e5e5e5;
+  font-size: 22px;
+  font-weight: 600;
+  color: #333;
+}
+
+/* FORM GRID */
+.search-grid {
+  padding: 25px;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 25px;
+}
+
+/* FORM */
+.form-group {
+  display: flex;
+  flex-direction: column;
+}
+
+.form-group label {
+  margin-bottom: 8px;
+  font-size: 14px;
+  color: #444;
+}
+
+/* INPUT */
+.form-group input,
+.form-group select {
+  height: 38px;
+  border: 1px solid #d5d5d5;
+  padding: 0 10px;
+  outline: none;
+  font-size: 14px;
+  background: white;
+}
+
+/* BUTTONS */
+.button-group {
+  padding: 0 25px 30px;
+  display: flex;
+  gap: 15px;
+}
+
+/* SEARCH BUTTON */
+.search-btn {
+  background: #58c9ec;
+  border: none;
+  color: white;
+  padding: 10px 25px;
+  cursor: pointer;
+  font-size: 14px;
+}
+
+/* RESET BUTTON */
+.reset-btn {
+  background: white;
+  border: 1px solid #58c9ec;
+  color: #58c9ec;
+  padding: 10px 25px;
+  cursor: pointer;
+  font-size: 14px;
+}
+
+/* RESPONSIVE */
+@media (max-width: 1200px) {
+  .search-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 768px) {
+
+  .transaction-topbar {
+    flex-direction: column;
+    gap: 10px;
+    align-items: flex-start;
+  }
+
+  .search-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .search-container {
+    width: 98%;
+  }
+
+}
+/* TABLE */
+.table-container {
+  margin-top: 25px;
+  overflow-x: auto;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  background: white;
+}
+
+table th {
+  background: #dfeef5;
+  border: 1px solid #c9dbe4;
+  padding: 10px;
+  font-size: 13px;
+  text-align: left;
+}
+
+table td {
+  border: 1px solid #d9d9d9;
+  padding: 10px;
+  font-size: 13px;
+}
+
+/* BUTTONS */
+.edit-btn {
+  background: #58c9ec;
+  color: white;
+  border: none;
+  padding: 5px 12px;
+  margin-right: 8px;
+  cursor: pointer;
+}
+
+.delete-btn {
+  background: #ff5b5b;
+  color: white;
+  border: none;
+  padding: 5px 12px;
+  cursor: pointer;
+}
+
+.save-btn{
+  background: linear-gradient(
+    135deg,
+    #16a34a,
+    #15803d
+  );
+
+  color: white;
+
+  border: none;
+
+  padding: 7px 18px;
+
+  border-radius: 6px;
+
+  cursor: pointer;
+
+  font-size: 13px;
+
+  font-weight: 600;
+
+  margin-right: 8px;
+
+  transition: all 0.3s ease;
+
+  box-shadow:
+    0 3px 8px
+    rgba(22, 163, 74, 0.3);
+}
+
+.save-btn:hover{
+
+  background: linear-gradient(
+    135deg,
+    #22c55e,
+    #166534
+  );
+
+  transform: translateY(-2px);
+
+  box-shadow:
+    0 6px 14px
+    rgba(22, 163, 74, 0.45);
+}
+
+.save-btn:active{
+
+  transform: scale(0.96);
+
+}

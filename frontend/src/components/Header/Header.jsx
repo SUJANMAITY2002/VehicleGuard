@@ -35,24 +35,13 @@ function Header() {
       <div className="nav-logo">
         <Link to="/">
           <span className="logo-icon">🛡️</span>
-          <span className="logo-text">VehicleGuard</span>
+          <span className="logo-text">SMS</span>
         </Link>
       </div>
 
-      {/* Nav tabs — only shown when logged in */}
-      {!isAuth && user && (
-        <div className="nav-tabs">
-          <Link to="/"           className={`nav-tab ${path === "/"           ? "active" : ""}`}>
-            <span className="nav-tab-icon">📋</span> FORM
-          </Link>
-          <Link to="/database"   className={`nav-tab ${path === "/database"   ? "active" : ""}`}>
-            <span className="nav-tab-icon">🗄️</span> DATABASE
-          </Link>
-          <Link to="/itemmaster" className={`nav-tab ${path === "/itemmaster" ? "active" : ""}`}>
-            <span className="nav-tab-icon">📦</span> ITEM MASTER
-          </Link>
-        </div>
-      )}
+   <div className="nav-center">
+    <h2>Steel Manufacturing Solution</h2>
+  </div>
 
       {/* Right side: user chip + logout OR login/signup */}
       <div className="nav-buttons">

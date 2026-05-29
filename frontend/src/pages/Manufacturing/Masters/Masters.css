@@ -1,0 +1,82 @@
+.module-page {
+  min-height: 100vh;
+  background: #f2f2f2;
+}
+
+.inventory-header {
+  background: linear-gradient(
+    90deg,
+    #5b8def,
+    #8ec5fc
+  );
+  padding: 15px 25px;
+  color: white;
+}
+
+.inventory-header h1 {
+  font-size: 32px;
+  font-weight: 500;
+}
+
+/* SMALL MODULE GRID */
+.inventory-grid {
+  padding: 20px;
+  display: flex;
+  gap: 15px;
+  flex-wrap: wrap;
+}
+
+/* SMALL CARD */
+.inventory-card {
+  width: 320px;
+  height: 90px;
+  background: #ececec;
+  border-radius: 12px;
+  padding: 12px 15px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  cursor: pointer;
+  transition: 0.3s;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+}
+
+.inventory-card:hover {
+  transform: translateY(-2px);
+}
+
+.card-left {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+/* SMALL ICON */
+.inventory-icon {
+  width: 42px;
+  height: 42px;
+  background: #e6dff5;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 18px;
+}
+
+/* TEXT */
+.card-left h3 {
+  font-size: 17px;
+  font-weight: 500;
+  color: #333;
+}
+
+.card-left p {
+  color: #777;
+  margin-top: 2px;
+  font-size: 13px;
+}
+
+.card-right span {
+  color: #666;
+  font-size: 13px;
+}

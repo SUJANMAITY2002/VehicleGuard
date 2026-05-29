@@ -1,0 +1,189 @@
+/* =========================
+   MAIN PAGE
+========================= */
+
+.inventory-main-container{
+  min-height: 100vh;
+
+  background: #efefef;
+
+  font-family: Arial, sans-serif;
+}
+
+/* =========================
+   TOP BANNER
+========================= */
+
+.inventory-top-banner{
+  height: 72px;
+
+  display: flex;
+  align-items: center;
+
+  padding-left: 22px;
+
+  background:
+    linear-gradient(
+      135deg,
+      #5f92e5,
+      #9dc6ef,
+      #dceffc
+    );
+
+  border-bottom:
+    1px solid rgba(255,255,255,0.2);
+}
+
+/* =========================
+   TITLE
+========================= */
+
+.inventory-page-title{
+  color: white;
+
+  font-size: 26px;
+  font-weight: 600;
+
+  letter-spacing: 0.3px;
+}
+
+/* =========================
+   CARD WRAPPER
+========================= */
+
+.inventory-card-wrapper{
+  padding: 14px;
+
+  display: grid;
+
+  grid-template-columns:
+    repeat(auto-fit,minmax(320px,1fr));
+
+  gap: 16px;
+}
+
+/* =========================
+   CARD
+========================= */
+
+.inventory-module-card{
+  background: #f8f8f8;
+
+  border-radius: 14px;
+
+  padding: 16px 18px;
+
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  cursor: pointer;
+
+  transition: 0.3s;
+
+  box-shadow:
+    0 2px 8px rgba(0,0,0,0.12);
+}
+
+.inventory-module-card:hover{
+  transform: translateY(-3px);
+
+  box-shadow:
+    0 5px 16px rgba(0,0,0,0.16);
+}
+
+/* =========================
+   LEFT SIDE
+========================= */
+
+.inventory-module-left{
+  display: flex;
+  align-items: center;
+
+  gap: 14px;
+}
+
+/* =========================
+   ICON CIRCLE
+========================= */
+
+.inventory-module-icon-circle{
+  width: 42px;
+  height: 42px;
+
+  border-radius: 50%;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  font-size: 15px;
+  font-weight: 600;
+}
+
+/* PURPLE */
+
+.inventory-module-icon-circle.purple{
+  background: #eadcf7;
+
+  color: #7f2ce4;
+}
+
+/* BLUE */
+
+.inventory-module-icon-circle.blue{
+  background: #dde9f5;
+
+  color: #1d69b5;
+}
+
+/* =========================
+   DETAILS
+========================= */
+
+.inventory-module-details h3{
+  margin: 0;
+
+  color: #333;
+
+  font-size: 16px;
+  font-weight: 500;
+}
+
+.inventory-module-details p{
+  margin-top: 4px;
+
+  color: #777;
+
+  font-size: 14px;
+}
+
+/* =========================
+   RIGHT SIDE
+========================= */
+
+.inventory-module-right{
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+
+  gap: 12px;
+}
+
+.inventory-module-right{
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+
+  gap: 12px;
+}
+
+/* =========================
+   MODULE CODE
+========================= */
+
+.inventory-module-code{
+  color: #777;
+
+  font-size: 14px;
+}
