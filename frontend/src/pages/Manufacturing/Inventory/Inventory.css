@@ -52,14 +52,14 @@
 ========================= */
 
 .inventory-card-wrapper{
-  padding: 14px;
+  padding: 25px;
 
   display: grid;
 
   grid-template-columns:
-    repeat(auto-fit,minmax(320px,1fr));
+    repeat(3, 1fr);
 
-  gap: 16px;
+  gap: 25px;
 }
 
 /* =========================
@@ -67,11 +67,13 @@
 ========================= */
 
 .inventory-module-card{
-  background: #f8f8f8;
+  background: #ffffff;
 
-  border-radius: 14px;
+  border-radius: 18px;
 
-  padding: 16px 18px;
+  padding: 28px;
+
+  min-height: 120px;
 
   display: flex;
   justify-content: space-between;
@@ -79,10 +81,10 @@
 
   cursor: pointer;
 
-  transition: 0.3s;
+  transition: all 0.3s ease;
 
   box-shadow:
-    0 2px 8px rgba(0,0,0,0.12);
+    0 4px 12px rgba(0,0,0,0.12);
 }
 
 .inventory-module-card:hover{

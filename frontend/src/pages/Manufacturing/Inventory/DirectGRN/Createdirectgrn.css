@@ -1,0 +1,412 @@
+/* ── Page ── */
+.cdgrn-page {
+  min-height: 100vh;
+  background: #efefef;
+  padding-bottom: 40px;
+}
+
+/* ── Page Header ── */
+.cdgrn-page-header {
+  height: 60px;
+  background: #fff;
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 0 20px;
+  border-bottom: 1px solid #ddd;
+}
+
+.cdgrn-page-header h2 {
+  margin: 0;
+  font-size: 22px;
+  color: #222;
+}
+
+.cdgrn-back-btn {
+  background: none;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  padding: 6px 12px;
+  font-size: 18px;
+  cursor: pointer;
+  color: #444;
+}
+
+.cdgrn-back-btn:hover { background: #f0f0f0; }
+
+/* ── Cards ── */
+.cdgrn-card {
+  background: #fff;
+  border: 1px solid #ddd;
+  margin: 14px;
+  padding: 20px;
+}
+
+/* ── Section Label ── */
+.cdgrn-section-label {
+  font-size: 12px;
+  font-weight: 700;
+  color: #666;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  margin-bottom: 16px;
+  padding-bottom: 8px;
+  border-bottom: 2px solid #0084ff;
+  display: inline-block;
+}
+
+/* ── Linked GIN banner ── */
+.cdgrn-linked-banner {
+  background: #d1fae5;
+  border: 1px solid #6ee7b7;
+  color: #065f46;
+  padding: 8px 14px;
+  border-radius: 4px;
+  font-size: 13px;
+  margin-bottom: 16px;
+}
+
+/* ── GIN search grid ── */
+.cdgrn-gin-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 12px;
+  margin-bottom: 12px;
+}
+
+.cdgrn-gin-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 10px;
+  margin-bottom: 12px;
+}
+
+.cdgrn-search-btn {
+  background: #0d6efd;
+  color: #fff;
+  border: none;
+  padding: 8px 22px;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 13px;
+}
+.cdgrn-search-btn:hover { background: #0b5ed7; }
+
+.cdgrn-reset-btn {
+  background: #fff;
+  border: 1px solid #aaa;
+  color: #555;
+  padding: 8px 18px;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 13px;
+}
+.cdgrn-reset-btn:hover { background: #f5f5f5; }
+
+/* ── GIN results ── */
+.cdgrn-gin-results { margin-top: 10px; }
+
+.cdgrn-placeholder {
+  color: #888;
+  text-align: center;
+  padding: 24px 0;
+  font-size: 14px;
+}
+
+.cdgrn-gin-hint {
+  font-size: 12px;
+  color: #0084ff;
+  margin-bottom: 8px;
+  font-style: italic;
+}
+
+.cdgrn-gin-table-wrap { overflow-x: auto; }
+
+.cdgrn-gin-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 12.5px;
+}
+
+.cdgrn-gin-table th {
+  background: #f5f5f5;
+  border: 1px solid #ddd;
+  padding: 9px 10px;
+  text-align: left;
+  white-space: nowrap;
+  font-weight: 600;
+  color: #333;
+}
+
+.cdgrn-gin-table td {
+  border: 1px solid #e8e8e8;
+  padding: 7px 10px;
+  white-space: nowrap;
+  color: #444;
+}
+
+.cdgrn-gin-row {
+  cursor: pointer;
+  transition: background 0.15s;
+}
+
+.cdgrn-gin-row:hover { background: #f0f7ff; }
+
+.cdgrn-gin-selected { background: #dbeafe !important; }
+
+/* entry badges */
+.cdgrn-entry-badge {
+  display: inline-block;
+  padding: 2px 9px;
+  border-radius: 10px;
+  font-size: 11px;
+  font-weight: 600;
+}
+.cdgrn-entry-badge.inward  { background: #d1fae5; color: #065f46; }
+.cdgrn-entry-badge.outward { background: #fef3c7; color: #92400e; }
+
+/* status badges */
+.cdgrn-status-badge {
+  display: inline-block;
+  padding: 2px 9px;
+  border-radius: 10px;
+  font-size: 11px;
+  font-weight: 600;
+}
+.cdgrn-status-badge.open   { background: #d1fae5; color: #065f46; }
+.cdgrn-status-badge.closed { background: #fee2e2; color: #991b1b; }
+
+/* ── Form field base ── */
+.cdgrn-fg {
+  display: flex;
+  flex-direction: column;
+}
+
+.cdgrn-fg label {
+  font-size: 12px;
+  color: #555;
+  margin-bottom: 5px;
+  font-weight: 500;
+}
+
+.cdgrn-fg input,
+.cdgrn-fg select,
+.cdgrn-fg textarea {
+  height: 36px;
+  border: 1px solid #ccc;
+  padding: 0 10px;
+  font-size: 13px;
+  border-radius: 3px;
+  background: #fff;
+  color: #333;
+}
+
+.cdgrn-fg textarea {
+  height: auto;
+  padding: 8px 10px;
+  resize: vertical;
+}
+
+.cdgrn-fg input:focus,
+.cdgrn-fg select:focus,
+.cdgrn-fg textarea:focus {
+  outline: none;
+  border-color: #0084ff;
+  box-shadow: 0 0 0 2px rgba(0,132,255,.12);
+}
+
+.cdgrn-highlight {
+  border-color: #f5a623 !important;
+  background: #fffbf0 !important;
+}
+
+.cdgrn-readonly {
+  background: #f4f4f4 !important;
+  color: #888 !important;
+  cursor: not-allowed;
+}
+
+/* ── Top row (GRN No + Status) ── */
+.cdgrn-top-row {
+  display: flex;
+  gap: 20px;
+  align-items: flex-end;
+  margin-bottom: 18px;
+}
+
+.cdgrn-fg-auto { flex: 0 0 280px; }
+
+/* ── Main 4-column grid ── */
+.cdgrn-main-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 14px;
+  margin-bottom: 18px;
+}
+
+/* ── Textarea row ── */
+.cdgrn-textarea-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 14px;
+}
+
+/* ── Items section ── */
+.cdgrn-items-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 12px;
+}
+
+.cdgrn-items-title {
+  font-size: 14px;
+  font-weight: 700;
+  color: #333;
+  border-left: 4px solid #0084ff;
+  padding-left: 10px;
+}
+
+.cdgrn-del-rows-btn {
+  background: #dc3545;
+  color: #fff;
+  border: none;
+  padding: 6px 14px;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 12px;
+}
+
+.cdgrn-items-table-wrap { overflow-x: auto; }
+
+.cdgrn-items-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 12.5px;
+}
+
+.cdgrn-items-table th {
+  background: #f0f0f0;
+  border: 1px solid #ddd;
+  padding: 8px 10px;
+  text-align: left;
+  white-space: nowrap;
+  font-weight: 600;
+  color: #333;
+}
+
+.cdgrn-items-table td {
+  border: 1px solid #e8e8e8;
+  padding: 5px 6px;
+  vertical-align: middle;
+}
+
+.cdgrn-items-table tbody tr:nth-child(even) { background: #fafafa; }
+.cdgrn-items-table tbody tr:hover           { background: #f0f7ff; }
+.cdgrn-row-checked                          { background: #fef9c3 !important; }
+
+.cdgrn-sno {
+  text-align: center;
+  font-weight: 600;
+  color: #555;
+  width: 40px;
+}
+
+.cdgrn-check-cell { text-align: center; width: 36px; }
+
+.cdgrn-item-input {
+  height: 28px;
+  border: 1px solid #d0d0d0;
+  border-radius: 3px;
+  padding: 0 6px;
+  font-size: 12px;
+  width: 100px;
+  box-sizing: border-box;
+  background: #fff;
+}
+.cdgrn-item-input:focus {
+  outline: none;
+  border-color: #0084ff;
+}
+
+.cdgrn-item-wide { width: 150px; }
+.cdgrn-item-num  { width: 80px;  }
+.cdgrn-item-sm   { width: 60px;  }
+
+/* ── Insert row bar ── */
+.cdgrn-insert-bar {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-top: 12px;
+  justify-content: flex-end;
+}
+
+.cdgrn-insert-count {
+  width: 60px;
+  height: 32px;
+  border: 1px solid #ccc;
+  border-radius: 3px;
+  padding: 0 8px;
+  font-size: 13px;
+  text-align: center;
+}
+
+.cdgrn-insert-btn {
+  background: #6c757d;
+  color: #fff;
+  border: none;
+  padding: 7px 16px;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 13px;
+}
+.cdgrn-insert-btn:hover { background: #565e64; }
+
+/* ── Form action buttons ── */
+.cdgrn-form-actions {
+  display: flex;
+  justify-content: center;
+  gap: 14px;
+  padding: 16px 14px;
+  background: #fff;
+  border-top: 1px solid #ddd;
+  margin: 0 14px;
+}
+
+.cdgrn-submit-btn,
+.cdgrn-draft-btn,
+.cdgrn-cancel-btn {
+  border: none;
+  border-radius: 4px;
+  padding: 10px 28px;
+  font-size: 14px;
+  cursor: pointer;
+  font-weight: 500;
+}
+
+.cdgrn-submit-btn { background: #0084ff; color: #fff; }
+.cdgrn-submit-btn:hover:not(:disabled) { background: #006fd6; }
+
+.cdgrn-draft-btn { background: #6c757d; color: #fff; }
+.cdgrn-draft-btn:hover:not(:disabled) { background: #565e64; }
+
+.cdgrn-cancel-btn { background: #fff; color: #555; border: 1px solid #aaa; }
+.cdgrn-cancel-btn:hover:not(:disabled) { background: #f5f5f5; }
+
+.cdgrn-submit-btn:disabled,
+.cdgrn-draft-btn:disabled,
+.cdgrn-cancel-btn:disabled { opacity: 0.6; cursor: not-allowed; }
+
+/* ── Responsive ── */
+@media (max-width: 1024px) {
+  .cdgrn-main-grid { grid-template-columns: repeat(2, 1fr); }
+  .cdgrn-gin-grid  { grid-template-columns: repeat(2, 1fr); }
+}
+
+@media (max-width: 640px) {
+  .cdgrn-main-grid    { grid-template-columns: 1fr; }
+  .cdgrn-gin-grid     { grid-template-columns: 1fr; }
+  .cdgrn-textarea-row { grid-template-columns: 1fr; }
+  .cdgrn-top-row      { flex-direction: column; }
+}

@@ -1,0 +1,404 @@
+.weighment-page{
+  min-height:100vh;
+  background:#efefef;
+}
+
+.weighment-header{
+  height:70px;
+  background:#fff;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  padding:0 20px;
+  border-bottom:1px solid #ddd;
+}
+
+.weighment-header h2{
+  margin:0;
+  font-size:38px;
+  color:#222;
+}
+
+.header-actions{
+  display:flex;
+  gap:12px;
+}
+
+.old-btn{
+  border:1px solid #3c89d9;
+  background:white;
+  color:#3c89d9;
+  padding:10px 18px;
+  border-radius:4px;
+  cursor:pointer;
+}
+
+.create-btn{
+  background:#0084ff;
+  color:white;
+  border:none;
+  padding:10px 18px;
+  border-radius:4px;
+  cursor:pointer;
+}
+
+.search-panel{
+  background:white;
+  margin:12px;
+  padding:20px;
+  border:1px solid #ddd;
+}
+
+.search-grid{
+  display:grid;
+  grid-template-columns:
+  repeat(4,1fr);
+  gap:16px;
+}
+
+.field{
+  display:flex;
+  flex-direction:column;
+}
+
+.field label{
+  font-size:13px;
+  margin-bottom:6px;
+  color:#444;
+}
+
+.field input,
+.field select{
+  height:38px;
+  border:1px solid #d5d5d5;
+  padding:0 10px;
+  font-size:14px;
+}
+
+.bottom-actions{
+  margin-top:20px;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+}
+
+.checkbox-wrap{
+  display:flex;
+  gap:10px;
+  align-items:center;
+}
+
+.apply-btn{
+  background:#0d6efd;
+  color:white;
+  border:none;
+  padding:10px 22px;
+  border-radius:4px;
+  cursor:pointer;
+}
+
+.result-area{
+  background:white;
+  margin:12px;
+  height:350px;
+  border:1px solid #ddd;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+}
+
+.placeholder{
+  color:#666;
+  font-size:18px;
+}
+/* Results table */
+.result-area {
+  background: white;
+  margin: 12px;
+  min-height: 350px;
+  border: 1px solid #ddd;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  overflow: auto;
+}
+
+.result-table-wrap {
+  width: 100%;
+  overflow-x: auto;
+}
+
+.result-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 13px;
+}
+
+.result-table th {
+  background: #f5f5f5;
+  border: 1px solid #ddd;
+  padding: 10px 12px;
+  text-align: left;
+  white-space: nowrap;
+  font-weight: 600;
+  color: #333;
+  position: sticky;
+  top: 0;
+}
+
+.result-table td {
+  border: 1px solid #e8e8e8;
+  padding: 9px 12px;
+  white-space: nowrap;
+  color: #444;
+}
+
+.result-table tbody tr:hover {
+  background: #f0f7ff;
+}
+
+.result-table tbody tr:nth-child(even) {
+  background: #fafafa;
+}
+
+.result-table tbody tr:nth-child(even):hover {
+  background: #f0f7ff;
+}
+
+/* ── Inline edit inputs ── */
+.inline-input {
+  height: 30px;
+  border: 1px solid #91c0f8;
+  border-radius: 3px;
+  padding: 0 6px;
+  font-size: 12px;
+  width: 110px;
+  background: #fff;
+  box-sizing: border-box;
+}
+
+.inline-date  { width: 130px; }
+.inline-num   { width: 70px; }
+
+.inline-readonly {
+  background: #f0f0f0;
+  color: #888;
+  cursor: not-allowed;
+}
+
+/* ── Row highlight when editing ── */
+.editing-row {
+  background: #fffbe6 !important;
+}
+
+/* ── Action buttons column ── */
+.action-cell {
+  white-space: nowrap;
+  display: flex;
+  gap: 6px;
+  align-items: center;
+  padding: 6px 10px !important;
+  border: 1px solid #e8e8e8;
+}
+
+.edit-row-btn,
+.delete-row-btn,
+.save-row-btn,
+.cancel-row-btn {
+  border: none;
+  border-radius: 3px;
+  padding: 5px 12px;
+  font-size: 12px;
+  cursor: pointer;
+  font-weight: 500;
+}
+
+.edit-row-btn   { background: #0d6efd; color: #fff; }
+.edit-row-btn:hover { background: #0b5ed7; }
+
+.delete-row-btn { background: #dc3545; color: #fff; }
+.delete-row-btn:hover { background: #b02a37; }
+
+.save-row-btn   { background: #198754; color: #fff; }
+.save-row-btn:hover { background: #146c43; }
+
+.cancel-row-btn { background: #6c757d; color: #fff; }
+.cancel-row-btn:hover { background: #565e64; }
+
+/* ── ADD THESE STYLES TO YOUR EXISTING WeighmentSearch.css ── */
+
+/* Create dropdown wrapper */
+.create-dropdown-wrap {
+  position: relative;
+  display: inline-block;
+}
+
+.create-btn {
+  background: #1a73e8;
+  color: #fff;
+  border: none;
+  padding: 8px 16px;
+  border-radius: 6px;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  transition: background 0.2s;
+}
+
+.create-btn:hover {
+  background: #1558b0;
+}
+
+.create-menu {
+  position: absolute;
+  top: calc(100% + 4px);
+  right: 0;
+  background: #fff;
+  border: 1px solid #dde3ec;
+  border-radius: 8px;
+  box-shadow: 0 8px 24px rgba(0,0,0,0.12);
+  min-width: 180px;
+  z-index: 999;
+  overflow: hidden;
+  animation: menuSlide 0.15s ease;
+}
+
+@keyframes menuSlide {
+  from { opacity: 0; transform: translateY(-6px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+.create-menu-item {
+  display: block;
+  width: 100%;
+  padding: 11px 18px;
+  text-align: left;
+  background: transparent;
+  border: none;
+  font-size: 14px;
+  color: #2c3e50;
+  cursor: pointer;
+  transition: background 0.15s;
+  border-bottom: 1px solid #f0f4f8;
+}
+
+.create-menu-item:last-child {
+  border-bottom: none;
+}
+
+.create-menu-item:hover {
+  background: #f0f6ff;
+  color: #1a73e8;
+  font-weight: 600;
+}
+
+/* ════════════════════════════════════════════════
+   ADDITIONS — Append to your existing WeighmentSearch.css
+   Covers: expand button, detail panel, badges, create dropdown
+════════════════════════════════════════════════ */
+
+/* ── Create dropdown ── */
+.create-dropdown-wrap { position: relative; display: inline-block; }
+.create-btn {
+  background: #1a73e8; color: #fff; border: none;
+  padding: 8px 16px; border-radius: 6px; font-size: 14px; font-weight: 600;
+  cursor: pointer; display: flex; align-items: center; gap: 4px;
+}
+.create-btn:hover { background: #1558b0; }
+.create-menu {
+  position: absolute; top: calc(100% + 4px); right: 0;
+  background: #fff; border: 1px solid #dde3ec; border-radius: 8px;
+  box-shadow: 0 8px 24px rgba(0,0,0,0.12); min-width: 180px; z-index: 999; overflow: hidden;
+}
+.create-menu-item {
+  display: block; width: 100%; padding: 11px 18px; text-align: left;
+  background: transparent; border: none; border-bottom: 1px solid #f0f4f8;
+  font-size: 14px; color: #2c3e50; cursor: pointer; transition: background 0.15s;
+}
+.create-menu-item:last-child { border-bottom: none; }
+.create-menu-item:hover { background: #f0f6ff; color: #1a73e8; font-weight: 600; }
+
+/* ── Expand button ── */
+.ws-expand-btn {
+  background: #e8f0fe; border: 1px solid #c5d8fc; border-radius: 4px;
+  width: 26px; height: 26px; font-size: 10px; cursor: pointer; color: #1a73e8;
+  display: flex; align-items: center; justify-content: center; transition: background 0.15s;
+}
+.ws-expand-btn.open { background: #1a73e8; color: #fff; border-color: #1a73e8; }
+.ws-expand-btn:hover { opacity: 0.82; }
+
+/* ── Row states ── */
+tr.expanded-row > td { background: #f0f6ff !important; }
+tr.editing-row  > td { background: #fffbe6 !important; }
+
+/* ── Badges ── */
+.ws-status-badge, .ws-type-badge {
+  display: inline-block; padding: 2px 10px; border-radius: 12px;
+  font-size: 11px; font-weight: 700;
+}
+.ws-status-badge.open    { background: #d1fae5; color: #065f46; }
+.ws-status-badge.closed  { background: #fee2e2; color: #991b1b; }
+.ws-type-badge.inward    { background: #dbeafe; color: #1e40af; }
+.ws-type-badge.outward   { background: #fef3c7; color: #92400e; }
+
+/* ── Inline inputs ── */
+.ws-inline {
+  height: 28px; border: 1px solid #91c0f8; border-radius: 3px;
+  padding: 0 6px; font-size: 12px; width: 120px; background: #fff; outline: none;
+}
+.ws-inline:focus { border-color: #1a73e8; }
+.ws-inline.ws-date { width: 130px; }
+.ws-inline.ws-num  { width: 80px; }
+.ws-inline.readonly { background: #f5f7fa; color: #8896ab; cursor: not-allowed; }
+
+/* action cell */
+.action-cell { white-space: nowrap; }
+.save-row-btn, .cancel-row-btn, .edit-row-btn, .delete-row-btn {
+  border: none; border-radius: 4px; padding: 5px 10px;
+  font-size: 11px; font-weight: 600; cursor: pointer; margin-right: 3px;
+}
+.save-row-btn   { background: #28a745; color: #fff; }
+.cancel-row-btn { background: #6c757d; color: #fff; }
+.edit-row-btn   { background: #0d6efd; color: #fff; }
+.delete-row-btn { background: #dc3545; color: #fff; }
+.save-row-btn:hover   { background: #218838; }
+.cancel-row-btn:hover { background: #565e64; }
+.edit-row-btn:hover   { background: #0b5ed7; }
+.delete-row-btn:hover { background: #b02a37; }
+
+/* ── DETAIL PANEL ── */
+.ws-detail-row > td { padding: 0 !important; background: #f8faff !important; }
+.ws-detail-panel {
+  padding: 20px 24px; border-top: 2px solid #1a73e8; border-bottom: 2px solid #1a73e8;
+  background: #f8faff;
+}
+.ws-detail-header {
+  font-size: 13px; font-weight: 700; letter-spacing: 0.5px;
+  text-transform: uppercase; color: #1a73e8; margin-bottom: 14px;
+}
+.ws-detail-grid {
+  display: grid; grid-template-columns: repeat(6, 1fr); gap: 10px 18px;
+}
+.ws-detail-field { display: flex; flex-direction: column; gap: 2px; }
+.ws-detail-label {
+  font-size: 10px; font-weight: 700; color: #6b7a99;
+  text-transform: uppercase; letter-spacing: 0.4px;
+}
+.ws-detail-value {
+  font-size: 13px; color: #1a2540; font-weight: 500;
+  background: #fff; border: 1px solid #e4e8f0;
+  border-radius: 4px; padding: 4px 8px; min-height: 28px;
+}
+
+/* ── old-btn ── */
+.old-btn {
+  background: #fff; color: #5a6785; border: 1px solid #c8d0e0;
+  padding: 7px 14px; border-radius: 6px; font-size: 13px; cursor: pointer;
+}
+.old-btn:hover { background: #f0f4ff; }
+
+@media (max-width: 1100px) { .ws-detail-grid { grid-template-columns: repeat(4,1fr); } }
+@media (max-width: 800px)  { .ws-detail-grid { grid-template-columns: repeat(2,1fr); } }

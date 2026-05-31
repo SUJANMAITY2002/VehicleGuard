@@ -1,1 +1,273 @@
-@import "../GoodsInwardNote/GoodsInwardNote.css";
+/* ── Page ── */
+.dgrn-page {
+  min-height: 100vh;
+  background: #efefef;
+}
+
+/* ── Header ── */
+.dgrn-header {
+  height: 70px;
+  background: #fff;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 20px;
+  border-bottom: 1px solid #ddd;
+}
+
+.dgrn-header h2 {
+  margin: 0;
+  font-size: 28px;
+  color: #222;
+}
+
+.dgrn-create-btn {
+  background: #0084ff;
+  color: #fff;
+  border: none;
+  padding: 10px 18px;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 14px;
+}
+
+.dgrn-create-btn:hover {
+  background: #006fd6;
+}
+
+/* ── Body ── */
+.dgrn-body {
+  padding: 12px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+/* ── Filter Panel ── */
+.dgrn-filter-panel {
+  background: #fff;
+  border: 1px solid #ddd;
+  padding: 20px;
+}
+
+.dgrn-filter-title {
+  font-size: 13px;
+  font-weight: 700;
+  color: #555;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  margin-bottom: 16px;
+  padding-bottom: 8px;
+  border-bottom: 1px solid #eee;
+}
+
+.dgrn-filter-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 14px;
+}
+
+.dgrn-fg {
+  display: flex;
+  flex-direction: column;
+}
+
+.dgrn-fg label {
+  font-size: 12px;
+  color: #555;
+  margin-bottom: 5px;
+  font-weight: 500;
+}
+
+.dgrn-fg input,
+.dgrn-fg select {
+  height: 36px;
+  border: 1px solid #d5d5d5;
+  padding: 0 10px;
+  font-size: 13px;
+  border-radius: 3px;
+  background: #fff;
+}
+
+.dgrn-fg input:focus,
+.dgrn-fg select:focus {
+  outline: none;
+  border-color: #0084ff;
+}
+
+.dgrn-filter-actions {
+  margin-top: 16px;
+  display: flex;
+  justify-content: flex-end;
+  gap: 10px;
+}
+
+.dgrn-reset-btn {
+  border: 1px solid #aaa;
+  background: #fff;
+  color: #555;
+  padding: 8px 20px;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 13px;
+}
+
+.dgrn-reset-btn:hover {
+  background: #f5f5f5;
+}
+
+.dgrn-apply-btn {
+  background: #0d6efd;
+  color: #fff;
+  border: none;
+  padding: 8px 24px;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 13px;
+}
+
+.dgrn-apply-btn:hover:not(:disabled) {
+  background: #0b5ed7;
+}
+
+.dgrn-apply-btn:disabled {
+  opacity: 0.65;
+  cursor: not-allowed;
+}
+
+/* ── Result Area ── */
+.dgrn-result-area {
+  background: #fff;
+  border: 1px solid #ddd;
+  min-height: 300px;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+}
+
+.dgrn-placeholder {
+  color: #888;
+  font-size: 16px;
+  margin: auto;
+  padding: 60px 20px;
+}
+
+.dgrn-table-wrap {
+  width: 100%;
+  overflow-x: auto;
+}
+
+/* ── Table ── */
+.dgrn-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 12.5px;
+}
+
+.dgrn-table th {
+  background: #f5f5f5;
+  border: 1px solid #ddd;
+  padding: 10px 12px;
+  text-align: left;
+  white-space: nowrap;
+  font-weight: 600;
+  color: #333;
+  position: sticky;
+  top: 0;
+  z-index: 1;
+}
+
+.dgrn-table td {
+  border: 1px solid #e8e8e8;
+  padding: 8px 10px;
+  white-space: nowrap;
+  color: #444;
+  vertical-align: middle;
+}
+
+.dgrn-table tbody tr:hover {
+  background: #f0f7ff;
+}
+
+.dgrn-table tbody tr:nth-child(even) {
+  background: #fafafa;
+}
+
+.dgrn-table tbody tr:nth-child(even):hover {
+  background: #f0f7ff;
+}
+
+/* ── Editing row ── */
+.dgrn-editing-row {
+  background: #fffbe6 !important;
+}
+
+/* ── Status badges ── */
+.dgrn-badge {
+  display: inline-block;
+  padding: 2px 10px;
+  border-radius: 10px;
+  font-size: 11px;
+  font-weight: 600;
+}
+
+.dgrn-badge-open   { background: #d1fae5; color: #065f46; }
+.dgrn-badge-closed { background: #fee2e2; color: #991b1b; }
+
+/* ── Amount cell ── */
+.dgrn-amount-cell { font-weight: 600; color: #1a56db; }
+
+/* ── Inline edit inputs ── */
+.dgrn-inline {
+  height: 28px;
+  border: 1px solid #91c0f8;
+  border-radius: 3px;
+  padding: 0 6px;
+  font-size: 12px;
+  width: 110px;
+  background: #fff;
+  box-sizing: border-box;
+}
+
+.dgrn-inline-wide  { width: 150px; }
+.dgrn-inline-date  { width: 130px; }
+.dgrn-inline-num   { width: 75px;  }
+.dgrn-inline-sm    { width: 60px;  }
+
+.dgrn-readonly {
+  background: #f0f0f0;
+  color: #888;
+  cursor: not-allowed;
+}
+
+/* ── Action buttons ── */
+.dgrn-action-cell {
+  display: flex;
+  gap: 6px;
+  align-items: center;
+}
+
+.dgrn-edit-btn,
+.dgrn-delete-btn,
+.dgrn-save-btn,
+.dgrn-cancel-btn {
+  border: none;
+  border-radius: 3px;
+  padding: 5px 11px;
+  font-size: 12px;
+  cursor: pointer;
+  font-weight: 500;
+  white-space: nowrap;
+}
+
+.dgrn-edit-btn    { background: #0d6efd; color: #fff; }
+.dgrn-edit-btn:hover { background: #0b5ed7; }
+
+.dgrn-delete-btn  { background: #dc3545; color: #fff; }
+.dgrn-delete-btn:hover { background: #b02a37; }
+
+.dgrn-save-btn    { background: #198754; color: #fff; }
+.dgrn-save-btn:hover { background: #146c43; }
+
+.dgrn-cancel-btn  { background: #6c757d; color: #fff; }
+.dgrn-cancel-btn:hover { background: #565e64; }

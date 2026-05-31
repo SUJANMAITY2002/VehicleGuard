@@ -10,10 +10,17 @@ const navigate = useNavigate();
   const inventoryCards = [
   {
     shortName: "GI",
-    title: "Goods Inward Note",
+    title: "Inward/Outward Note",
     code: "M03GIN",
     theme: "purple",
-    path: "/goods-inward-note",
+    path: "/inward-outward-note",
+  },
+     {
+    shortName: "we",
+    title: "Weighment",
+    code: "M03we",
+    theme: "blue",
+    path: "/weighment-search",
   },
   {
     shortName: "GR",
@@ -30,8 +37,16 @@ const navigate = useNavigate();
     path: "/direct-grn",
   },
   {
+    shortName: "IC",
+    title: "Item Conversion",
+    code: "M03IC",
+    theme: "blue",
+    path: "/item-Conversion",
+  },
+
+   {
     shortName: "II",
-    title: "Item Inventory",
+    title: "Item inventory",
     code: "M03II",
     theme: "blue",
     path: "/item-inventory",

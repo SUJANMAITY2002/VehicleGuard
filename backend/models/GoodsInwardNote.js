@@ -1,65 +1,41 @@
 const mongoose = require("mongoose");
 
-const goodsInwardNoteSchema =
-new mongoose.Schema({
+/* ── Item sub-schema ── */
+const ginItemSchema = new mongoose.Schema({
+  sNo:           Number,
+  insertBags:    String,
+  itemRate:      String,
+  transactionNo: String,
+  partyName:     String,
+  broker:        String,
+  itemCode:      String,
+  itemName:      String,
+  uom:           String,
+  salesThrough:  String,
+}, { _id: false });
 
-  ginNo: {
-    type: String,
-    required: true,
-  },
+const goodsInwardNoteSchema = new mongoose.Schema({
 
-  poCpoNo: String,
-
-  status: {
-    type: String,
-    default: "Open",
-  },
-
-  site: String,
-
-  ginDate: String,
-
-  ginDescription: String,
-
-  ginType: String,
-
-  deliveryMode: String,
-
+  /* ── KEPT fields only ── */
+  ginNo:               { type: String, required: true },
+  poCpoNo:             String,
+  status:              { type: String, default: "Open" },
+  site:                String,
+  ginDate:             String,
   transactionCategory: String,
+  vendorCode:          String,
+  vendorName:          String,
+  vehicleEntry:        String,
+  manufacturerName:    String,
+  vehicleNo:           String,
+  billNo:              String,
+  billDate:            String,
+  ewayDate:            String,
+  remarks:             String,
 
-  vendorCode: String,
+  /* Items grid */
+  items: [ginItemSchema],
 
-  vendorName: String,
+}, { timestamps: true });
 
-  manufacturerAddress: String,
-
-  vehicleEntry: String,
-
-  manufacturerCode: String,
-
-  manufacturerName: String,
-
-  vehicleNo: String,
-
-  challanInvoiceNo: String,
-
-  challanDate: String,
-
-  billDate: String,
-
-  ewayDate: String,
-
-  remarks: String,
-
-  comments: String
-
-},
-{
-  timestamps: true
-});
-
-module.exports =
-mongoose.model(
-  "GoodsInwardNote",
-  goodsInwardNoteSchema
-);
+module.exports = mongoose.model("GoodsInwardNote", goodsInwardNoteSchema);
