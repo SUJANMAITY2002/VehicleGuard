@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import axios from "axios";
-import "./GINDetail.css";
+import "./GINdetail.css";
 import ModuleNavbar from "../../../../components/ModuleNavbar/ModuleNavbar";
 
 const GIN_API       = "http://localhost:5000/api/goods-inward-note";
