@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import axios from "axios";
-import "./WeighmentDetail.css";
+import "./Weighmentdetail.css";
 import ModuleNavbar from "../../../../../components/ModuleNavbar/ModuleNavbar";
 
 const WEIGHMENT_API = "http://localhost:5000/api/weighment";
