@@ -24,7 +24,8 @@ import CreateTransaction     from "../pages/Manufacturing/Masters/Transaction/Cr
 import DocumentSequence      from "../pages/Manufacturing/Masters/DocumentSequence/DocumentSequence";
 import CreateDocumentSequence from "../pages/Manufacturing/Masters/DocumentSequence/CreateDocumentSequence/CreateDocumentSequence";
 import WeighmentSearch        from "../pages/Manufacturing/Inventory/Weighment/WeighmentSearch";
-import WeighmentDetail        from "../pages/Manufacturing/Inventory/Weighment/WeighmentDetail/WeighmentDetail";
+// import WeighmentDetail        from "../pages/Manufacturing/Inventory/Weighment/WeighmentDetail/WeighmentDetail";
+import WeighmentDetail from "../pages/Manufacturing/Inventory/Weighment/WeighmentDetail/WeighmentDetail";
 import CreateWeighment        from "../pages/Manufacturing/Inventory/Weighment/CreateWeighment/CreateWeighment";
 import CreateInwardWeighment  from "../pages/Manufacturing/Inventory/Weighment/CreateWeighment/Createinwardweighment";
 import CreateOutwardWeighment from "../pages/Manufacturing/Inventory/Weighment/CreateWeighment/Createoutwardweighment";
