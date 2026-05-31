@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
-import "./CreateOutwardWeighment.css";
+import "./Createoutwardweighment.css";
 import ModuleNavbar from "../../../../../components/ModuleNavbar/ModuleNavbar";
 
 const GIN_API = "http://localhost:5000/api/goods-inward-note";
