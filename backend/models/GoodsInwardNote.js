@@ -16,22 +16,42 @@ const ginItemSchema = new mongoose.Schema({
 
 const goodsInwardNoteSchema = new mongoose.Schema({
 
-  /* ── KEPT fields only ── */
+  /* ── Core ── */
   ginNo:               { type: String, required: true },
   poCpoNo:             String,
   status:              { type: String, default: "Open" },
   site:                String,
   ginDate:             String,
+
+  /* ── FIXED: these were missing and being silently dropped ── */
+  ginDescription:      String,
+  ginType:             String,
+  deliveryMode:        String,
   transactionCategory: String,
+
+  /* Vendor */
   vendorCode:          String,
   vendorName:          String,
-  vehicleEntry:        String,
+
+  /* Manufacturer */
+  manufacturerCode:    String,
   manufacturerName:    String,
+  manufacturerAddress: String,
+
+  /* Vehicle */
+  vehicleEntry:        String,
   vehicleNo:           String,
+
+  /* Challan / Bill */
+  challanInvoiceNo:    String,
+  challanDate:         String,
   billNo:              String,
   billDate:            String,
   ewayDate:            String,
+
+  /* Notes */
   remarks:             String,
+  comments:            String,
 
   /* Items grid */
   items: [ginItemSchema],

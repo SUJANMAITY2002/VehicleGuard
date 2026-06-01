@@ -12,7 +12,45 @@ const blankItem = (sNo) => ({
   secondWeight: "",
   netWeight: "",
   remarks: "",
+  _checked: false,
 });
+
+const hasMainWeight = (data) =>
+  !!(data?.firstWeight || data?.secondWeight || data?.netWeight);
+
+const hasAnyItemWeight = (rows) =>
+  rows.some((row) => row.firstWeight || row.secondWeight || row.netWeight || row.remarks);
+
+const makeItemsFromSavedData = (data) => {
+  const rows =
+    Array.isArray(data.items) && data.items.length > 0
+      ? data.items.map((it, i) => ({
+          sNo: it.sNo || i + 1,
+          firstWeight: it.firstWeight || "",
+          secondWeight: it.secondWeight || "",
+          netWeight: it.netWeight || "",
+          remarks: it.remarks || "",
+          _checked: false,
+        }))
+      : Array.from({ length: 4 }, (_, i) => blankItem(i + 1));
+
+  const itemRowsAlreadyHaveData = hasAnyItemWeight(rows);
+
+  if (hasMainWeight(data) && !itemRowsAlreadyHaveData) {
+    rows[0] = {
+      ...rows[0],
+      sNo: 1,
+      firstWeight: data.firstWeight || "",
+      secondWeight: data.secondWeight || "",
+      netWeight: data.netWeight || "",
+    };
+  }
+
+  return rows.map((row, idx) => ({
+    ...row,
+    sNo: idx + 1,
+  }));
+};
 
 const WeighmentDetail = () => {
   const { id } = useParams();
@@ -23,6 +61,7 @@ const WeighmentDetail = () => {
   const [loading, setLoading] = useState(true);
   const [saving, setSaving] = useState(false);
   const [insertCount, setInsertCount] = useState(5);
+  const [activeRowIdx, setActiveRowIdx] = useState(null);
 
   useEffect(() => {
     const load = async () => {
@@ -38,22 +77,13 @@ const WeighmentDetail = () => {
 
         setForm({
           ...data,
+          firstWeight: "",
+          secondWeight: "",
+          netWeight: "",
           currentWeight: "",
         });
 
-        const savedItems =
-          Array.isArray(data.items) && data.items.length > 0
-            ? data.items.map((it, i) => ({
-                sNo: it.sNo || i + 1,
-                firstWeight: it.firstWeight || "",
-                secondWeight: it.secondWeight || "",
-                netWeight: it.netWeight || "",
-                remarks: it.remarks || "",
-                _checked: false,
-              }))
-            : Array.from({ length: 4 }, (_, i) => blankItem(i + 1));
-
-        setItems(savedItems);
+        setItems(makeItemsFromSavedData(data));
       } catch (err) {
         console.error(err);
         alert("Failed to load weighment record");
@@ -75,11 +105,37 @@ const WeighmentDetail = () => {
     }));
   };
 
+  const handleItemCheck = (rowIdx, checked) => {
+    const row = items[rowIdx];
+    const inheritWeight = row?.secondWeight || row?.firstWeight || "";
+
+    setItems((prev) =>
+      prev.map((r, i) => ({
+        ...r,
+        _checked: i === rowIdx ? checked : false,
+      }))
+    );
+
+    if (checked) {
+      setActiveRowIdx(rowIdx);
+
+      setForm((prev) => ({
+        ...prev,
+        firstWeight: inheritWeight,
+        secondWeight: "",
+        netWeight: "",
+        currentWeight: "",
+      }));
+    } else {
+      setActiveRowIdx(null);
+    }
+  };
+
   const getWeight = () => {
     const weight = parseFloat(form.currentWeight);
 
     if (!weight) {
-      alert("Enter Weight");
+      alert("Enter a weight value first");
       return;
     }
 
@@ -89,51 +145,59 @@ const WeighmentDetail = () => {
         firstWeight: String(weight),
         currentWeight: "",
       }));
+
+      if (activeRowIdx !== null) {
+        setItems((prev) => {
+          const next = [...prev];
+          next[activeRowIdx] = {
+            ...next[activeRowIdx],
+            firstWeight: String(weight),
+          };
+          return next;
+        });
+      }
+
       return;
     }
 
     if (!form.secondWeight) {
-      const first = parseFloat(form.firstWeight);
+      const first = parseFloat(form.firstWeight) || 0;
+      const net = Math.abs(first - weight);
 
       setForm((prev) => ({
         ...prev,
         secondWeight: String(weight),
-        netWeight: String(Math.abs(first - weight)),
+        netWeight: String(net),
         currentWeight: "",
       }));
+
+      if (activeRowIdx !== null) {
+        setItems((prev) => {
+          const next = [...prev];
+          const row = { ...next[activeRowIdx] };
+
+          row.secondWeight = String(weight);
+          row.netWeight = String(net);
+          row._checked = false;
+
+          next[activeRowIdx] = row;
+          return next;
+        });
+
+        setActiveRowIdx(null);
+      }
+
       return;
     }
 
     alert("First and Second Weight already recorded");
   };
 
-  const handleItemChange = (rowIdx, field, value) => {
-    setItems((prev) => {
-      const next = [...prev];
-      next[rowIdx] = {
-        ...next[rowIdx],
-        [field]: value,
-      };
-      return next;
-    });
-  };
-
   const handleRowFocus = (rowIdx) => {
     setItems((prev) => {
       const next = [...prev];
 
-      if (rowIdx === 0) {
-        const upperWeight = form.secondWeight || form.firstWeight;
-
-        if (upperWeight && !next[0].firstWeight) {
-          next[0] = {
-            ...next[0],
-            firstWeight: upperWeight,
-          };
-        }
-
-        return next;
-      }
+      if (rowIdx === 0) return next;
 
       const previous = next[rowIdx - 1];
 
@@ -148,47 +212,12 @@ const WeighmentDetail = () => {
     });
   };
 
-  const getItemWeight = (rowIdx) => {
-    const value = parseFloat(form.currentWeight);
-
-    if (!value) {
-      alert("Enter Weight");
-      return;
-    }
-
-    setItems((prev) => {
-      const next = [...prev];
-      const row = { ...next[rowIdx] };
-
-      if (!row.firstWeight) {
-        if (rowIdx === 0) {
-          row.firstWeight = form.secondWeight || form.firstWeight || "";
-        } else if (next[rowIdx - 1]?.secondWeight) {
-          row.firstWeight = next[rowIdx - 1].secondWeight;
-        }
-      }
-
-      row.secondWeight = String(value);
-
-      const first = parseFloat(row.firstWeight || 0);
-      row.netWeight = String(Math.abs(first - value));
-
-      next[rowIdx] = row;
-      return next;
-    });
-
-    setForm((prev) => ({
-      ...prev,
-      currentWeight: "",
-    }));
-  };
-
-  const handleItemCheck = (rowIdx, checked) => {
+  const handleItemChange = (rowIdx, field, value) => {
     setItems((prev) => {
       const next = [...prev];
       next[rowIdx] = {
         ...next[rowIdx],
-        _checked: checked,
+        [field]: value,
       };
       return next;
     });
@@ -200,6 +229,8 @@ const WeighmentDetail = () => {
         .filter((r) => !r._checked)
         .map((r, i) => ({ ...r, sNo: i + 1 }))
     );
+
+    setActiveRowIdx(null);
   };
 
   const handleInsertRows = () => {
@@ -281,6 +312,8 @@ const WeighmentDetail = () => {
     ? " - will set Second Weight"
     : " - completed";
 
+  const weightDisabled = !!form.firstWeight && !!form.secondWeight;
+
   return (
     <div className="wd-page">
       <ModuleNavbar />
@@ -309,42 +342,22 @@ const WeighmentDetail = () => {
         <div className="wd-section-title">GIN / Note Reference</div>
 
         <div className="wd-ref-grid">
-          <div className="wd-ref-field">
-            <span className="wd-ref-label">GIN / Note No</span>
-            <span className="wd-ref-value wd-ref-highlight">
-              {form.inwardOutwardNoteNo || "-"}
-            </span>
-          </div>
-
-          <div className="wd-ref-field">
-            <span className="wd-ref-label">Vendor Code</span>
-            <span className="wd-ref-value">{form.vendorCode || "-"}</span>
-          </div>
-
-          <div className="wd-ref-field">
-            <span className="wd-ref-label">Vendor Name</span>
-            <span className="wd-ref-value">{form.vendorName || "-"}</span>
-          </div>
-
-          <div className="wd-ref-field">
-            <span className="wd-ref-label">PO/CPO No</span>
-            <span className="wd-ref-value">{form.poCpoNo || "-"}</span>
-          </div>
-
-          <div className="wd-ref-field">
-            <span className="wd-ref-label">Manufacturer Name</span>
-            <span className="wd-ref-value">{form.manufacturerName || "-"}</span>
-          </div>
-
-          <div className="wd-ref-field">
-            <span className="wd-ref-label">Challan Date</span>
-            <span className="wd-ref-value">{form.challanDate || "-"}</span>
-          </div>
-
-          <div className="wd-ref-field">
-            <span className="wd-ref-label">E-Way Date</span>
-            <span className="wd-ref-value">{form.ewayDate || "-"}</span>
-          </div>
+          {[
+            ["GIN / Note No", form.inwardOutwardNoteNo, true],
+            ["Vendor Code", form.vendorCode],
+            ["Vendor Name", form.vendorName],
+            ["PO/CPO No", form.poCpoNo],
+            ["Manufacturer Name", form.manufacturerName],
+            ["Challan Date", form.challanDate],
+            ["E-Way Date", form.ewayDate],
+          ].map(([label, value, highlight]) => (
+            <div className="wd-ref-field" key={label}>
+              <span className="wd-ref-label">{label}</span>
+              <span className={`wd-ref-value${highlight ? " wd-ref-highlight" : ""}`}>
+                {value || "-"}
+              </span>
+            </div>
+          ))}
         </div>
       </div>
 
@@ -354,11 +367,7 @@ const WeighmentDetail = () => {
         <div className="wd-form-grid">
           <div className="wd-field">
             <label>Weighment No</label>
-            <input
-              name="weighmentNo"
-              value={form.weighmentNo || ""}
-              onChange={handleChange}
-            />
+            <input name="weighmentNo" value={form.weighmentNo || ""} onChange={handleChange} />
           </div>
 
           <div className="wd-field">
@@ -376,11 +385,7 @@ const WeighmentDetail = () => {
 
           <div className="wd-field">
             <label>Status</label>
-            <select
-              name="status"
-              value={form.status || "Open"}
-              onChange={handleChange}
-            >
+            <select name="status" value={form.status || "Open"} onChange={handleChange}>
               <option>Open</option>
               <option>Closed</option>
               <option>Draft</option>
@@ -403,20 +408,12 @@ const WeighmentDetail = () => {
 
           <div className="wd-field">
             <label>Vehicle No *</label>
-            <input
-              name="vehicleNo"
-              value={form.vehicleNo || ""}
-              onChange={handleChange}
-            />
+            <input name="vehicleNo" value={form.vehicleNo || ""} onChange={handleChange} />
           </div>
 
           <div className="wd-field">
             <label>Party Name</label>
-            <input
-              name="partyName"
-              value={form.partyName || ""}
-              onChange={handleChange}
-            />
+            <input name="partyName" value={form.partyName || ""} onChange={handleChange} />
           </div>
 
           <div className="wd-field">
@@ -509,12 +506,7 @@ const WeighmentDetail = () => {
 
           <div className="wd-field">
             <label>Bill Date</label>
-            <input
-              type="date"
-              name="billDate"
-              value={form.billDate || ""}
-              onChange={handleChange}
-            />
+            <input type="date" name="billDate" value={form.billDate || ""} onChange={handleChange} />
           </div>
 
           <div className="wd-field">
@@ -540,32 +532,17 @@ const WeighmentDetail = () => {
         <div className="wd-weight-strip wd-weight-strip-single-line">
           <div className="wd-weight-box">
             <label>First Weight (MT)</label>
-            <input
-              value={form.firstWeight || ""}
-              readOnly
-              className="wd-weight-yellow"
-              placeholder="-"
-            />
+            <input value={form.firstWeight || ""} readOnly className="wd-weight-yellow" placeholder="-" />
           </div>
 
           <div className="wd-weight-box">
             <label>Second Weight (MT)</label>
-            <input
-              value={form.secondWeight || ""}
-              readOnly
-              className="wd-weight-yellow"
-              placeholder="-"
-            />
+            <input value={form.secondWeight || ""} readOnly className="wd-weight-yellow" placeholder="-" />
           </div>
 
           <div className="wd-weight-box">
             <label>Net Weight (MT)</label>
-            <input
-              value={form.netWeight || ""}
-              readOnly
-              className="wd-weight-green"
-              placeholder="-"
-            />
+            <input value={form.netWeight || ""} readOnly className="wd-weight-green" placeholder="-" />
           </div>
 
           <div className="wd-weight-box wd-weight-input-box wd-weight-get-box">
@@ -582,40 +559,32 @@ const WeighmentDetail = () => {
                 value={form.currentWeight || ""}
                 onChange={handleChange}
                 placeholder="Enter value"
-                disabled={!!form.firstWeight && !!form.secondWeight}
+                disabled={weightDisabled}
               />
 
-              <button
-                type="button"
-                onClick={getWeight}
-                disabled={!!form.firstWeight && !!form.secondWeight}
-              >
+              <button type="button" onClick={getWeight} disabled={weightDisabled}>
                 {weightButtonText}
               </button>
             </div>
           </div>
         </div>
 
+        {activeRowIdx !== null && (
+          <div className="wd-active-row-hint">
+            Row {activeRowIdx + 1} selected - enter weight above and click Get Weight
+          </div>
+        )}
+
         <div className="wd-textarea-row">
           <div className="wd-field">
             <label>Remarks</label>
-            <textarea
-              rows="3"
-              name="remarks"
-              value={form.remarks || ""}
-              onChange={handleChange}
-            />
+            <textarea rows="3" name="remarks" value={form.remarks || ""} onChange={handleChange} />
           </div>
         </div>
 
         <div className="wd-checkbox-row">
           <label className="wd-checkbox-label">
-            <input
-              type="checkbox"
-              name="bulkWeigh"
-              checked={!!form.bulkWeigh}
-              onChange={handleChange}
-            />
+            <input type="checkbox" name="bulkWeigh" checked={!!form.bulkWeigh} onChange={handleChange} />
             Bulk Weigh
           </label>
         </div>
@@ -625,11 +594,18 @@ const WeighmentDetail = () => {
         <div className="wd-items-section">
           <div className="wd-items-header">
             <span className="wd-items-title">* Items</span>
-            {anyChecked && (
-              <button className="wd-del-rows-btn" onClick={handleDeleteChecked}>
-                Delete Selected
-              </button>
-            )}
+
+            <div style={{ display: "flex", alignItems: "center", gap: "8px" }}>
+              {activeRowIdx !== null && (
+                <span className="wd-active-badge">Row {activeRowIdx + 1} active</span>
+              )}
+
+              {anyChecked && (
+                <button className="wd-del-rows-btn" onClick={handleDeleteChecked}>
+                  Delete Selected
+                </button>
+              )}
+            </div>
           </div>
 
           <div className="wd-items-table-wrap">
@@ -637,85 +613,88 @@ const WeighmentDetail = () => {
               <thead>
                 <tr>
                   <th>S No</th>
-                  <th>Del</th>
+                  <th>Del / Active</th>
                   <th>First Weight (MT)</th>
                   <th>Second Weight (MT)</th>
                   <th>Net Weight (MT)</th>
-                  <th>Get Weight</th>
                   <th>Remarks</th>
                 </tr>
               </thead>
 
               <tbody>
-                {items.map((row, idx) => (
-                  <tr
-                    key={idx}
-                    className={row._checked ? "wd-row-checked" : ""}
-                    onFocus={() => handleRowFocus(idx)}
-                  >
-                    <td className="wd-sno">{row.sNo}</td>
+                {items.map((row, idx) => {
+                  const isActive = activeRowIdx === idx;
+                  const hasFirst = !!row.firstWeight;
+                  const hasSecond = !!row.secondWeight;
+                  const hasNet = !!row.netWeight;
 
-                    <td className="wd-check-cell">
-                      <input
-                        type="checkbox"
-                        checked={!!row._checked}
-                        onChange={(e) => handleItemCheck(idx, e.target.checked)}
-                      />
-                    </td>
+                  return (
+                    <tr
+                      key={idx}
+                      className={`${row._checked ? "wd-row-checked" : ""} ${
+                        isActive ? "wd-row-active" : ""
+                      }`}
+                      onFocus={() => handleRowFocus(idx)}
+                    >
+                      <td className="wd-sno">{row.sNo}</td>
 
-                    <td>
-                      <input
-                        className="wd-item-input wd-wt-input wd-item-yellow"
-                        value={row.firstWeight}
-                        readOnly
-                        placeholder="← auto"
-                      />
-                    </td>
+                      <td className="wd-check-cell">
+                        <input
+                          type="checkbox"
+                          checked={!!row._checked}
+                          onChange={(e) => handleItemCheck(idx, e.target.checked)}
+                        />
+                      </td>
 
-                    <td>
-                      <input
-                        className="wd-item-input wd-wt-input wd-item-yellow"
-                        value={row.secondWeight}
-                        readOnly
-                        placeholder="-"
-                      />
-                    </td>
+                      <td>
+                        <input
+                          className={`wd-item-input wd-wt-input wd-item-yellow ${
+                            hasFirst ? "wd-wt-filled" : ""
+                          }`}
+                          value={row.firstWeight}
+                          readOnly
+                          placeholder="← auto"
+                        />
+                      </td>
 
-                    <td>
-                      <input
-                        className="wd-item-input wd-net-input wd-item-green"
-                        value={row.netWeight}
-                        readOnly
-                        placeholder="-"
-                      />
-                    </td>
+                      <td>
+                        <input
+                          className={`wd-item-input wd-wt-input wd-item-yellow ${
+                            hasSecond ? "wd-wt-filled" : ""
+                          }`}
+                          value={row.secondWeight}
+                          readOnly
+                          placeholder="-"
+                        />
+                      </td>
 
-                    <td>
-                      <button
-                        type="button"
-                        className="wd-item-get-btn"
-                        onClick={() => getItemWeight(idx)}
-                      >
-                        Get Wt
-                      </button>
-                    </td>
+                      <td>
+                        <input
+                          className={`wd-item-input wd-net-input wd-item-green ${
+                            hasNet ? "wd-net-filled" : ""
+                          }`}
+                          value={row.netWeight}
+                          readOnly
+                          placeholder="-"
+                        />
+                      </td>
 
-                    <td>
-                      <input
-                        className="wd-item-input wd-rem-input"
-                        value={row.remarks}
-                        onChange={(e) =>
-                          handleItemChange(idx, "remarks", e.target.value)
-                        }
-                      />
-                    </td>
-                  </tr>
-                ))}
+                      <td>
+                        <input
+                          className="wd-item-input wd-rem-input"
+                          value={row.remarks}
+                          onChange={(e) => handleItemChange(idx, "remarks", e.target.value)}
+                        />
+                      </td>
+                    </tr>
+                  );
+                })}
               </tbody>
             </table>
           </div>
 
           <div className="wd-insert-bar">
+            <span className="wd-insert-label">Rows to add:</span>
             <input
               type="number"
               min="1"
@@ -732,12 +711,8 @@ const WeighmentDetail = () => {
       </div>
 
       <div className="wd-actions">
-        <button className="wd-cancel-btn" onClick={() => navigate(-1)} disabled={saving}>
-          Cancel
-        </button>
-        <button className="wd-draft-btn" onClick={() => handleSave(true)} disabled={saving}>
-          Save as Draft
-        </button>
+        <button className="wd-cancel-btn" onClick={() => navigate(-1)} disabled={saving}>Cancel</button>
+        <button className="wd-draft-btn" onClick={() => handleSave(true)} disabled={saving}>Save as Draft</button>
         <button className="wd-save-btn" onClick={() => handleSave(false)} disabled={saving}>
           {saving ? "Saving..." : "Save & Update"}
         </button>
