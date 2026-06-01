@@ -29,7 +29,7 @@ const Manufacturing = () => {
     number: "4",
     title: "Sales",
     icon: "💹",
-    path: "/sales",
+    path: "/salesContractForm",
   },
   {
     number: "5",

@@ -8,7 +8,8 @@ import Manufacturing from "../pages/Manufacturing/Manufacturing";
 import Procurement from "../pages/Manufacturing/Procurement/Procurement";
 import Inventory from "../pages/Manufacturing/Inventory/Inventory";
 import Production from "../pages/Manufacturing/Production/Production";
-import Sales from "../pages/Manufacturing/Sales/Sales";
+// import Sales from "../pages/Manufacturing/Sales/Sales";
+import SalesContractForm from "../pages/Manufacturing/Sales/SalesContractForm";
 import Masters from "../pages/Manufacturing/Masters/Masters";
 
 
@@ -45,7 +46,7 @@ const AppRoutes = () => {
       <Route path="/procurement"   element={<Procurement />} />
       <Route path="/inventory"     element={<Inventory />} />
       <Route path="/production"    element={<Production />} />
-      <Route path="/sales"         element={<Sales />} />
+      <Route path="/salesContractForm"         element={<SalesContractForm />} />
       <Route path="/masters"       element={<Masters />} />
 
       {/* GOODS INWARD NOTE */}

@@ -58,7 +58,7 @@ const Transaction = () => {
     try {
 
       const response = await axios.get(
-        "http://localhost:5000/api/transactions"
+        "http://vehicleguard-kkd6.onrender.com/api/transactions"
       );
 
       setTransactions(response.data);
@@ -191,7 +191,7 @@ const Transaction = () => {
     try {
 
       await axios.delete(
-        `http://localhost:5000/api/transactions/${id}`
+        `http://vehicleguard-kkd6.onrender.com/api/transactions/${id}`
       );
 
       fetchTransactions();

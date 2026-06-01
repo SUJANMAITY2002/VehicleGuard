@@ -56,7 +56,7 @@ const CreateDocumentSequence = () => {
 
       const response =
         await axios.get(
-          "http://localhost:5000/api/transactions"
+          "http://vehicleguard-kkd6.onrender.com/api/transactions"
         );
 
       setTransactions(response.data);
