@@ -17,7 +17,7 @@ const transactionRoutes      = require("./routes/transactionRoutes");
 const documentSequenceRoutes = require("./routes/documentSequenceRoutes");
 const goodsInwardNoteRoutes  = require("./routes/goodsInwardNoteRoutes");
 const weighmentRoutes        = require("./routes/weighmentRoutes");
-const directGRNRoutes        = require("./routes/directGRNRoutes");
+const directGRNRoutes        = require("./routes/Directgrnroutes");
 
 // Specific prefixes BEFORE generic /api to avoid route conflicts
 app.use("/api/auth",        authRoutes);
