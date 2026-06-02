@@ -23,13 +23,13 @@ const transactionRoutes      = require("./routes/transactionRoutes");
 const documentSequenceRoutes = require("./routes/documentSequenceRoutes");
 const goodsInwardNoteRoutes  = require("./routes/goodsInwardNoteRoutes");
 const weighmentRoutes        = require("./routes/weighmentRoutes");
-const directGRNRoutes        = require("./routes/Directgrnroutes");
+const Directgrnroutes        = require("./routes/Directgrnroutes");
 const salesRoutes            = require("./routes/salesRoutes");   // ← NEW
 
 // Specific prefixes BEFORE generic /api to avoid route conflicts
 app.use("/api/auth",        authRoutes);
 app.use("/api/weighment",   weighmentRoutes);
-app.use("/api/direct-grn",  directGRNRoutes);
+app.use("/api/direct-grn",  Directgrnroutes);
 app.use("/api/sales",       salesRoutes);   // ← NEW
 
 // Generic /api routes last
