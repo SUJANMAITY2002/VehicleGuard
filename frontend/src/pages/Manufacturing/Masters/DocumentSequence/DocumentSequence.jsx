@@ -50,7 +50,7 @@ const DocumentSequence = () => {
 
       const response =
         await axios.get(
-          "http://localhost:5000/api/document-sequence"
+          "/api/document-sequence"
         );
 
       setAllData(response.data);

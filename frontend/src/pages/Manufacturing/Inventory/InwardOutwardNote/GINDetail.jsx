@@ -4,8 +4,8 @@ import axios from "axios";
 import "./Gindetail.css";
 import ModuleNavbar from "../../../../components/ModuleNavbar/ModuleNavbar";
 
-const GIN_API       = "http://localhost:5000/api/goods-inward-note";
-const WEIGHMENT_API = "http://localhost:5000/api/weighment";
+const GIN_API       = "/api/goods-inward-note";
+const WEIGHMENT_API = "/api/weighment";
 
 /* ─────────────────────────────────────────────────────────────
    GINDetail

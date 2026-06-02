@@ -3,7 +3,7 @@ import { useNavigate } from "react-router-dom";
 import "./DirectGRN.css";
 import ModuleNavbar from "../../../../components/ModuleNavbar/ModuleNavbar";
 
-const API = "http://localhost:5000/api/direct-grn";
+const API = "/api/direct-grn";
 
 const EMPTY_FILTERS = {
   fromDate:            "",

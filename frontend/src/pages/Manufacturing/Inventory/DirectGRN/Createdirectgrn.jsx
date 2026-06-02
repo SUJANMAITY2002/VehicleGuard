@@ -4,9 +4,9 @@ import axios from "axios";
 import "./CreateDirectGRN.css";
 import ModuleNavbar from "../../../../components/ModuleNavbar/ModuleNavbar";
 
-const GIN_API = "http://localhost:5000/api/goods-inward-note";
-const GRN_API = "http://localhost:5000/api/direct-grn";
-const DOC_API = "http://localhost:5000/api/document-sequence";
+const GIN_API = "/api/goods-inward-note";
+const GRN_API = "/api/direct-grn";
+const DOC_API = "/api/document-sequence";
 const today   = new Date().toISOString().split("T")[0];
 
 /* ── blank item ── */

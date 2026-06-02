@@ -3,7 +3,7 @@ import { useNavigate } from "react-router-dom";
 import "./InwardOutwardNote.css";
 import ModuleNavbar from "../../../../components/ModuleNavbar/ModuleNavbar";
 
-const GIN_API = "http://localhost:5000/api/goods-inward-note";
+const GIN_API = "/api/goods-inward-note";
 
 const blankFilters = {
   fromDate:"", toDate:"", vendorCode:"", status:"", vendorName:"",

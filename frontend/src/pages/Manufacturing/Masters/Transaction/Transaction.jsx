@@ -231,7 +231,7 @@ const Transaction = () => {
     try {
 
       await axios.put(
-        `http://localhost:5000/api/transactions/${id}`,
+        `/api/transactions/${id}`,
         editData
       );
 

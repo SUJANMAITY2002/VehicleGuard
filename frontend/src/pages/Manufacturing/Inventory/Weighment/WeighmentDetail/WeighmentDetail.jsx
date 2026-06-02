@@ -4,7 +4,7 @@ import axios from "axios";
 import "./Weighmentdetail.css";
 import ModuleNavbar from "../../../../../components/ModuleNavbar/ModuleNavbar";
 
-const WEIGHMENT_API = "http://localhost:5000/api/weighment";
+const WEIGHMENT_API = "/api/weighment";
 
 const blankItem = (sNo) => ({
   sNo,

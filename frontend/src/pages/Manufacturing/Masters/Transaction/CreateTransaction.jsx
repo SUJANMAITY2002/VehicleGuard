@@ -48,7 +48,7 @@ const CreateTransaction = () => {
     try {
 
       const response = await axios.post(
-        "http://localhost:5000/api/create-transaction",
+        "/api/create-transaction",
         formData
       );
 

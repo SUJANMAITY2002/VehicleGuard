@@ -4,7 +4,7 @@ import axios from "axios";
 import "./WeighmentSearch.css";
 import ModuleNavbar from "../../../../components/ModuleNavbar/ModuleNavbar";
 
-const API = "http://localhost:5000/api/weighment";
+const API = "/api/weighment";
 
 const blankFilters = {
   fromDate: "", toDate: "", weighmentNo: "", vehicleNo: "",

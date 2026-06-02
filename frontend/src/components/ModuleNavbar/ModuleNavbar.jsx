@@ -23,7 +23,7 @@ const ModuleNavbar = () => {
     },
     {
       title: "Sales",
-      path: "/sales",
+      path: "/sales-search",
     },
     {
       title: "Masters",

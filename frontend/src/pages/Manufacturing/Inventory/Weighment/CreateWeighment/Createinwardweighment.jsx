@@ -4,8 +4,8 @@ import axios from "axios";
 import "./Createinwardweighment.css";
 import ModuleNavbar from "../../../../../components/ModuleNavbar/ModuleNavbar";
 
-const GIN_API       = "http://localhost:5000/api/goods-inward-note";
-const WEIGHMENT_API = "http://localhost:5000/api/weighment";
+const GIN_API       = "/api/goods-inward-note";
+const WEIGHMENT_API = "/api/weighment";
 const today         = new Date().toISOString().split("T")[0];
 
 const blankGinFilters = {
