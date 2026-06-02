@@ -1,9 +1,10 @@
 import React, { useState, useEffect } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import "./SalesContractForm.css";
+import { API_URL } from "../../../../config";
 
 // ─── Constants ────────────────────────────────────────────────────────────────
-const API_BASE = "/api/sales";
+const API_BASE = `${API_URL}/api/sales`;
 
 const CUSTOMERS = [
   "ABC Industries",
