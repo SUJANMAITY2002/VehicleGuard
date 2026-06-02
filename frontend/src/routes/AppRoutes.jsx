@@ -27,7 +27,8 @@ import CreateInwardWeighment  from "../pages/Manufacturing/Inventory/Weighment/C
 import CreateOutwardWeighment from "../pages/Manufacturing/Inventory/Weighment/CreateWeighment/Createoutwardweighment";
 
 // ✅ SALES MODULE
-import SalesSearch       from "../pages/Manufacturing/Sales/SalesSearch/SalesSearch";
+// import SalesSearch       from "../pages/Manufacturing/Sales/SalesSearch/SalesSearch";
+import SalesSearch from "../pages/Manufacturing/Sales/SalesSearch/Salessearch";
 import SalesContractForm from "../pages/Manufacturing/Sales/SalesContractForm/SalesContractForm";
 
 const AppRoutes = () => {

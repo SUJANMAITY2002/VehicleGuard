@@ -1,6 +1,6 @@
 import React, { useState, useCallback } from "react";
 import { useNavigate } from "react-router-dom";
-import "./SalesSearch.css";
+import "./Salessearch.css";
 
 // ─── Constants ────────────────────────────────────────────────────────────────
 const API_BASE = "/api/sales";
