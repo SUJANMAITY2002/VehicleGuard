@@ -10,7 +10,10 @@ const app = express();
 /* MIDDLEWARE */
 app.use(
   cors({
-    origin: "vehicleguard-sujan.netlify.app" || "http://localhost:5173",
+    origin: [
+      "https://vehicleguard-sujan.netlify.app",
+      "http://localhost:5173",
+    ],
     methods: ["GET", "POST", "PUT", "DELETE"],
     credentials: true,
   })
