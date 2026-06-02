@@ -3,7 +3,7 @@ const router   = express.Router();
 
 const { google } = require("googleapis");
 const SalesContract = require("../models/Salescontract");
-
+console.log("SHEET_ID loaded:", process.env.GOOGLE_SHEET_ID);
 // ─── Google Sheets Setup ───────────────────────────────────────────────────────
 // Place your downloaded service-account JSON at:  config/google-service-account.json
 // Set GOOGLE_SHEET_ID in your .env  (the long ID in the Sheets URL)
@@ -12,7 +12,7 @@ const SHEET_TAB  = "SalesContracts";               // tab name inside the spread
 
 async function getSheetsClient() {
   const auth = new google.auth.GoogleAuth({
-    keyFile: "config/google-service-account.json", // path relative to project root
+    credentials: JSON.parse(process.env.GOOGLE_SERVICE_ACCOUNT_JSON),
     scopes: ["https://www.googleapis.com/auth/spreadsheets"],
   });
   const authClient = await auth.getClient();
@@ -75,17 +75,24 @@ function toRow(c) {
 async function appendToSheet(contract) {
   try {
     const sheets = await getSheetsClient();
+    console.log("✅ Sheets client created");
     await ensureHeader(sheets);
+    console.log("✅ Header checked");
+    const row = toRow(contract);
+    console.log("✅ Row to append:", row);
     await sheets.spreadsheets.values.append({
       spreadsheetId: SHEET_ID,
       range: `${SHEET_TAB}!A1`,
       valueInputOption: "USER_ENTERED",
       insertDataOption: "INSERT_ROWS",
-      requestBody: { values: [toRow(contract)] },
+      requestBody: { values: [row] },
     });
+    console.log("✅ Successfully appended to Google Sheets");
   } catch (e) {
-    console.error("Google Sheets append failed:", e.message);
-    // Non-fatal — do NOT throw; DB save already succeeded
+    console.error("❌ Google Sheets append failed:");
+    console.error("Message:", e.message);
+    console.error("Status:", e.status);
+    console.error("Full error:", JSON.stringify(e?.errors, null, 2));
   }
 }
 
@@ -292,9 +299,12 @@ router.post("/", async (req, res) => {
     const contract_no = await generateContractNo();
     const contract = new SalesContract({ contract_no, ...extractFields(req.body) });
     const saved = await contract.save();
+    console.log("✅ DB saved:", saved._id);
 
     // ── Auto-save to Google Sheets ──
+    console.log("⏳ Calling appendToSheet...");
     await appendToSheet(saved);
+    console.log("✅ appendToSheet done");
 
     res.status(201).json({
       id:          saved._id,
@@ -302,6 +312,7 @@ router.post("/", async (req, res) => {
       message:     "Contract saved successfully",
     });
   } catch (err) {
+    console.error("❌ POST route error:", err.message);
     if (err.code === 11000) {
       return res.status(409).json({ message: "Duplicate contract number. Please retry." });
     }
