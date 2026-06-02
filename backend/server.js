@@ -10,7 +10,7 @@ const app = express();
 /* MIDDLEWARE */
 app.use(
   cors({
-    origin: process.env.FROTEND_URL,
+    origin: process.env.FROTEND_URL || "http://localhost:5173",
     methods: ["GET", "POST", "PUT", "DELETE"],
     credentials: true,
   })
