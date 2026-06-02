@@ -4,18 +4,19 @@ const cors = require("cors");
 const dotenv = require("dotenv");
 
 dotenv.config();
-
+// console.log(process.env.FRONTEND_URL);
 const app = express();
 
 /* MIDDLEWARE */
 app.use(
   cors({
-    origin: process.env.FROTEND_URL || "http://localhost:5173",
+    origin: process.env.FRONTEND_URL || "http://localhost:5173",
     methods: ["GET", "POST", "PUT", "DELETE"],
     credentials: true,
   })
 );
 app.use(express.json());
+console.log(process.env.FRONTEND_URL);
 
 /* ROUTES */
 const authRoutes             = require("./routes/authRoutes");
