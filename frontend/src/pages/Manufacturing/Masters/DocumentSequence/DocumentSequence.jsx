@@ -10,6 +10,7 @@ import "./DocumentSequence.css";
 import ModuleNavbar from "../../../../components/ModuleNavbar/ModuleNavbar";
 
 import { useNavigate } from "react-router-dom";
+import { API_URL } from "../../../../config";
 
 const DocumentSequence = () => {
 
@@ -50,7 +51,7 @@ const DocumentSequence = () => {
 
       const response =
         await axios.get(
-          "/api/document-sequence"
+          `${API_URL}/api/document-sequence`
         );
 
       setAllData(response.data);

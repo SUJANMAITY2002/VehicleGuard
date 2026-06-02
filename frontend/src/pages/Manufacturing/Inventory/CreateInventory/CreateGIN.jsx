@@ -3,7 +3,7 @@ import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import "./CreateGIN.css";
 import ModuleNavbar from "../../../../components/ModuleNavbar/ModuleNavbar";
-
+import { API_URL } from "../../../../config";
 /* ── blank item row factory ── */
 const blankItem = (sNo) => ({
   sNo,
@@ -76,7 +76,7 @@ const CreateGIN = () => {
   useEffect(() => {
     const fetchCodes = async () => {
       try {
-        const res   = await axios.get("/api/document-sequence");
+        const res   = await axios.get(`${API_URL}/api/document-sequence`);
         const codes = res.data.map((item) => item.generatedCode).filter(Boolean);
         setTransactionCodes(codes);
       } catch (err) {
@@ -152,7 +152,7 @@ const CreateGIN = () => {
 
       const payload = { ...form, items: cleanItems };
 
-      const res = await axios.post("/api/goods-inward-note", payload);
+      const res = await axios.post(`${API_URL}/api/goods-inward-note`, payload);
       if (res.data.success) {
         alert("Goods Inward Note Saved Successfully");
         navigate("/goods-inward-note");

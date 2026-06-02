@@ -3,9 +3,10 @@ import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import "./Createinwardweighment.css";
 import ModuleNavbar from "../../../../../components/ModuleNavbar/ModuleNavbar";
+import { API_URL } from "../../../../../config";
 
-const GIN_API       = "/api/goods-inward-note";
-const WEIGHMENT_API = "/api/weighment";
+const GIN_API       = `${API_URL}/api/goods-inward-note`;
+const WEIGHMENT_API = `${API_URL}/api/weighment`;
 const today         = new Date().toISOString().split("T")[0];
 
 const blankGinFilters = {

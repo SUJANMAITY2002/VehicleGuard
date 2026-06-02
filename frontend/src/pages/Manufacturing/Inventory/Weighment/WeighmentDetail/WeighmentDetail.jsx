@@ -3,8 +3,9 @@ import { useNavigate, useParams } from "react-router-dom";
 import axios from "axios";
 import "./Weighmentdetail.css";
 import ModuleNavbar from "../../../../../components/ModuleNavbar/ModuleNavbar";
+import { API_URL } from "../../../../../config";
 
-const WEIGHMENT_API = "/api/weighment";
+const WEIGHMENT_API = `${API_URL}/api/weighment`;
 
 const blankItem = (sNo) => ({
   sNo,

@@ -11,6 +11,8 @@ import ModuleNavbar from "../../../../../components/ModuleNavbar/ModuleNavbar";
 
 import { useNavigate } from "react-router-dom";
 
+import { API_URL } from "../../../../../config";
+
 const CreateDocumentSequence = () => {
 
   const navigate = useNavigate();
@@ -56,7 +58,7 @@ const CreateDocumentSequence = () => {
 
       const response =
         await axios.get(
-          "http://vehicleguard-kkd6.onrender.com/api/transactions"
+          `${API_URL}/api/transactions`
         );
 
       setTransactions(response.data);
@@ -110,7 +112,7 @@ const CreateDocumentSequence = () => {
 
       const response =
         await axios.post(
-          "/api/create-document-sequence",
+          `${API_URL}/api/create-document-sequence`,
           formData
         );
 

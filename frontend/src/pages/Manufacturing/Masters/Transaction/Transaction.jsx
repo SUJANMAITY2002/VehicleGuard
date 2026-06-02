@@ -11,6 +11,8 @@ import "./Transaction.css";
 
 import ModuleNavbar from "../../../../components/ModuleNavbar/ModuleNavbar";
 
+import { API_URL } from "../../../../config";
+
 const Transaction = () => {
 
   const navigate = useNavigate();
@@ -58,7 +60,7 @@ const Transaction = () => {
     try {
 
       const response = await axios.get(
-        "http://vehicleguard-kkd6.onrender.com/api/transactions"
+        `${API_URL}/api/transactions`
       );
 
       setTransactions(response.data);
@@ -191,7 +193,7 @@ const Transaction = () => {
     try {
 
       await axios.delete(
-        `http://vehicleguard-kkd6.onrender.com/api/transactions/${id}`
+        `${API_URL}/api/transactions/${id}`
       );
 
       fetchTransactions();
@@ -231,7 +233,7 @@ const Transaction = () => {
     try {
 
       await axios.put(
-        `/api/transactions/${id}`,
+        `${API_URL}/api/transactions/${id}`,
         editData
       );
 

@@ -2,8 +2,8 @@ import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import "./DirectGRN.css";
 import ModuleNavbar from "../../../../components/ModuleNavbar/ModuleNavbar";
-
-const API = "/api/direct-grn";
+import { API_URL } from "../../../../config";
+const API = `${API_URL}/api/direct-grn`;
 
 const EMPTY_FILTERS = {
   fromDate:            "",

@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import axios from "axios";
 import "./CreateTransaction.css";
 import ModuleNavbar from "../../../../components/ModuleNavbar/ModuleNavbar";
+import { API_URL } from "../../../../config";
 
 const CreateTransaction = () => {
 
@@ -48,7 +49,7 @@ const CreateTransaction = () => {
     try {
 
       const response = await axios.post(
-        "/api/create-transaction",
+        `${API_URL}/api/create-transaction`,
         formData
       );
 

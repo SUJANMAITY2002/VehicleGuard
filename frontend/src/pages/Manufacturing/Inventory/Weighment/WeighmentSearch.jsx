@@ -3,8 +3,9 @@ import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import "./WeighmentSearch.css";
 import ModuleNavbar from "../../../../components/ModuleNavbar/ModuleNavbar";
+import { API_URL } from "../../../../config";
 
-const API = "/api/weighment";
+const API = `${API_URL}/api/weighment`;
 
 const blankFilters = {
   fromDate: "", toDate: "", weighmentNo: "", vehicleNo: "",

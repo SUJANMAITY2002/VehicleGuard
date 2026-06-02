@@ -3,10 +3,11 @@ import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import "./CreateDirectGRN.css";
 import ModuleNavbar from "../../../../components/ModuleNavbar/ModuleNavbar";
+import { API_URL } from "../../../../config";
 
-const GIN_API = "/api/goods-inward-note";
-const GRN_API = "/api/direct-grn";
-const DOC_API = "/api/document-sequence";
+const GIN_API = `${API_URL}/api/goods-inward-note`;
+const GRN_API = `${API_URL}/api/direct-grn`;
+const DOC_API = `${API_URL}/api/document-sequence`;
 const today   = new Date().toISOString().split("T")[0];
 
 /* ── blank item ── */
