@@ -8,7 +8,13 @@ dotenv.config();
 const app = express();
 
 /* MIDDLEWARE */
-app.use(cors());
+app.use(
+  cors({
+    origin: process.env.FROTEND_URL,
+    methods: ["GET", "POST", "PUT", "DELETE"],
+    credentials: true,
+  })
+);
 app.use(express.json());
 
 /* ROUTES */
@@ -18,11 +24,13 @@ const documentSequenceRoutes = require("./routes/documentSequenceRoutes");
 const goodsInwardNoteRoutes  = require("./routes/goodsInwardNoteRoutes");
 const weighmentRoutes        = require("./routes/weighmentRoutes");
 const directGRNRoutes        = require("./routes/directGRNRoutes");
+const salesRoutes            = require("./routes/salesRoutes");   // ← NEW
 
 // Specific prefixes BEFORE generic /api to avoid route conflicts
 app.use("/api/auth",        authRoutes);
 app.use("/api/weighment",   weighmentRoutes);
 app.use("/api/direct-grn",  directGRNRoutes);
+app.use("/api/sales",       salesRoutes);   // ← NEW
 
 // Generic /api routes last
 app.use("/api", transactionRoutes);
