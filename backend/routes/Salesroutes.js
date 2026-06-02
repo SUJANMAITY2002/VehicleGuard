@@ -2,7 +2,7 @@ const express  = require("express");
 const router   = express.Router();
 
 const { google } = require("googleapis");
-const SalesContract = require("../models/SalesContract");
+const SalesContract = require("../models/Salescontract");
 
 // ─── Google Sheets Setup ───────────────────────────────────────────────────────
 // Place your downloaded service-account JSON at:  config/google-service-account.json
