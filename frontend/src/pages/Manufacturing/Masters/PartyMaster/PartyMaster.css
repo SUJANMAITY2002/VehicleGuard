@@ -1,0 +1,550 @@
+/* ================================================================
+   PartyMaster.css  —  used by ALL List / Search pages
+   Covers: PartyMaster, ItemMaster, UOMMaster, SiteMaster,
+           SchemeMaster, ItemType, ItemCategory, TaxDetails,
+           ProductionDetails, Transaction, DocumentSequence, etc.
+   ================================================================ */
+
+/* ── CSS Variables (mirror CreateParty.css) ───────────────────────── */
+:root {
+  --primary:        #43bfe7;
+  --primary-dark:   #2aa8d0;
+  --primary-light:  #e8f6fb;
+  --border:         #dde3e8;
+  --border-focus:   #43bfe7;
+  --bg-page:        #f0f2f5;
+  --bg-white:       #ffffff;
+  --bg-header:      #f7f9fc;
+  --text-heading:   #1e293b;
+  --text-label:     #475569;
+  --text-muted:     #94a3b8;
+  --text-body:      #334155;
+  --success:        #16a34a;
+  --danger:         #ef4444;
+  --radius-sm:      4px;
+  --radius-md:      8px;
+  --radius-lg:      12px;
+  --shadow-card:    0 1px 4px rgba(0,0,0,0.08), 0 4px 16px rgba(0,0,0,0.04);
+  --input-h:        36px;
+  --font-size-sm:   12px;
+  --font-size-base: 13px;
+  --font-size-md:   14px;
+  --font-size-lg:   16px;
+  --font-size-xl:   20px;
+  --font-size-2xl:  24px;
+}
+
+/* ── Page wrapper ─────────────────────────────────────────────────── */
+.transaction-page {
+  min-height: 100vh;
+  background: var(--bg-page);
+  font-family: "Segoe UI", system-ui, -apple-system, sans-serif;
+  color: var(--text-body);
+}
+
+/* ── Top bar ──────────────────────────────────────────────────────── */
+.transaction-topbar {
+  background: var(--bg-white);
+  border-bottom: 1px solid var(--border);
+  padding: 14px 24px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.06);
+}
+
+.transaction-topbar h1 {
+  font-size: var(--font-size-2xl);
+  font-weight: 600;
+  color: var(--text-heading);
+  margin: 0;
+  letter-spacing: -0.3px;
+}
+
+/* Left-side group: back button + title (same pattern as the PO page header) */
+.topbar-left {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+
+/* Back button — identical style/behaviour on every master (list) page */
+.back-btn {
+  width: 34px;
+  height: 34px;
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid var(--border);
+  border-radius: 50%;
+  background: var(--bg-white);
+  color: var(--text-label);
+  font-size: 16px;
+  line-height: 1;
+  cursor: pointer;
+  transition: all 0.15s;
+}
+.back-btn:hover {
+  background: var(--primary-light);
+  border-color: var(--primary);
+  color: var(--primary-dark);
+}
+
+/* Right-side button group */
+.topbar-actions {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+/* Primary action: Create */
+.create-btn {
+  background: var(--primary);
+  color: white;
+  border: none;
+  padding: 0 18px;
+  height: var(--input-h);
+  border-radius: var(--radius-sm);
+  font-size: var(--font-size-base);
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.15s;
+  font-family: inherit;
+  white-space: nowrap;
+}
+.create-btn:hover { background: var(--primary-dark); }
+
+/* Secondary action: Upload */
+.upload-btn {
+  background: #0f766e;
+  color: white;
+  border: none;
+  padding: 0 18px;
+  height: var(--input-h);
+  border-radius: var(--radius-sm);
+  font-size: var(--font-size-base);
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.15s;
+  font-family: inherit;
+  white-space: nowrap;
+}
+.upload-btn:hover { background: #0d6561; }
+
+/* ── Search card ──────────────────────────────────────────────────── */
+.search-container {
+  width: 96%;
+  max-width: 1400px;
+  margin: 20px auto;
+  background: var(--bg-white);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-card);
+  overflow: hidden;
+}
+
+.search-title {
+  padding: 14px 20px;
+  border-bottom: 1px solid var(--border);
+  font-size: var(--font-size-lg);
+  font-weight: 600;
+  color: var(--text-heading);
+  background: var(--bg-header);
+}
+
+/* ── Search grid ──────────────────────────────────────────────────── */
+.search-grid {
+  padding: 20px 20px 0;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 18px;
+}
+
+/* ── Form group (shared with CreateParty.css) ─────────────────────── */
+.form-group {
+  display: flex;
+  flex-direction: column;
+  position: relative;
+}
+
+.form-group label {
+  margin-bottom: 6px;
+  font-size: var(--font-size-base);
+  font-weight: 500;
+  color: var(--text-label);
+}
+
+.form-group input,
+.form-group select {
+  height: var(--input-h);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  padding: 0 10px;
+  font-size: var(--font-size-base);
+  color: var(--text-body);
+  background: var(--bg-white);
+  outline: none;
+  transition: border-color 0.15s, box-shadow 0.15s;
+  box-sizing: border-box;
+  width: 100%;
+  font-family: inherit;
+}
+
+.form-group input:focus,
+.form-group select:focus {
+  border-color: var(--border-focus);
+  box-shadow: 0 0 0 3px rgba(67,191,231,0.14);
+}
+
+.form-group input:disabled,
+.form-group select:disabled {
+  background: #f8fafc;
+  color: var(--text-muted);
+  cursor: not-allowed;
+  border-color: #e8ecf0;
+}
+
+/* ── Typeahead ────────────────────────────────────────────────────── */
+.suggestion-list {
+  position: absolute;
+  top: calc(100% + 2px);
+  left: 0;
+  right: 0;
+  background: var(--bg-white);
+  border: 1px solid #cce0f0;
+  border-radius: var(--radius-sm);
+  box-shadow: 0 4px 16px rgba(0,0,0,0.10);
+  list-style: none;
+  margin: 0;
+  padding: 4px 0;
+  z-index: 999;
+  max-height: 200px;
+  overflow-y: auto;
+}
+
+.suggestion-list li {
+  padding: 8px 12px;
+  font-size: var(--font-size-base);
+  color: var(--text-body);
+  cursor: pointer;
+  transition: background 0.12s;
+}
+
+.suggestion-list li:hover {
+  background: var(--primary-light);
+  color: var(--primary-dark);
+}
+
+/* ── Button row ───────────────────────────────────────────────────── */
+.button-group {
+  padding: 16px 20px 20px;
+  display: flex;
+  gap: 10px;
+}
+
+.search-btn {
+  background: var(--primary);
+  border: none;
+  color: white;
+  padding: 0 22px;
+  height: var(--input-h);
+  border-radius: var(--radius-sm);
+  cursor: pointer;
+  font-size: var(--font-size-base);
+  font-weight: 600;
+  transition: background 0.15s;
+  font-family: inherit;
+}
+.search-btn:hover { background: var(--primary-dark); }
+
+.reset-btn {
+  background: var(--bg-white);
+  border: 1px solid var(--primary);
+  color: var(--primary);
+  padding: 0 22px;
+  height: var(--input-h);
+  border-radius: var(--radius-sm);
+  cursor: pointer;
+  font-size: var(--font-size-base);
+  font-weight: 500;
+  transition: background 0.15s;
+  font-family: inherit;
+}
+.reset-btn:hover { background: var(--primary-light); }
+
+/* ── Table ────────────────────────────────────────────────────────── */
+.table-container {
+  overflow-x: auto;
+  border-top: 1px solid var(--border);
+  position: relative;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  background: var(--bg-white);
+  font-size: var(--font-size-base);
+}
+
+table th {
+  background: #eef4f8;
+  border: 1px solid #d0dce5;
+  padding: 10px 12px;
+  font-size: var(--font-size-base);
+  font-weight: 600;
+  color: var(--text-heading);
+  text-align: left;
+  white-space: nowrap;
+}
+
+table td {
+  border: 1px solid #e5eaef;
+  padding: 9px 12px;
+  font-size: var(--font-size-base);
+  color: var(--text-body);
+  vertical-align: middle;
+}
+
+table tbody tr:hover {
+  background: #fafcfe;
+}
+
+/* ── Sticky Action column ──────────────────────────────────────────
+   When a row enters edit mode, its <input>/<select> cells can widen
+   the table well past the viewport. Pinning the last column keeps
+   Save/Edit + Delete visible at all times instead of scrolling off
+   screen. ─────────────────────────────────────────────────────────── */
+table th:last-child,
+table td:last-child {
+  position: sticky;
+  right: 0;
+  background: var(--bg-white);
+  box-shadow: -6px 0 8px -6px rgba(0,0,0,0.15);
+}
+table th:last-child {
+  background: #eef4f8;
+  z-index: 3;
+}
+table td:last-child {
+  z-index: 2;
+}
+table tbody tr:hover td:last-child {
+  background: #fafcfe;
+}
+
+/* ── Row currently being edited ──────────────────────────────────── */
+tr.editing-row td {
+  background: #fffbeb !important;
+  border-color: #fbbf24;
+}
+
+/* Inline edit inputs inside table cells */
+table td input,
+table td select {
+  height: 30px;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  padding: 0 8px;
+  font-size: var(--font-size-base);
+  color: var(--text-body);
+  background: var(--bg-white);
+  outline: none;
+  width: 100%;
+  min-width: 80px;
+  box-sizing: border-box;
+  font-family: inherit;
+}
+table td input:focus,
+table td select:focus {
+  border-color: var(--border-focus);
+  box-shadow: 0 0 0 2px rgba(67,191,231,0.14);
+}
+
+/* ── Table action buttons ─────────────────────────────────────────── */
+.edit-btn {
+  background: var(--primary-light);
+  color: var(--primary-dark);
+  border: 1px solid var(--primary);
+  padding: 4px 12px;
+  border-radius: var(--radius-sm);
+  cursor: pointer;
+  font-size: var(--font-size-base);
+  font-weight: 500;
+  margin-right: 6px;
+  transition: background 0.15s;
+  font-family: inherit;
+  white-space: nowrap;
+}
+.edit-btn:hover { background: #cde9f5; }
+
+.delete-btn {
+  background: #fff0f0;
+  color: var(--danger);
+  border: 1px solid #fca5a5;
+  padding: 4px 12px;
+  border-radius: var(--radius-sm);
+  cursor: pointer;
+  font-size: var(--font-size-base);
+  font-weight: 500;
+  transition: background 0.15s;
+  font-family: inherit;
+  white-space: nowrap;
+}
+.delete-btn:hover { background: #fee2e2; }
+
+.save-btn {
+  background: #dcfce7;
+  color: var(--success);
+  border: 1px solid #86efac;
+  padding: 4px 14px;
+  border-radius: var(--radius-sm);
+  cursor: pointer;
+  font-size: var(--font-size-base);
+  font-weight: 600;
+  margin-right: 6px;
+  transition: background 0.15s;
+  font-family: inherit;
+  white-space: nowrap;
+}
+.save-btn:hover { background: #bbf7d0; }
+
+/* ── Action cell (Edit/Save/Cancel + Delete) ─────────────────────── */
+.action-cell {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  white-space: nowrap;
+}
+.action-cell .edit-btn,
+.action-cell .save-btn,
+.action-cell .delete-btn,
+.action-cell .cancel-edit-btn {
+  margin-right: 0; /* spacing now handled by flex gap */
+}
+
+.cancel-edit-btn {
+  background: var(--bg-white);
+  color: var(--text-label);
+  border: 1px solid var(--border);
+  padding: 4px 12px;
+  border-radius: var(--radius-sm);
+  cursor: pointer;
+  font-size: var(--font-size-base);
+  font-weight: 500;
+  transition: background 0.15s;
+  font-family: inherit;
+  white-space: nowrap;
+}
+.cancel-edit-btn:hover { background: #f1f5f9; }
+
+/* ── No data row ──────────────────────────────────────────────────── */
+.no-data {
+  text-align: center;
+  color: var(--text-muted);
+  padding: 40px 20px;
+  font-size: var(--font-size-md);
+}
+
+/* ── Party detail page ────────────────────────────────────────────── */
+.party-code-link {
+  color: var(--primary-dark);
+  font-weight: 600;
+  text-decoration: none;
+}
+.party-code-link:hover { text-decoration: underline; }
+
+.detail-grid {
+  padding: 20px;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 16px;
+}
+
+.detail-item {
+  border: 1px solid var(--border);
+  background: var(--bg-white);
+  border-radius: var(--radius-sm);
+  padding: 12px 14px;
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.detail-item span {
+  color: var(--text-muted);
+  font-size: var(--font-size-sm);
+  text-transform: uppercase;
+  letter-spacing: 0.4px;
+  font-weight: 500;
+}
+
+.detail-item strong {
+  color: var(--text-heading);
+  font-size: var(--font-size-md);
+  font-weight: 600;
+  word-break: break-word;
+}
+
+.detail-message {
+  padding: 20px;
+  color: var(--text-muted);
+  font-size: var(--font-size-md);
+}
+
+/* ── Scheme price calculator result ───────────────────────────────── */
+.calc-result-box {
+  margin: 16px 20px;
+  background: #f0f7ff;
+  border: 1px solid #b3d7f5;
+  border-radius: var(--radius-md);
+  padding: 16px 20px;
+  max-width: 420px;
+}
+.calc-result-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 6px 0;
+  border-bottom: 1px dashed #c7dff5;
+  font-size: var(--font-size-md);
+}
+.calc-result-row:last-child { border-bottom: none; }
+.calc-label   { color: var(--text-label); font-weight: 500; }
+.calc-value   { font-weight: 600; color: var(--text-heading); }
+.offset-add   { color: #d97706; }
+.total-row    { border-top: 2px solid #93c5fd !important; margin-top: 4px; }
+.final-price  { font-size: 18px !important; color: #1d4ed8 !important; font-weight: 700 !important; }
+
+/* Scheme list view: offset badge + final value */
+.offset-pill {
+  display: inline-block;
+  background: #fff7ed;
+  color: #c2410c;
+  padding: 2px 7px;
+  border-radius: 10px;
+  font-size: 11px;
+  margin-right: 4px;
+  font-weight: 600;
+}
+.final-val {
+  font-size: var(--font-size-base);
+  color: var(--primary-dark);
+  font-weight: 600;
+}
+
+/* ── Responsive ───────────────────────────────────────────────────── */
+@media (max-width: 1200px) {
+  .search-grid  { grid-template-columns: repeat(3, 1fr); }
+  .detail-grid  { grid-template-columns: repeat(3, 1fr); }
+}
+@media (max-width: 900px) {
+  .search-grid  { grid-template-columns: repeat(2, 1fr); }
+  .detail-grid  { grid-template-columns: repeat(2, 1fr); }
+}
+@media (max-width: 768px) {
+  .transaction-topbar { flex-direction: column; gap: 10px; align-items: flex-start; }
+  .search-grid  { grid-template-columns: 1fr; }
+  .detail-grid  { grid-template-columns: 1fr; }
+  .search-container { width: 100%; border-radius: 0; }
+}

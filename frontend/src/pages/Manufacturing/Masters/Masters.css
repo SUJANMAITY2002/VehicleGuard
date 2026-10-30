@@ -1,0 +1,191 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+
+/* ── CSS Variables — single source of truth for entire app ──────── */
+:root {
+  /* Brand */
+  --c-primary:       #43bfe7;
+  --c-primary-dk:    #2aa8d0;
+  --c-primary-lt:    #e8f6fb;
+  --c-primary-ring:  rgba(67, 191, 231, 0.18);
+
+  /* Surfaces */
+  --c-page:          #f0f3f7;
+  --c-white:         #ffffff;
+  --c-header-bg:     #f7f9fc;
+  --c-card-bg:       #ffffff;
+
+  /* Borders */
+  --c-border:        #dde3ec;
+  --c-border-dk:     #c8d3de;
+
+  /* Text */
+  --c-text-h:        #1a2332;
+  --c-text-body:     #374151;
+  --c-text-label:    #4b5563;
+  --c-text-muted:    #9ca3af;
+  --c-text-sub:      #6b7280;
+
+  /* Semantic */
+  --c-success:       #16a34a;
+  --c-success-lt:    #dcfce7;
+  --c-danger:        #dc2626;
+  --c-danger-lt:     #fee2e2;
+  --c-warning:       #d97706;
+
+  /* Sizing — everything derived from these */
+  --input-h:         36px;
+  --btn-h:           36px;
+  --radius-xs:       3px;
+  --radius-sm:       5px;
+  --radius-md:       8px;
+  --radius-lg:       12px;
+  --radius-xl:       16px;
+
+  /* Typography */
+  --fz-xs:           11px;
+  --fz-sm:           12px;
+  --fz-base:         13px;
+  --fz-md:           14px;
+  --fz-lg:           16px;
+  --fz-xl:           20px;
+  --fz-2xl:          24px;
+  --fz-3xl:          28px;
+
+  /* Shadows */
+  --shadow-card:     0 1px 3px rgba(0,0,0,0.07), 0 4px 14px rgba(0,0,0,0.04);
+  --shadow-hover:    0 4px 16px rgba(0,0,0,0.12), 0 1px 4px rgba(0,0,0,0.06);
+  --shadow-topbar:   0 1px 4px rgba(0,0,0,0.07);
+
+  /* Font */
+  --font: "Inter", "Segoe UI", system-ui, -apple-system, sans-serif;
+}
+
+/* ── Reset essentials ─────────────────────────────────────────────── */
+*, *::before, *::after { box-sizing: border-box; }
+
+/* ── Module page wrapper ──────────────────────────────────────────── */
+.module-page {
+  min-height: 100vh;
+  background: var(--c-page);
+  font-family: var(--font);
+  color: var(--c-text-body);
+}
+
+/* ── Header gradient bar ──────────────────────────────────────────── */
+.inventory-header {
+  background: linear-gradient(110deg, #2d6be4 0%, #43bfe7 60%, #8ec5fc 100%);
+  padding: 20px 28px;
+  color: white;
+  box-shadow: 0 2px 10px rgba(45,107,228,0.25);
+}
+
+.inventory-header h1 {
+  font-size: var(--fz-3xl);
+  font-weight: 700;
+  letter-spacing: -0.5px;
+  margin: 0;
+  color: white;
+}
+
+.inventory-header p {
+  font-size: var(--fz-md);
+  color: rgba(255,255,255,0.82);
+  margin: 4px 0 0;
+}
+
+/* ── Card grid ────────────────────────────────────────────────────── */
+.inventory-grid {
+  padding: 24px;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 16px;
+}
+
+/* ── Individual card ──────────────────────────────────────────────── */
+.inventory-card {
+  background: var(--c-white);
+  border: 1px solid var(--c-border);
+  border-radius: var(--radius-md);
+  padding: 16px 18px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  cursor: pointer;
+  transition: transform 0.18s ease, box-shadow 0.18s ease, border-color 0.18s ease;
+  box-shadow: var(--shadow-card);
+  min-height: 80px;
+}
+
+.inventory-card:hover {
+  transform: translateY(-3px);
+  box-shadow: var(--shadow-hover);
+  border-color: var(--c-primary);
+}
+
+.inventory-card:active {
+  transform: translateY(-1px);
+}
+
+/* Card left: icon + text */
+.card-left {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+
+/* Icon circle */
+.inventory-icon {
+  width: 44px;
+  height: 44px;
+  background: var(--c-primary-lt);
+  border-radius: var(--radius-md);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 20px;
+  flex-shrink: 0;
+  transition: background 0.18s;
+}
+
+.inventory-card:hover .inventory-icon {
+  background: #d0eef8;
+}
+
+.card-left h3 {
+  font-size: var(--fz-md);
+  font-weight: 600;
+  color: var(--c-text-h);
+  margin: 0;
+  letter-spacing: -0.1px;
+}
+
+.card-left p {
+  color: var(--c-text-muted);
+  margin: 3px 0 0;
+  font-size: var(--fz-sm);
+  line-height: 1.4;
+}
+
+/* Arrow / chevron on right */
+.card-right span {
+  color: var(--c-text-muted);
+  font-size: var(--fz-lg);
+  transition: color 0.18s, transform 0.18s;
+  display: inline-block;
+}
+
+.inventory-card:hover .card-right span {
+  color: var(--c-primary);
+  transform: translateX(3px);
+}
+
+/* ── Responsive ───────────────────────────────────────────────────── */
+@media (max-width: 900px) {
+  .inventory-grid { grid-template-columns: repeat(2, 1fr); }
+}
+@media (max-width: 600px) {
+  .inventory-grid { grid-template-columns: 1fr; padding: 14px; }
+  .inventory-header { padding: 16px 18px; }
+  .inventory-header h1 { font-size: var(--fz-xl); }
+}
+

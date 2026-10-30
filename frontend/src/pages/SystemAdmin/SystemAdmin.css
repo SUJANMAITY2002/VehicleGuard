@@ -1,0 +1,426 @@
+.sysadmin-page {
+  max-width: 1100px;
+  margin: 2rem auto;
+  padding: 0 1.5rem;
+}
+
+/* ---------- Back button ---------- */
+.sysadmin-back-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  background: #fff;
+  color: #2c3550;
+  border: 1px solid #d9dde5;
+  padding: 0.5rem 1rem;
+  border-radius: 8px;
+  font-size: 0.88rem;
+  font-weight: 600;
+  cursor: pointer;
+  margin-bottom: 1.25rem;
+}
+
+.sysadmin-back-btn:hover {
+  background: #f3f5f9;
+  border-color: #c7ccd6;
+}
+
+/* ---------- Card shell (matches "Conversion Bifurcation" reference) ---------- */
+.sysadmin-card {
+  background: #fff;
+  border: 1px solid #e6e9ef;
+  border-radius: 10px;
+  box-shadow: 0 1px 3px rgba(16, 24, 40, 0.04);
+  padding: 1.5rem 1.75rem;
+  margin-bottom: 2rem;
+}
+
+.sysadmin-card.sysadmin-card-narrow {
+  max-width: 480px;
+  margin: 0 auto 3rem;
+}
+
+.sysadmin-card-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  border-bottom: 1px solid #eef0f4;
+  padding-bottom: 0.9rem;
+  margin-bottom: 1.25rem;
+}
+
+.sysadmin-card-title {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  flex-shrink: 0;
+}
+
+.sysadmin-card-icon {
+  width: 26px;
+  height: 26px;
+  border-radius: 6px;
+  background: #2f6fed;
+  color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.85rem;
+  flex-shrink: 0;
+}
+
+.sysadmin-card-title h2 {
+  font-size: 0.95rem;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: #2c3550;
+  margin: 0;
+}
+
+.sysadmin-badge {
+  background: #e7f8ee;
+  color: #1e7d32;
+  font-size: 0.85rem;
+  font-weight: 600;
+  padding: 0.35rem 0.9rem;
+  border-radius: 999px;
+  white-space: nowrap;
+}
+
+/* Push the Add User button in the header all the way to the far right,
+   no matter what the badge/title widths are. */
+.sysadmin-add-row-btn-header {
+  margin-left: auto;
+  flex-shrink: 0;
+}
+
+.sysadmin-sub {
+  color: #666;
+  font-size: 0.9rem;
+  margin-bottom: 1.5rem;
+}
+
+.sysadmin-alert {
+  padding: 0.6rem 0.9rem;
+  border-radius: 6px;
+  margin-bottom: 1rem;
+  font-size: 0.9rem;
+}
+.sysadmin-alert.error   { background: #fdeaea; color: #b3261e; }
+.sysadmin-alert.success { background: #e8f5e9; color: #1e7d32; }
+
+/* ---------- Vertical form (used only for the one-time first-admin setup) ---------- */
+.sysadmin-form.sysadmin-form-stacked .input-group {
+  margin-bottom: 1rem;
+  display: flex;
+  flex-direction: column;
+}
+
+.sysadmin-form label {
+  font-size: 0.85rem;
+  font-weight: 600;
+  margin-bottom: 0.3rem;
+  color: #333;
+}
+
+.sysadmin-form input:not([type="checkbox"]) {
+  padding: 0.6rem 0.75rem;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  font-size: 0.95rem;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.checkbox-row {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-bottom: 0.75rem;
+}
+
+.checkbox-row label {
+  font-size: 0.9rem;
+  color: #333;
+  margin: 0;
+}
+
+.sysadmin-form button,
+.sysadmin-header button,
+.sysadmin-add-row-btn {
+  background: #1f6f43;
+  color: #fff;
+  border: none;
+  padding: 0.65rem 1.2rem;
+  border-radius: 6px;
+  cursor: pointer;
+  font-weight: 600;
+}
+
+.sysadmin-form button:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.sysadmin-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 1.5rem;
+}
+
+/* ---------- "Beside, not stacked" inline row form (Add User) ---------- */
+.sysadmin-inline-form-wrap {
+  overflow-x: auto;
+  margin-bottom: 1.25rem;
+}
+
+.sysadmin-inline-table {
+  width: 100%;
+  min-width: 920px;
+  border-collapse: collapse;
+}
+
+.sysadmin-inline-table th {
+  text-align: left;
+  padding: 0.6rem 0.6rem;
+  background: #f3f5f9;
+  color: #5b6478;
+  font-weight: 700;
+  font-size: 0.72rem;
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+  border-bottom: 1px solid #e6e9ef;
+  white-space: nowrap;
+}
+
+.sysadmin-inline-table th:first-child {
+  border-top-left-radius: 6px;
+}
+.sysadmin-inline-table th:last-child {
+  border-top-right-radius: 6px;
+}
+
+.sysadmin-inline-table td {
+  padding: 0.5rem 0.6rem;
+  border-bottom: 1px solid #eef0f4;
+  vertical-align: middle;
+}
+
+.sysadmin-inline-table td.sysadmin-sno {
+  text-align: center;
+  color: #8a90a2;
+  font-size: 0.85rem;
+  width: 48px;
+}
+
+.sysadmin-inline-table input[type="text"],
+.sysadmin-inline-table input[type="email"],
+.sysadmin-inline-table input[type="password"] {
+  width: 100%;
+  min-width: 130px;
+  padding: 0.5rem 0.65rem;
+  border: 1px solid #d9dde5;
+  border-radius: 6px;
+  font-size: 0.88rem;
+  box-sizing: border-box;
+}
+
+.sysadmin-inline-table input[type="text"]:focus,
+.sysadmin-inline-table input[type="email"]:focus,
+.sysadmin-inline-table input[type="password"]:focus {
+  outline: none;
+  border-color: #2f6fed;
+  box-shadow: 0 0 0 3px rgba(47, 111, 237, 0.12);
+}
+
+.sysadmin-checkbox-cell {
+  text-align: center;
+}
+
+.sysadmin-checkbox-cell input[type="checkbox"] {
+  width: 16px;
+  height: 16px;
+  cursor: pointer;
+}
+
+.sysadmin-del-btn {
+  background: #fdeaea;
+  color: #c0392b;
+  border: 1px solid #f5c6c6;
+  border-radius: 6px;
+  width: 30px;
+  height: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  font-weight: 700;
+  margin: 0 auto;
+}
+
+/* Delete button used inline in the users table row — wider, with text,
+   rather than the square icon-only version used in the Add User row. */
+.sysadmin-del-btn-row {
+  width: auto;
+  height: auto;
+  padding: 0.4rem 0.85rem;
+  font-size: 0.82rem;
+  font-weight: 600;
+  margin: 0;
+}
+
+.sysadmin-inline-actions {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+}
+
+.sysadmin-add-row-btn {
+  background: #eafaf0;
+  color: #1e7d32;
+  border: 1px solid #bfe8cd;
+  padding: 0.55rem 1.1rem;
+  border-radius: 8px;
+  font-size: 0.88rem;
+}
+
+.sysadmin-add-row-btn:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.sysadmin-cancel-btn {
+  background: #fff;
+  color: #555;
+  border: 1px solid #d9dde5;
+  padding: 0.55rem 1.1rem;
+  border-radius: 8px;
+  font-size: 0.88rem;
+  cursor: pointer;
+  font-weight: 600;
+}
+
+/* ---------- Users list table ---------- */
+.sysadmin-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.sysadmin-table th,
+.sysadmin-table td {
+  text-align: left;
+  padding: 0.65rem 0.75rem;
+  border-bottom: 1px solid #eef0f4;
+  font-size: 0.9rem;
+}
+
+.sysadmin-table th {
+  background: #f3f5f9;
+  color: #5b6478;
+  font-weight: 700;
+  font-size: 0.72rem;
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+}
+
+/* ---------- Actions column (Edit / Delete) — admin only ---------- */
+.sysadmin-actions-cell {
+  display: flex;
+  gap: 0.5rem;
+  white-space: nowrap;
+}
+
+.sysadmin-edit-btn {
+  background: #eef3fe;
+  color: #2f6fed;
+  border: 1px solid #cfe0fb;
+  padding: 0.4rem 0.85rem;
+  border-radius: 6px;
+  font-size: 0.82rem;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.sysadmin-edit-btn:hover {
+  background: #e0eafe;
+}
+
+/* ---------- Inline edit row (expands under the user being edited) ---------- */
+.sysadmin-edit-row td {
+  background: #f9fafc;
+  padding: 1rem 0.75rem;
+}
+
+.sysadmin-edit-form {
+  width: 100%;
+}
+
+.sysadmin-edit-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 0.9rem 1.1rem;
+  margin-bottom: 1rem;
+}
+
+.sysadmin-edit-field {
+  display: flex;
+  flex-direction: column;
+}
+
+.sysadmin-edit-field label {
+  font-size: 0.78rem;
+  font-weight: 600;
+  color: #5b6478;
+  margin-bottom: 0.3rem;
+}
+
+.sysadmin-edit-field input[type="text"],
+.sysadmin-edit-field input[type="password"] {
+  padding: 0.5rem 0.65rem;
+  border: 1px solid #d9dde5;
+  border-radius: 6px;
+  font-size: 0.88rem;
+  box-sizing: border-box;
+  width: 100%;
+}
+
+.sysadmin-edit-field input:disabled {
+  background: #f0f1f4;
+  color: #8a90a2;
+}
+
+.sysadmin-edit-checkbox {
+  flex-direction: row;
+  align-items: center;
+  justify-content: flex-start;
+}
+
+.sysadmin-edit-checkbox label {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  margin-bottom: 0;
+  font-size: 0.85rem;
+  color: #333;
+}
+
+.sysadmin-edit-checkbox input[type="checkbox"] {
+  width: 16px;
+  height: 16px;
+  cursor: pointer;
+}
+
+.sysadmin-edit-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 0.75rem;
+}
+
+@media (max-width: 720px) {
+  .sysadmin-edit-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}

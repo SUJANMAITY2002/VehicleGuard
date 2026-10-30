@@ -1,0 +1,331 @@
+/* ════════════════════════════════════════════
+   CREATE DEMAND  — CreateDemand.css
+   Same visual system as SalesContractForm.css / CreateGIN.css
+════════════════════════════════════════════ */
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Segoe UI", sans-serif;
+}
+
+.cd-page {
+  width: 100%;
+  min-height: 100vh;
+  background: #f4f6f9;
+}
+
+/* ── TOP BAR ── */
+.cd-topbar {
+  height: 60px;
+  background: #ffffff;
+  border-bottom: 1px solid #dcdcdc;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 25px;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+.cd-topbar-left, .cd-topbar-right {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+.cd-back-btn {
+  background: transparent;
+  border: none;
+  font-size: 22px;
+  font-weight: 600;
+  color: #1f2937;
+  cursor: pointer;
+}
+.cd-demand-no {
+  background: #0d6efd;
+  color: white;
+  padding: 8px 15px;
+  border-radius: 4px;
+  font-size: 14px;
+}
+
+/* Status badge — Pending / Production Requested / Ready / Dispatched */
+.cd-status-badge {
+  padding: 6px 14px;
+  border-radius: 20px;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.4px;
+  text-transform: uppercase;
+  white-space: nowrap;
+}
+.cd-status-pending               { background: #f1f5f9; color: #475569; }
+.cd-status-production-requested  { background: #fef3c7; color: #92400e; }
+.cd-status-ready                 { background: #d1fae5; color: #065f46; }
+.cd-status-dispatched            { background: #dbeafe; color: #1e40af; }
+
+/* ── BODY / CARD ── */
+.cd-body { padding: 20px; }
+.cd-card {
+  width: 100%;
+  background: white;
+  border-radius: 8px;
+  padding: 25px;
+  border: 1px solid #e5e7eb;
+}
+
+.cd-section-title {
+  font-size: 18px;
+  font-weight: 600;
+  color: #1f2937;
+  margin-bottom: 15px;
+  margin-top: 20px;
+  padding-bottom: 8px;
+  border-bottom: 1px solid #e5e7eb;
+}
+.cd-section-title:first-child { margin-top: 0; }
+
+.cd-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 18px;
+  margin-bottom: 20px;
+}
+.cd-group { display: flex; flex-direction: column; position: relative; }
+.cd-full  { width: 100%; }
+
+.cd-label {
+  margin-bottom: 4px;
+  font-size: 12px;
+  font-weight: 600;
+  color: #374151;
+}
+.cd-req { color: red; }
+
+.cd-input {
+  height: 36px;
+  width: 100%;
+  border: 1px solid #d1d5db;
+  border-radius: 4px;
+  padding: 0 8px;
+  font-size: 13px;
+  transition: 0.3s;
+  background: white;
+}
+.cd-input:focus {
+  outline: none;
+  border-color: #0d6efd;
+  box-shadow: 0 0 3px rgba(13, 110, 253, 0.25);
+}
+.cd-readonly { background: #f3f4f6; font-weight: 600; }
+select.cd-input { cursor: pointer; }
+
+/* Priority pill-select colors handled via a data attribute wrapper */
+.cd-priority-high   { color: #b91c1c; font-weight: 700; }
+.cd-priority-medium { color: #92400e; font-weight: 700; }
+.cd-priority-low    { color: #065f46; font-weight: 700; }
+
+/* Typeahead suggestion list (Sauda picker) */
+.cd-suggestions {
+  position: absolute;
+  top: calc(100% + 2px);
+  left: 0;
+  width: 100%;
+  min-width: 220px;
+  max-height: 220px;
+  overflow-y: auto;
+  background: #fff;
+  border: 1.5px solid #93c5fd;
+  border-radius: 6px;
+  list-style: none;
+  z-index: 1200;
+  box-shadow: 0 8px 24px rgba(37,99,235,0.12);
+}
+.cd-suggestions li {
+  padding: 8px 12px;
+  font-size: 12.5px;
+  cursor: pointer;
+  border-bottom: 1px solid #f1f5f9;
+  color: #1e293b;
+}
+.cd-suggestions li:last-child { border-bottom: none; }
+.cd-suggestions li:hover { background: #eff6ff; color: #1d4ed8; }
+.cd-suggestions li small { display: block; color: #7a8799; font-weight: 500; }
+
+/* ── Alerts ── */
+.cd-alert { padding: 12px 15px; border-radius: 4px; margin-bottom: 15px; font-size: 14px; }
+.cd-alert-ok  { background: #d1fae5; color: #065f46; }
+.cd-alert-err { background: #fee2e2; color: #991b1b; }
+
+/* ── ITEMS TABLE (Size / Qty) ── */
+.cd-items-section {
+  margin-top: 12px;
+  border: 1px solid #ddd;
+  border-radius: 6px;
+  overflow: hidden;
+}
+.cd-items-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px 14px;
+  background: #f5f7fa;
+  border-bottom: 1px solid #ddd;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+.cd-items-title { font-size: 14px; font-weight: 700; color: #333; }
+.cd-del-rows-btn {
+  background: #dc3545;
+  color: #fff;
+  border: none;
+  padding: 5px 14px;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 12px;
+}
+.cd-del-rows-btn:hover { background: #b02a37; }
+
+.cd-items-table-wrap { overflow-x: auto; }
+.cd-items-table { width: 100%; border-collapse: collapse; min-width: 560px; }
+.cd-items-table thead th {
+  background: #eef1f7;
+  border: 1px solid #d5d8de;
+  padding: 8px 10px;
+  font-size: 12px;
+  font-weight: 600;
+  color: #333;
+  white-space: nowrap;
+}
+.cd-items-table tbody td {
+  border: 1px solid #e4e6eb;
+  padding: 3px 4px;
+  vertical-align: middle;
+}
+.cd-items-table tbody tr:nth-child(even) { background: #fafbfd; }
+.cd-items-table tbody tr:hover           { background: #f0f4ff; }
+.cd-row-checked { background: #fff3cd !important; }
+
+.cd-sno-cell   { text-align: center; font-size: 12px; font-weight: 600; color: #555; width: 40px; }
+.cd-check-cell { text-align: center; width: 44px; }
+
+.cd-item-input {
+  width: 100%;
+  height: 28px;
+  border: 1px solid #cfd3da;
+  border-radius: 3px;
+  padding: 0 6px;
+  font-size: 12px;
+  background: #fff;
+  outline: none;
+}
+.cd-item-input:focus { border-color: #0d6efd; background: #f0f7ff; }
+
+.cd-insert-row-bar {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 8px;
+  padding: 10px 14px;
+  background: #f5f7fa;
+  border-top: 1px solid #ddd;
+  flex-wrap: wrap;
+}
+.cd-insert-count {
+  width: 60px;
+  height: 30px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  padding: 0 8px;
+  font-size: 13px;
+  text-align: center;
+}
+.cd-insert-row-btn {
+  background: #0d6efd;
+  color: #fff;
+  border: none;
+  padding: 6px 16px;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 13px;
+  font-weight: 600;
+}
+.cd-insert-row-btn:hover { background: #0b5ed7; }
+
+/* ── BUTTONS ── */
+.cd-btn-row { display: flex; justify-content: flex-end; gap: 12px; margin-top: 25px; flex-wrap: wrap; }
+.cd-btn { border: none; padding: 12px 28px; border-radius: 5px; font-size: 14px; font-weight: 600; cursor: pointer; }
+.cd-btn:disabled { opacity: 0.6; cursor: not-allowed; }
+.cd-btn-save   { background: #16a34a; color: white; }
+.cd-btn-save:hover   { background: #15803d; }
+.cd-btn-cancel { background: #dc2626; color: white; }
+.cd-btn-cancel:hover { background: #b91c1c; }
+
+/* ── Loading ── */
+.cd-loading {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 200px;
+  gap: 12px;
+  color: #64748b;
+}
+.cd-spinner {
+  width: 36px;
+  height: 36px;
+  border: 3px solid #e2e8f0;
+  border-top-color: #2563eb;
+  border-radius: 50%;
+  animation: cdspin 0.7s linear infinite;
+}
+@keyframes cdspin { to { transform: rotate(360deg); } }
+
+/* ── RESPONSIVE ── */
+@media (max-width: 1200px) { .cd-grid { grid-template-columns: repeat(3, 1fr); } }
+@media (max-width: 900px)  { .cd-grid { grid-template-columns: repeat(2, 1fr); } }
+@media (max-width: 600px)  {
+  .cd-grid { grid-template-columns: 1fr; }
+  .cd-topbar { flex-direction: column; height: auto; padding: 10px; gap: 10px; }
+  .cd-btn-row { flex-direction: column; }
+  .cd-btn { width: 100%; }
+}
+/* ─── Add these to CreateDemand.css ───────────────────────────────────────
+   Needed for the new per-row Item Name typeahead dropdown in the Items
+   grid (the Sl-No/Item Type/Item Code/Item Name/Size/Length/Qty table).
+   Mirrors the .scf-suggest-* rules already used on the same pattern in
+   CreateSauda.css — copy those over too if cd-item-input / cd-items-table
+   aren't already styled close to their scf- equivalents.
+=========================================================================== */
+
+.cd-suggest-wrap {
+  position: relative;
+}
+.cd-suggest-list {
+  position: absolute;
+  z-index: 30;
+  top: 100%;
+  left: 0;
+  right: 0;
+  background: #fff;
+  border: 1px solid #d1d5db;
+  border-top: none;
+  max-height: 170px;
+  overflow-y: auto;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  box-shadow: 0 6px 14px rgba(0, 0, 0, 0.10);
+  border-radius: 0 0 4px 4px;
+}
+.cd-suggest-list li {
+  padding: 6px 10px;
+  font-size: 12.5px;
+  cursor: pointer;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.cd-suggest-list li:hover {
+  background: #eff6ff;
+}

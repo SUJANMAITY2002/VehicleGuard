@@ -1,0 +1,16 @@
+.footer {
+  width: 100%;
+  background: var(--navy);
+  border-top: 1px solid rgba(255,255,255,0.06);
+  padding: 18px 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.footer-copy {
+  font-family: var(--font-body);
+  font-size: 13px;
+  color: rgba(255,255,255,0.35);
+  letter-spacing: 0.3px;
+}

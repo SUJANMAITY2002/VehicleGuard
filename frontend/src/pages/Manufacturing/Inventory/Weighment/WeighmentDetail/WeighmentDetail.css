@@ -1,0 +1,636 @@
+/* ══════════════════════════════════════════════════════════════════════════════
+   WeighmentDetail.css  —  Styles for the WeighmentDetail page only
+   ══════════════════════════════════════════════════════════════════════════════ */
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+/* ── Shared header — same as InwardOutwardNote page ── */
+.gin-search-header {
+  width: 100%;
+  min-height: 52px;
+  background: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 8px 20px;
+  border-bottom: 1px solid #e2e8f0;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.06);
+  flex-wrap: wrap;
+  gap: 8px;
+}
+.create-btn {
+  background: #2563eb;
+  color: white;
+  border: none;
+  padding: 7px 18px;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 13px;
+  font-weight: 600;
+  transition: background 0.2s;
+  white-space: nowrap;
+}
+.create-btn:hover { background: #1d4ed8; }
+
+/* ── page shell ── */
+.wd-page {
+  background: #f4f6fb;
+  min-height: 100vh;
+  padding-bottom: 60px;
+  font-family: 'Segoe UI', Arial, sans-serif;
+  color: #111827;
+}
+
+/* ── loading ── */
+.wd-loading {
+  padding: 60px;
+  text-align: center;
+  color: #111827;
+  font-size: 15px;
+}
+
+/* ── page header ── */
+.wd-page-header {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 13px 20px;
+  background: #fff;
+  border-bottom: 1.5px solid #e5e7eb;
+  position: sticky;
+  top: 0;
+  z-index: 20;
+  box-shadow: 0 1px 4px rgba(0,0,0,.05);
+}
+.wd-back-btn {
+  background: #f3f4f6;
+  border: 1px solid #d1d5db;
+  border-radius: 6px;
+  padding: 6px 12px;
+  font-size: 16px;
+  cursor: pointer;
+  color: #111827;
+  line-height: 1;
+}
+.wd-back-btn:hover { background: #e5e7eb; }
+
+.wd-header-info {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+.wd-header-info h2 {
+  font-size: 17px;
+  font-weight: 700;
+  color: #1e293b;
+  margin: 0;
+}
+.wd-weighment-no {
+  font-size: 13px;
+  font-weight: 600;
+  color: #6366f1;
+}
+
+.wd-header-badges {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+/* ── type / status badges ── */
+.wd-type-badge,
+.wd-status-badge {
+  padding: 4px 12px;
+  border-radius: 20px;
+  font-size: 11px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: .4px;
+}
+.wd-type-badge.inward   { background: #dcfce7; color: #166534; border: 1px solid #86efac; }
+.wd-type-badge.outward  { background: #fef3c7; color: #92400e; border: 1px solid #fde68a; }
+.wd-type-badge.general  { background: #e0e7ff; color: #3730a3; border: 1px solid #a5b4fc; }
+.wd-status-badge.draft    { background: #f3f4f6; color: #6b7280; border: 1px solid #d1d5db; }
+.wd-status-badge.partial  { background: #fef9c3; color: #854d0e; border: 1px solid #fcd34d; }
+.wd-status-badge.submit   { background: #dbeafe; color: #1d4ed8; border: 1px solid #93c5fd; }
+.wd-status-badge.weighted { background: #dcfce7; color: #166534; border: 1px solid #86efac; }
+.wd-status-badge.open     { background: #dcfce7; color: #166534; border: 1px solid #86efac; }
+.wd-status-badge.closed   { background: #fee2e2; color: #991b1b; border: 1px solid #fca5a5; }
+
+/* ── edit toggle buttons ── */
+.wd-edit-btn {
+  padding: 6px 16px;
+  background: #6366f1;
+  color: #fff;
+  border: none;
+  border-radius: 6px;
+  font-size: 12px;
+  font-weight: 700;
+  cursor: pointer;
+}
+.wd-edit-btn:hover { background: #4f46e5; }
+
+.wd-editing-indicator {
+  padding: 6px 16px;
+  background: #fef9c3;
+  color: #92400e;
+  border: 1px solid #fde68a;
+  border-radius: 6px;
+  font-size: 12px;
+  font-weight: 700;
+  cursor: pointer;
+}
+.wd-editing-indicator:hover { background: #fef08a; }
+
+/* ── edit mode banner ── */
+.wd-edit-banner {
+  margin: 10px 18px 0;
+  padding: 10px 16px;
+  background: #eff6ff;
+  border: 1px solid #bfdbfe;
+  border-radius: 8px;
+  font-size: 13px;
+  color: #1d4ed8;
+}
+.wd-edit-banner strong { font-weight: 700; }
+
+/* ── card ── */
+.wd-card {
+  background: #fff;
+  border-radius: 10px;
+  border: 1px solid #e5e7eb;
+  margin: 12px 18px;
+  padding: 16px 20px;
+  box-shadow: 0 1px 4px rgba(0,0,0,.04);
+}
+
+/* ── section title ── */
+.wd-section-title {
+  font-size: 12px;
+  font-weight: 700;
+  color: #111827;
+  text-transform: uppercase;
+  letter-spacing: .5px;
+  padding-bottom: 8px;
+  margin-bottom: 14px;
+  border-bottom: 1.5px solid #e5e7eb;
+}
+
+/* ── GIN reference grid ── */
+.wd-ref-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 10px 16px;
+}
+@media (max-width: 900px)  { .wd-ref-grid { grid-template-columns: repeat(2, 1fr); } }
+@media (max-width: 500px)  { .wd-ref-grid { grid-template-columns: 1fr; } }
+
+.wd-ref-field {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+}
+.wd-ref-label {
+  font-size: 10px;
+  font-weight: 700;
+  color: #111827;
+  text-transform: uppercase;
+  letter-spacing: .4px;
+}
+.wd-ref-value {
+  font-size: 13px;
+  color: #111827;
+  font-weight: 500;
+}
+.wd-ref-highlight {
+  color: #6366f1;
+  font-weight: 700;
+}
+
+/* ── form grid ── */
+.wd-form-grid {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 12px 16px;
+  margin-bottom: 18px;
+}
+@media (max-width: 1300px) { .wd-form-grid { grid-template-columns: repeat(4, 1fr); } }
+@media (max-width: 1100px) { .wd-form-grid { grid-template-columns: repeat(3, 1fr); } }
+@media (max-width: 800px)  { .wd-form-grid { grid-template-columns: repeat(2, 1fr); } }
+@media (max-width: 520px)  { .wd-form-grid { grid-template-columns: 1fr; } }
+
+/* ── field ── */
+.wd-field {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+.wd-field label {
+  font-size: 11px;
+  font-weight: 600;
+  color: #111827;
+  text-transform: uppercase;
+  letter-spacing: .35px;
+}
+.wd-field input,
+.wd-field select,
+.wd-field textarea {
+  border: 1px solid #d1d5db;
+  border-radius: 6px;
+  padding: 7px 10px;
+  font-size: 13px;
+  color: #111827;
+  background: #fff;
+  outline: none;
+  transition: border-color .15s;
+}
+.wd-field input:focus,
+.wd-field select:focus,
+.wd-field textarea:focus {
+  border-color: #6366f1;
+  box-shadow: 0 0 0 3px rgba(99,102,241,.12);
+}
+.wd-readonly {
+  background: #f9fafb !important;
+  color: #6b7280 !important;
+  cursor: not-allowed;
+}
+
+/* ── textarea row ── */
+.wd-textarea-row {
+  margin-top: 14px;
+}
+.wd-textarea-row textarea {
+  width: 100%;
+  resize: vertical;
+}
+
+/* ── checkbox row ── */
+.wd-checkbox-row {
+  margin-top: 10px;
+}
+.wd-checkbox-label {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 13px;
+  color: #111827;
+  font-weight: 500;
+  cursor: pointer;
+}
+.wd-checkbox-label input[type="checkbox"] {
+  width: 15px;
+  height: 15px;
+  cursor: pointer;
+}
+
+/* ── weight strip ── */
+.wd-weight-strip {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px 16px;
+  align-items: flex-end;
+  background: #f8fafc;
+  border: 1px solid #e5e7eb;
+  border-radius: 8px;
+  padding: 14px 18px;
+  margin-top: 2px;
+  margin-bottom: 4px;
+}
+.wd-weight-box {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  min-width: 130px;
+  flex: 1;
+}
+.wd-weight-get-box { min-width: 260px; flex: 2; }
+.wd-weight-box label {
+  font-size: 11px;
+  font-weight: 600;
+  color: #6b7280;
+  text-transform: uppercase;
+  letter-spacing: .35px;
+}
+.wd-weight-box label span {
+  font-size: 10px;
+  font-weight: 400;
+  color: #6366f1;
+  margin-left: 5px;
+  text-transform: none;
+}
+.wd-weight-yellow {
+  border: 1.5px solid #fbbf24;
+  border-radius: 6px;
+  padding: 7px 10px;
+  font-size: 13px;
+  font-weight: 700;
+  color: #92400e;
+  background: #fffbeb;
+  width: 100%;
+  outline: none;
+}
+.wd-weight-green {
+  border: 1.5px solid #4ade80;
+  border-radius: 6px;
+  padding: 7px 10px;
+  font-size: 13px;
+  font-weight: 700;
+  color: #166534;
+  background: #f0fdf4;
+  width: 100%;
+  outline: none;
+}
+.wd-weight-action {
+  display: flex;
+  gap: 6px;
+  align-items: center;
+}
+.wd-weight-action input {
+  flex: 1;
+  border: 1.5px solid #d1d5db;
+  border-radius: 6px;
+  padding: 7px 10px;
+  font-size: 13px;
+  outline: none;
+}
+.wd-weight-action input:focus { border-color: #6366f1; }
+.wd-weight-action button {
+  padding: 7px 16px;
+  background: #6366f1;
+  color: #fff;
+  border: none;
+  border-radius: 6px;
+  font-size: 12px;
+  font-weight: 700;
+  cursor: pointer;
+  white-space: nowrap;
+}
+.wd-weight-action button:hover:not(:disabled) { background: #4f46e5; }
+.wd-weight-action button:disabled {
+  background: #22c55e;
+  cursor: not-allowed;
+}
+
+/* ── active row hint ── */
+.wd-active-row-hint {
+  margin-top: 10px;
+  padding: 8px 12px;
+  background: #eff6ff;
+  border: 1px solid #bfdbfe;
+  border-radius: 6px;
+  font-size: 12px;
+  color: #1d4ed8;
+}
+
+/* ── items section ── */
+.wd-items-section { }
+
+.wd-items-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 10px;
+}
+.wd-items-title {
+  font-size: 13px;
+  font-weight: 700;
+  color: #111827;
+}
+.wd-active-badge {
+  background: #eff6ff;
+  color: #1d4ed8;
+  border: 1px solid #bfdbfe;
+  padding: 3px 10px;
+  border-radius: 20px;
+  font-size: 11px;
+  font-weight: 700;
+}
+.wd-del-rows-btn {
+  background: #fee2e2;
+  color: #991b1b;
+  border: 1px solid #fca5a5;
+  padding: 4px 12px;
+  border-radius: 6px;
+  font-size: 12px;
+  cursor: pointer;
+  font-weight: 600;
+}
+.wd-del-rows-btn:hover { background: #fecaca; }
+
+.wd-items-table-wrap {
+  overflow-x: auto;
+  border-radius: 8px;
+  border: 1px solid #e5e7eb;
+}
+.wd-items-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 12px;
+  min-width: 580px;
+}
+.wd-items-table thead { background: #f8fafc; }
+.wd-items-table th {
+  padding: 8px 10px;
+  text-align: left;
+  font-size: 11px;
+  font-weight: 700;
+  color: #111827;
+  border-bottom: 1.5px solid #e5e7eb;
+  white-space: nowrap;
+  position: sticky;
+  top: 0;
+  z-index: 1;
+  background: #f8fafc;
+}
+.wd-items-table td {
+  padding: 5px 6px;
+  border-bottom: 1px solid #f1f5f9;
+  vertical-align: middle;
+}
+.wd-items-table tbody tr:hover { background: #f8fafc; }
+
+/* ── row states ── */
+.wd-row-checked { background: #fef3c7 !important; }
+.wd-row-active  { background: #eff6ff !important; outline: 2px solid #bfdbfe; }
+
+/* ── cell helpers ── */
+.wd-check-cell {
+  text-align: center;
+  width: 36px;
+}
+.wd-sno {
+  text-align: center;
+  color: #111827;
+  font-size: 11px;
+  width: 44px;
+}
+
+/* ── item inputs ── */
+.wd-item-input {
+  width: 100%;
+  border: 1px solid #e5e7eb;
+  border-radius: 5px;
+  padding: 5px 8px;
+  font-size: 12px;
+  color: #111827;
+  background: #fff;
+  box-sizing: border-box;
+  outline: none;
+  pointer-events: auto;
+  cursor: text;
+}
+.wd-item-input:focus { border-color: #6366f1; box-shadow: 0 0 0 2px rgba(99,102,241,.12); }
+
+.wd-wt-input    { background: #fffbeb; border-color: #fde68a !important; }
+.wd-net-input   { background: #f0fdf4; border-color: #bbf7d0 !important; font-weight: 700; cursor: not-allowed; }
+.wd-wt-filled   { background: #fef9c3 !important; color: #92400e; font-weight: 700; }
+.wd-net-filled  { background: #dcfce7 !important; color: #166534; font-weight: 700; }
+.wd-rem-input   { background: #fff; }
+
+/* ── insert bar ── */
+.wd-insert-bar {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-top: 10px;
+  padding-top: 10px;
+  border-top: 1px solid #f1f5f9;
+}
+.wd-insert-label { font-size: 12px; color: #6b7280; }
+.wd-insert-count {
+  width: 60px;
+  border: 1px solid #d1d5db;
+  border-radius: 5px;
+  padding: 5px 8px;
+  font-size: 12px;
+  text-align: center;
+  outline: none;
+}
+.wd-insert-btn {
+  background: #f0fdf4;
+  color: #166534;
+  border: 1px solid #bbf7d0;
+  padding: 5px 14px;
+  border-radius: 6px;
+  font-size: 12px;
+  font-weight: 600;
+  cursor: pointer;
+}
+.wd-insert-btn:hover { background: #dcfce7; }
+
+/* ── tick hint (column header) ── */
+.wd-tick-hint {
+  font-size: 9px;
+  font-weight: 400;
+  color: #111827;
+  margin-top: 2px;
+  text-transform: none;
+}
+
+/* ── actions bar ── */
+.wd-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 10px;
+  padding: 14px 18px;
+  border-top: 1.5px solid #e5e7eb;
+  background: #fff;
+  position: sticky;
+  bottom: 0;
+  z-index: 10;
+}
+.wd-cancel-btn {
+  padding: 8px 22px;
+  border: 1px solid #d1d5db;
+  border-radius: 7px;
+  background: #fff;
+  color: #111827;
+  font-size: 13px;
+  cursor: pointer;
+}
+.wd-cancel-btn:hover { background: #f9fafb; }
+.wd-draft-btn {
+  padding: 8px 22px;
+  border: 1px solid #a5b4fc;
+  border-radius: 7px;
+  background: #eff0ff;
+  color: #3730a3;
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+}
+.wd-draft-btn:hover:not(:disabled) { background: #e0e7ff; }
+.wd-save-btn {
+  padding: 8px 26px;
+  border: none;
+  border-radius: 7px;
+  background: #6366f1;
+  color: #fff;
+  font-size: 13px;
+  font-weight: 700;
+  cursor: pointer;
+}
+.wd-save-btn:hover:not(:disabled) { background: #4f46e5; }
+.wd-cancel-btn:disabled,
+.wd-draft-btn:disabled,
+.wd-save-btn:disabled { opacity: .5; cursor: not-allowed; }
+/* ── Additions for item code/name autocomplete, UOM, hints (wc-page parity) ── */
+
+/* Autocomplete cell wrapper */
+.wd-item-code-cell { position: relative; }
+
+/* Autocomplete dropdown */
+.wd-item-suggestions {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  right: 0;
+  background: #fff;
+  border: 1px solid #d1d5db;
+  border-radius: 6px;
+  z-index: 100;
+  max-height: 160px;
+  overflow-y: auto;
+  list-style: none;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, .1);
+  margin-top: 2px;
+  padding: 0;
+}
+.wd-item-suggestions li {
+  padding: 7px 12px;
+  font-size: 12px;
+  cursor: pointer;
+  color: #111827;
+}
+.wd-item-suggestions li:hover { background: #eff6ff; }
+
+/* UOM input — light grey, auto-filled */
+.wd-uom-input { background: #f9fafb; }
+
+/* Weight hint text next to label */
+.wd-wt-hint {
+  font-size: 10px;
+  font-weight: 400;
+  color: #6366f1;
+  margin-left: 6px;
+  text-transform: none;
+}
+
+/* Warning hint when no row is ticked */
+.wd-no-row-hint {
+  margin-top: 10px;
+  padding: 8px 14px;
+  background: #fef9c3;
+  border: 1px solid #fde68a;
+  border-radius: 6px;
+  font-size: 12px;
+  color: #92400e;
+}
+
+/* Lock icon next to S No */
+.wd-lock-icon { margin-left: 4px; font-size: 11px; }
+
+/* Blocked row: checkbox/weight cols dimmed; item inputs remain fully interactive */
+/* wd-row-blocked is no longer applied to <tr> — blocking is handled inline per-cell */

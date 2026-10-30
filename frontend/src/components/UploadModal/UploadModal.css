@@ -1,0 +1,318 @@
+/* UploadModal.css */
+
+.upload-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.55);
+  backdrop-filter: blur(3px);
+  z-index: 1000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 16px;
+}
+
+.upload-modal {
+  background: #fff;
+  border-radius: 12px;
+  width: 100%;
+  max-width: 680px;
+  box-shadow: 0 24px 60px rgba(0, 0, 0, 0.2);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  max-height: 90vh;
+}
+
+/* Wide variant for preview table */
+.upload-modal:has(.upload-body-wide) {
+  max-width: 940px;
+}
+
+/* ── Header ── */
+.upload-modal-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 16px 20px;
+  background: #1a1a2e;
+  color: #fff;
+}
+
+.upload-modal-title {
+  font-size: 15px;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  letter-spacing: 0.3px;
+}
+
+.upload-icon {
+  font-size: 18px;
+}
+
+.upload-close-btn {
+  background: rgba(255,255,255,0.15);
+  border: none;
+  color: #fff;
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  cursor: pointer;
+  font-size: 13px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background 0.2s;
+}
+.upload-close-btn:hover { background: rgba(255,255,255,0.28); }
+
+/* ── Body ── */
+.upload-body {
+  padding: 24px;
+  overflow-y: auto;
+  flex: 1;
+}
+
+.upload-body.upload-center {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+  min-height: 220px;
+  text-align: center;
+}
+
+/* ── Dropzone ── */
+.upload-dropzone {
+  border: 2px dashed #c5c9d8;
+  border-radius: 10px;
+  padding: 40px 24px;
+  text-align: center;
+  cursor: pointer;
+  transition: border-color 0.2s, background 0.2s;
+  background: #fafbff;
+}
+.upload-dropzone:hover,
+.upload-dropzone.drag-active {
+  border-color: #4361ee;
+  background: #eef1ff;
+}
+
+.dropzone-icon { font-size: 36px; margin-bottom: 10px; }
+.dropzone-text { font-size: 15px; font-weight: 600; color: #333; }
+.dropzone-sub  { font-size: 13px; color: #888; margin-top: 4px; }
+.dropzone-formats {
+  margin-top: 12px;
+  display: inline-block;
+  background: #e8eaf6;
+  color: #3d4db7;
+  font-size: 11px;
+  font-weight: 600;
+  padding: 4px 12px;
+  border-radius: 20px;
+  letter-spacing: 0.5px;
+}
+
+.upload-template-row {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-top: 16px;
+  font-size: 13px;
+  color: #666;
+}
+
+.template-btn {
+  background: none;
+  border: 1px solid #4361ee;
+  color: #4361ee;
+  padding: 5px 14px;
+  border-radius: 6px;
+  font-size: 12px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.2s, color 0.2s;
+}
+.template-btn:hover { background: #4361ee; color: #fff; }
+
+/* ── File badge ── */
+.upload-file-badge {
+  background: #eef4ff;
+  border: 1px solid #c5d5ff;
+  border-radius: 8px;
+  padding: 8px 14px;
+  font-size: 13px;
+  color: #3050cc;
+  font-weight: 500;
+  margin-bottom: 18px;
+}
+
+/* ── Mapping ── */
+.mapping-title {
+  font-size: 13px;
+  font-weight: 600;
+  color: #555;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  margin-bottom: 12px;
+}
+
+.mapping-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  max-height: 340px;
+  overflow-y: auto;
+  padding-right: 4px;
+}
+
+.mapping-row {
+  display: grid;
+  grid-template-columns: 160px 24px 1fr;
+  align-items: center;
+  gap: 8px;
+}
+
+.mapping-field-label {
+  font-size: 13px;
+  font-weight: 500;
+  color: #333;
+}
+.req-star { color: #e53e3e; margin-right: 3px; }
+
+.mapping-arrow { color: #aaa; text-align: center; font-size: 14px; }
+
+.mapping-select {
+  border: 1px solid #ddd;
+  border-radius: 6px;
+  padding: 6px 10px;
+  font-size: 13px;
+  color: #333;
+  background: #fff;
+  outline: none;
+  transition: border-color 0.2s;
+}
+.mapping-select:focus { border-color: #4361ee; }
+
+/* ── Errors ── */
+.upload-errors {
+  margin-top: 14px;
+  background: #fff5f5;
+  border: 1px solid #fca5a5;
+  border-radius: 8px;
+  padding: 10px 14px;
+  font-size: 12px;
+  color: #c53030;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+/* ── Actions ── */
+.upload-actions {
+  display: flex;
+  gap: 10px;
+  margin-top: 20px;
+  justify-content: flex-end;
+}
+
+.upload-back-btn {
+  background: #f0f0f0;
+  border: 1px solid #ddd;
+  color: #555;
+  padding: 8px 18px;
+  border-radius: 7px;
+  font-size: 13px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+.upload-back-btn:hover { background: #e2e2e2; }
+
+.upload-next-btn,
+.upload-save-btn {
+  background: #4361ee;
+  border: none;
+  color: #fff;
+  padding: 8px 20px;
+  border-radius: 7px;
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.2s, transform 0.1s;
+}
+.upload-next-btn:hover,
+.upload-save-btn:hover { background: #3350d4; transform: translateY(-1px); }
+
+.upload-save-btn { background: #16a34a; }
+.upload-save-btn:hover { background: #15803d; }
+
+/* ── Preview table ── */
+.upload-body-wide { padding: 20px; }
+
+.upload-preview-table-wrap {
+  overflow: auto;
+  max-height: 380px;
+  border: 1px solid #e5e7eb;
+  border-radius: 8px;
+}
+
+.upload-preview-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 12px;
+}
+
+.upload-preview-table th {
+  background: #1a1a2e;
+  color: #fff;
+  padding: 9px 12px;
+  text-align: left;
+  white-space: nowrap;
+  position: sticky;
+  top: 0;
+  z-index: 1;
+}
+
+.upload-preview-table td {
+  padding: 7px 12px;
+  border-bottom: 1px solid #f0f0f0;
+  color: #333;
+  white-space: nowrap;
+}
+
+.upload-preview-table tbody tr:nth-child(even) td { background: #fafafa; }
+.upload-preview-table tbody tr:hover td { background: #eef1ff; }
+
+.preview-more {
+  text-align: center;
+  color: #888;
+  font-style: italic;
+  padding: 10px;
+}
+
+/* ── Saving / Done ── */
+.upload-spinner { font-size: 40px; animation: spin 1.2s linear infinite; }
+@keyframes spin { to { transform: rotate(360deg); } }
+
+.upload-saving-text { font-size: 15px; color: #555; }
+
+.upload-success-icon { font-size: 48px; }
+.upload-success-text { font-size: 18px; font-weight: 600; color: #16a34a; }
+
+.upload-done-btn {
+  background: #1a1a2e;
+  border: none;
+  color: #fff;
+  padding: 10px 28px;
+  border-radius: 8px;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  margin-top: 8px;
+  transition: background 0.2s;
+}
+.upload-done-btn:hover { background: #2d2d50; }

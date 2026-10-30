@@ -1,0 +1,394 @@
+/* ════════════════════════════════════════════
+   GIN DETAIL PAGE  — Gindetail.css
+   Full-detail view opened by clicking GIN No
+════════════════════════════════════════════ */
+
+.gd-page {
+  min-height: 100vh;
+  background: #f4f6f9;
+  font-family: Arial, Helvetica, sans-serif;
+  color: #2c3e50;
+}
+
+/* ── LOADING / ERROR ── */
+.gd-loading,
+.gd-error {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 300px;
+  font-size: 15px;
+  color: #64748b;
+}
+.gd-error { color: #dc2626; }
+
+/* ── PAGE HEADER ── */
+.gd-header {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 12px 20px;
+  background: #fff;
+  border-bottom: 2px solid #e4e8f0;
+  flex-wrap: wrap;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.06);
+}
+
+/* Unified back button */
+.gd-back-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  height: var(--back-btn-h, 34px);
+  padding: 0 var(--back-btn-px, 14px);
+  background: var(--back-btn-bg, #2563eb);
+  color: var(--back-btn-color, #fff);
+  border: none;
+  border-radius: var(--back-btn-radius, 8px);
+  font-size: var(--back-btn-font, 13px);
+  font-weight: 700;
+  cursor: pointer;
+  white-space: nowrap;
+  transition: background 0.2s, transform 0.15s, box-shadow 0.2s;
+  box-shadow: 0 2px 8px rgba(37,99,235,0.18);
+  flex-shrink: 0;
+}
+.gd-back-btn:hover {
+  background: var(--back-btn-bg-hover, #1d4ed8);
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(37,99,235,0.28);
+}
+
+.gd-header-title {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  flex: 1;
+  flex-wrap: wrap;
+}
+.gd-header-title h2 {
+  font-size: 18px;
+  font-weight: 700;
+  color: #1a2540;
+}
+
+.gd-gin-no-badge {
+  background: #2563eb;
+  color: #fff;
+  padding: 4px 14px;
+  border-radius: 20px;
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 0.4px;
+  white-space: nowrap;
+}
+
+.gd-header-meta {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+  flex-wrap: wrap;
+}
+.gd-status-pill,
+.gd-entry-pill {
+  padding: 4px 14px;
+  border-radius: 20px;
+  font-size: 12px;
+  font-weight: 700;
+}
+.gd-status-pill.open   { background: #d1fae5; color: #065f46; }
+.gd-status-pill.closed { background: #fee2e2; color: #991b1b; }
+.gd-entry-pill.inward  { background: #dbeafe; color: #1e40af; }
+.gd-entry-pill.outward { background: #fef3c7; color: #92400e; }
+
+/* ── CARD ── */
+.gd-card {
+  background: #fff;
+  border-radius: 8px;
+  border: 1px solid #e4e8f0;
+  margin: 14px 18px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+  overflow: visible; /* allow dropdowns to escape */
+}
+
+.gd-card-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 12px 18px;
+  background: #f8faff;
+  border-bottom: 1px solid #e4e8f0;
+  flex-wrap: wrap;
+  gap: 10px;
+  border-radius: 8px 8px 0 0;
+}
+.gd-card-title {
+  font-size: 14px;
+  font-weight: 700;
+  color: #1a2540;
+  letter-spacing: 0.3px;
+}
+.gd-card-actions {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+/* ── EDIT / SAVE / CANCEL BUTTONS ── */
+.gd-edit-btn {
+  background: #dbeafe;
+  color: #1d4ed8;
+  border: 1px solid #bfdbfe;
+  padding: 6px 16px;
+  border-radius: 6px;
+  font-size: 12px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+.gd-edit-btn:hover { background: #bfdbfe; }
+
+.gd-save-btn {
+  background: #2563eb;
+  color: #fff;
+  border: none;
+  padding: 6px 18px;
+  border-radius: 6px;
+  font-size: 12px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+.gd-save-btn:hover   { background: #1d4ed8; }
+.gd-save-btn:disabled { opacity: 0.5; cursor: not-allowed; }
+
+.gd-cancel-btn {
+  background: #f1f5f9;
+  color: #475569;
+  border: 1px solid #cbd5e1;
+  padding: 6px 16px;
+  border-radius: 6px;
+  font-size: 12px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+.gd-cancel-btn:hover   { background: #e2e8f0; }
+.gd-cancel-btn:disabled { opacity: 0.5; cursor: not-allowed; }
+
+/* ── NO WEIGHMENT ── */
+.gd-no-weighment {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  font-size: 13px;
+  color: #8896ab;
+  flex-wrap: wrap;
+}
+.gd-create-w-btn {
+  background: #16a34a;
+  color: #fff;
+  border: none;
+  padding: 6px 14px;
+  border-radius: 6px;
+  font-size: 12px;
+  font-weight: 700;
+  cursor: pointer;
+}
+.gd-create-w-btn:hover { background: #15803d; }
+.gd-no-weighment-body {
+  padding: 28px 18px;
+  color: #9aa3b4;
+  font-size: 14px;
+  text-align: center;
+}
+
+/* ── FIELDS GRID ── */
+.gd-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 14px 20px;
+  padding: 18px;
+}
+
+.gd-field {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  position: relative;
+}
+
+.gd-label {
+  font-size: 10px;
+  font-weight: 700;
+  color: #6b7a99;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.gd-value {
+  font-size: 12px;
+  font-weight: 500;
+  color: #1a2540;
+  background: #f8fafc;
+  border: 1px solid #e2e8f0;
+  border-radius: 6px;
+  padding: 6px 8px;
+  min-height: 32px;
+  word-break: break-word;
+}
+.gd-value.gd-readonly {
+  background: #f0f0f0;
+  color: #6b7a99;
+}
+
+/* Weight fields */
+.gd-weight-field .gd-label { color: #1558b0; }
+.gd-weight-val {
+  font-weight: 700 !important;
+  color: #1558b0 !important;
+  background: #eff6ff !important;
+  border-color: #bfdbfe !important;
+}
+.gd-net-val {
+  font-weight: 700 !important;
+  color: #065f46 !important;
+  background: #f0fdf4 !important;
+  border-color: #6ee7b7 !important;
+}
+
+/* ── EDITABLE INPUT ── */
+.gd-input {
+  height: 32px;
+  border: 1px solid #93c5fd;
+  border-radius: 6px;
+  padding: 0 8px;
+  font-size: 12px;
+  color: #2c3e50;
+  background: #fff;
+  outline: none;
+  width: 100%;
+  transition: border 0.2s, box-shadow 0.2s;
+}
+.gd-input:focus {
+  border-color: #2563eb;
+  box-shadow: 0 0 0 3px rgba(37,99,235,0.1);
+}
+.gd-weight-input {
+  border-color: #bfdbfe;
+  background: #eff6ff;
+}
+.gd-net-weight {
+  background: #f0fdf4;
+  border-color: #6ee7b7;
+  color: #065f46;
+  font-weight: 700;
+  cursor: not-allowed;
+}
+
+/* ── TEXTAREA ── */
+.gd-textarea {
+  width: 100%;
+  border: 1px solid #93c5fd;
+  border-radius: 6px;
+  padding: 7px 8px;
+  font-size: 12px;
+  color: #2c3e50;
+  resize: vertical;
+  outline: none;
+}
+.gd-textarea:focus {
+  border-color: #2563eb;
+  box-shadow: 0 0 0 3px rgba(37,99,235,0.1);
+}
+
+/* ── FULL ROW (remarks) ── */
+.gd-fullrow {
+  padding: 0 18px 18px;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+/* ── ITEMS TABLE ── */
+.gd-items-section {
+  margin: 0 18px 18px;
+  border: 1px solid #d0d9f0;
+  border-radius: 8px;
+  overflow: hidden;
+}
+.gd-items-title {
+  font-size: 13px;
+  font-weight: 700;
+  color: #1a2540;
+  padding: 10px 14px;
+  background: #dce8ff;
+  border-bottom: 1px solid #d0d9f0;
+}
+.gd-items-wrap { overflow-x: auto; }
+.gd-items-table {
+  width: 100%;
+  border-collapse: collapse;
+  min-width: 500px;
+}
+.gd-items-table th {
+  background: #f0f4fb;
+  padding: 8px 12px;
+  font-size: 11px;
+  font-weight: 700;
+  color: #4a5568;
+  border-bottom: 2px solid #dde3ee;
+  text-align: left;
+  white-space: nowrap;
+}
+.gd-items-table td {
+  padding: 6px 12px;
+  border-bottom: 1px solid #edf0f7;
+  font-size: 12px;
+  color: #2c3e50;
+  vertical-align: middle;
+  position: relative;
+}
+.gd-items-table tbody tr:hover { background: #f0f6ff; }
+
+.gd-item-input {
+  height: 28px;
+  border: 1px solid #bdc7dc;
+  border-radius: 4px;
+  padding: 0 7px;
+  font-size: 12px;
+  background: #fff;
+  outline: none;
+  width: 110px;
+}
+.gd-item-input:focus { border-color: #2563eb; }
+
+/* GIN No link */
+.gin-no-link {
+  background: none;
+  border: none;
+  color: #2563eb;
+  font-weight: 700;
+  font-size: 13px;
+  cursor: pointer;
+  text-decoration: underline;
+  padding: 0;
+  text-underline-offset: 3px;
+  transition: color 0.15s;
+}
+.gin-no-link:hover { color: #1d4ed8; }
+
+/* ── RESPONSIVE ── */
+@media (max-width: 1100px) { .gd-grid { grid-template-columns: repeat(3, 1fr); } }
+@media (max-width: 800px)  {
+  .gd-grid { grid-template-columns: repeat(2, 1fr); }
+  .gd-card { margin: 10px 12px; }
+  .gd-header { padding: 10px 14px; }
+  .gd-header-title h2 { font-size: 15px; }
+}
+@media (max-width: 500px)  {
+  .gd-grid { grid-template-columns: 1fr; }
+  .gd-card { margin: 8px; }
+  .gd-grid { padding: 12px; }
+}

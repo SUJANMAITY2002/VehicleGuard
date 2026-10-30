@@ -1,0 +1,413 @@
+/* ═══════════════════════════════════════
+   SALES SEARCH PAGE — matching GRN style
+═══════════════════════════════════════ */
+
+* { box-sizing: border-box; }
+
+.ss-page {
+  min-height: 100vh;
+  background: #f0f2f5;
+  font-family: "Segoe UI", Roboto, sans-serif;
+  font-size: 13px;
+  color: #1d2733;
+}
+
+/* ── TOP BAR ──────────────────────────────── */
+.ss-topbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px 20px;
+  background: #fff;
+  border-bottom: 1px solid #dde2e9;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  box-shadow: 0 1px 4px rgba(0,0,0,0.06);
+}
+
+.ss-topbar-left {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.ss-back-btn {
+  background: none;
+  border: none;
+  font-size: 15px;
+  font-weight: 600;
+  color: #1d2733;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 4px 0;
+}
+
+.ss-back-btn:hover { color: #1a56db; }
+
+.ss-topbar-right {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+/* ── CREATE BUTTON — matches image style ─── */
+.ss-create-btn {
+  background: #fff;
+  color: #1d2733;
+  border: 1.5px solid #1d2733;
+  padding: 6px 16px;
+  border-radius: 4px;
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  transition: all 0.18s;
+}
+
+.ss-create-btn:hover {
+  background: #1d2733;
+  color: #fff;
+}
+
+/* ── BODY ─────────────────────────────────── */
+.ss-body {
+  padding: 16px 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+/* ── FILTER CARD ──────────────────────────── */
+.ss-filter-card {
+  background: #fff;
+  border: 1px solid #dde2e9;
+  border-radius: 6px;
+  padding: 14px 18px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.ss-filter-row {
+  display: grid;
+  gap: 12px;
+  align-items: end;
+}
+
+.ss-grid-4 {
+  grid-template-columns: repeat(4, 1fr);
+}
+
+.ss-grid-row2 {
+  grid-template-columns: 1fr 1fr auto;
+}
+
+/* ── INPUT WRAP ───────────────────────────── */
+.ss-input-wrap {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.ss-label {
+  font-size: 11.5px;
+  font-weight: 600;
+  color: #555f6e;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.ss-dot { color: #e74c3c; font-size: 16px; line-height: 1; }
+
+.ss-field-row {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.ss-input {
+  width: 100%;
+  height: 34px;
+  padding: 0 30px 0 10px;
+  border: 1px solid #ccd2db;
+  border-radius: 4px;
+  font-size: 13px;
+  color: #1d2733;
+  background: #fff;
+  outline: none;
+  transition: border-color 0.15s;
+  appearance: auto;
+}
+
+.ss-input:focus {
+  border-color: #1a56db;
+  box-shadow: 0 0 0 2px rgba(26,86,219,0.12);
+}
+
+/* clear X button inside field */
+.ss-x {
+  position: absolute;
+  right: 8px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: #888;
+  font-size: 12px;
+  padding: 0;
+  line-height: 1;
+}
+.ss-x:hover { color: #e74c3c; }
+
+/* ── FILTER ACTION BUTTONS ────────────────── */
+.ss-filter-actions {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+  justify-content: flex-end;
+  padding-bottom: 1px;
+}
+
+.ss-btn-clear {
+  background: #fff;
+  color: #555f6e;
+  border: 1px solid #ccd2db;
+  padding: 7px 16px;
+  border-radius: 4px;
+  font-size: 13px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.15s;
+}
+.ss-btn-clear:hover {
+  background: #f0f2f5;
+  border-color: #99a5b4;
+}
+
+.ss-btn-search {
+  background: #1a56db;
+  color: #fff;
+  border: none;
+  padding: 7px 20px;
+  border-radius: 4px;
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.15s;
+}
+.ss-btn-search:hover { background: #1447c0; }
+.ss-btn-search:disabled { opacity: 0.6; cursor: not-allowed; }
+
+/* ── ERROR ────────────────────────────────── */
+.ss-error {
+  background: #fff5f5;
+  border: 1px solid #fca5a5;
+  color: #b91c1c;
+  border-radius: 4px;
+  padding: 10px 14px;
+  font-size: 13px;
+}
+
+/* ── TABLE CARD ───────────────────────────── */
+.ss-table-card {
+  background: #fff;
+  border: 1px solid #dde2e9;
+  border-radius: 6px;
+  overflow: hidden;
+  min-height: 200px;
+}
+
+/* ── EMPTY STATE ──────────────────────────── */
+.ss-empty {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 50px 20px;
+  color: #7a8799;
+  gap: 6px;
+}
+
+.ss-empty-icon { font-size: 40px; }
+.ss-empty-title { font-weight: 600; font-size: 14px; color: #4a5568; margin: 0; }
+.ss-empty-sub { font-size: 12.5px; margin: 0; color: #7a8799; }
+.ss-link { color: #1a56db; cursor: pointer; text-decoration: underline; }
+
+/* ── COUNT ────────────────────────────────── */
+.ss-count {
+  padding: 8px 16px;
+  font-size: 12px;
+  font-weight: 600;
+  color: #555f6e;
+  border-bottom: 1px solid #eaecf0;
+  background: #f8f9fb;
+}
+
+/* ── TABLE ────────────────────────────────── */
+.ss-table-wrap {
+  overflow-x: auto;
+}
+
+.ss-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 12.5px;
+}
+
+.ss-table thead {
+  background: #f0f2f5;
+  position: sticky;
+  top: 0;
+}
+
+.ss-table th {
+  padding: 9px 12px;
+  text-align: left;
+  font-weight: 700;
+  font-size: 11.5px;
+  color: #555f6e;
+  border-bottom: 1.5px solid #dde2e9;
+  white-space: nowrap;
+  text-transform: uppercase;
+  letter-spacing: 0.3px;
+}
+
+.ss-table td {
+  padding: 9px 12px;
+  border-bottom: 1px solid #eaecf0;
+  color: #1d2733;
+  white-space: nowrap;
+}
+
+.ss-table tbody tr:hover { background: #f7f9fc; }
+.ss-table tbody tr:last-child td { border-bottom: none; }
+
+/* ── TYPE BADGE ───────────────────────────── */
+.ss-type-badge {
+  display: inline-block;
+  padding: 2px 8px;
+  border-radius: 3px;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.5px;
+}
+
+.ss-type-te {
+  background: #e0f2fe;
+  color: #075985;
+}
+
+.ss-type-ut {
+  background: #fef3c7;
+  color: #92400e;
+}
+
+/* ── ACTION BUTTONS ───────────────────────── */
+.ss-actions-cell {
+  display: flex;
+  gap: 6px;
+  align-items: center;
+}
+
+.ss-action-btn {
+  padding: 4px 10px;
+  border-radius: 3px;
+  font-size: 11.5px;
+  font-weight: 600;
+  cursor: pointer;
+  border: 1px solid transparent;
+  transition: all 0.14s;
+}
+
+.ss-edit {
+  background: #eff6ff;
+  color: #1a56db;
+  border-color: #bfdbfe;
+}
+.ss-edit:hover {
+  background: #1a56db;
+  color: #fff;
+}
+
+.ss-delete {
+  background: #fff5f5;
+  color: #dc2626;
+  border-color: #fca5a5;
+}
+.ss-delete:hover {
+  background: #dc2626;
+  color: #fff;
+}
+
+/* ── RESPONSIVE ───────────────────────────── */
+@media (max-width: 1100px) {
+  .ss-grid-4 {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .ss-grid-row2 {
+    grid-template-columns: 1fr 1fr;
+  }
+  .ss-filter-actions {
+    grid-column: 1 / -1;
+    justify-content: flex-start;
+  }
+}
+
+@media (max-width: 640px) {
+  .ss-grid-4,
+  .ss-grid-row2 {
+    grid-template-columns: 1fr;
+  }
+  .ss-body { padding: 10px 12px; }
+}
+
+/* ─── Paste these into your existing SalesSearch.css ─────────────────────── */
+
+/* Contract No. hyperlink button */
+.ss-contract-link {
+  background: none;
+  border: none;
+  padding: 0;
+  color: #2563eb;
+  font-weight: 600;
+  font-size: 0.85rem;
+  cursor: pointer;
+  text-decoration: underline;
+  text-underline-offset: 2px;
+  transition: color 0.15s;
+}
+.ss-contract-link:hover {
+  color: #1d4ed8;
+  text-decoration-thickness: 2px;
+}
+
+/* ─── Paste these into your existing SalesContractForm.css ───────────────── */
+
+/* Loading state */
+.scf-loading {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 200px;
+  gap: 12px;
+  color: #64748b;
+}
+
+.scf-spinner {
+  width: 36px;
+  height: 36px;
+  border: 3px solid #e2e8f0;
+  border-top-color: #2563eb;
+  border-radius: 50%;
+  animation: spin 0.7s linear infinite;
+}
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}

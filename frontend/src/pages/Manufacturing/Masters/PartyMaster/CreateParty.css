@@ -1,0 +1,429 @@
+/* ================================================================
+   CreateParty.css  —  used by ALL Create / Detail pages
+   Covers: CreateParty, CreateItem, CreateUOM, CreateSite,
+           CreateSchemeMaster, CreateItemType, CreateItemCategory,
+           CreateTaxDetails, CreateProductionDetails, etc.
+   ================================================================ */
+
+/* ── CSS Variables ────────────────────────────────────────────────── */
+:root {
+  --primary:        #43bfe7;
+  --primary-dark:   #2aa8d0;
+  --primary-light:  #e8f6fb;
+  --border:         #dde3e8;
+  --border-focus:   #43bfe7;
+  --bg-page:        #f0f2f5;
+  --bg-white:       #ffffff;
+  --bg-header:      #f7f9fc;
+  --text-heading:   #1e293b;
+  --text-label:     #475569;
+  --text-muted:     #94a3b8;
+  --text-body:      #334155;
+  --success:        #16a34a;
+  --danger:         #ef4444;
+  --warning:        #f59e0b;
+  --radius-sm:      4px;
+  --radius-md:      8px;
+  --radius-lg:      12px;
+  --shadow-card:    0 1px 4px rgba(0,0,0,0.08), 0 4px 16px rgba(0,0,0,0.04);
+  --input-h:        36px;
+  --font-size-sm:   12px;
+  --font-size-base: 13px;
+  --font-size-md:   14px;
+  --font-size-lg:   16px;
+  --font-size-xl:   20px;
+  --font-size-2xl:  24px;
+}
+
+/* ── Page wrapper ─────────────────────────────────────────────────── */
+.create-page {
+  min-height: 100vh;
+  background: var(--bg-page);
+  font-family: "Segoe UI", system-ui, -apple-system, sans-serif;
+  color: var(--text-body);
+}
+
+/* ── Top header bar ───────────────────────────────────────────────── */
+.create-header {
+  background: var(--bg-white);
+  border-bottom: 1px solid var(--border);
+  padding: 14px 24px;
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.06);
+}
+
+.create-header h1 {
+  font-size: var(--font-size-2xl);
+  color: var(--text-heading);
+  font-weight: 600;
+  margin: 0;
+  letter-spacing: -0.3px;
+}
+
+/* Back button in header */
+.back-btn {
+  background: none;
+  border: 1px solid var(--border);
+  color: var(--text-label);
+  padding: 6px 14px;
+  border-radius: var(--radius-sm);
+  font-size: var(--font-size-base);
+  cursor: pointer;
+  transition: all 0.15s;
+  white-space: nowrap;
+}
+.back-btn:hover {
+  background: var(--primary-light);
+  border-color: var(--primary);
+  color: var(--primary-dark);
+}
+
+/* ── Main card container ──────────────────────────────────────────── */
+.create-container {
+  width: 96%;
+  max-width: 1400px;
+  margin: 20px auto;
+  background: var(--bg-white);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-card);
+  overflow: hidden;
+}
+
+/* Section title inside container */
+.create-title {
+  padding: 14px 20px;
+  border-bottom: 1px solid var(--border);
+  font-size: var(--font-size-lg);
+  font-weight: 600;
+  color: var(--text-heading);
+  background: var(--bg-header);
+  letter-spacing: -0.1px;
+}
+
+/* ── Basic info / sub-section label ───────────────────────────────── */
+.basic-info {
+  padding: 20px 20px 0;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 18px;
+}
+
+/* ── Form grid ────────────────────────────────────────────────────── */
+.create-grid {
+  padding: 20px;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 18px;
+}
+
+/* ── Form group ───────────────────────────────────────────────────── */
+.form-group {
+  display: flex;
+  flex-direction: column;
+  position: relative;
+}
+
+.form-group label {
+  margin-bottom: 6px;
+  font-size: var(--font-size-base);
+  font-weight: 500;
+  color: var(--text-label);
+  letter-spacing: 0.1px;
+}
+
+.form-group input,
+.form-group select,
+.form-group textarea {
+  height: var(--input-h);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  padding: 0 10px;
+  font-size: var(--font-size-base);
+  color: var(--text-body);
+  background: var(--bg-white);
+  outline: none;
+  transition: border-color 0.15s, box-shadow 0.15s;
+  box-sizing: border-box;
+  width: 100%;
+  font-family: inherit;
+}
+
+.form-group input:focus,
+.form-group select:focus,
+.form-group textarea:focus {
+  border-color: var(--border-focus);
+  box-shadow: 0 0 0 3px rgba(67, 191, 231, 0.14);
+}
+
+.form-group input[readonly],
+.form-group input:disabled,
+.form-group select:disabled {
+  background: #f8fafc;
+  color: var(--text-muted);
+  cursor: not-allowed;
+  border-color: #e8ecf0;
+}
+
+.form-group textarea {
+  height: auto;
+  min-height: 80px;
+  padding: 8px 10px;
+  resize: vertical;
+}
+
+/* Helper text below inputs */
+.computed-value,
+.form-group span {
+  font-size: var(--font-size-sm);
+  color: var(--text-muted);
+  margin-top: 4px;
+}
+
+/* ── Typeahead suggestion list ────────────────────────────────────── */
+.suggestion-list {
+  position: absolute;
+  top: calc(100% + 2px);
+  left: 0;
+  right: 0;
+  background: var(--bg-white);
+  border: 1px solid #cce0f0;
+  border-radius: var(--radius-sm);
+  box-shadow: 0 4px 16px rgba(0,0,0,0.10);
+  list-style: none;
+  margin: 0;
+  padding: 4px 0;
+  z-index: 999;
+  max-height: 200px;
+  overflow-y: auto;
+}
+
+.suggestion-list li {
+  padding: 8px 12px;
+  font-size: var(--font-size-base);
+  color: var(--text-body);
+  cursor: pointer;
+  transition: background 0.12s;
+}
+
+.suggestion-list li:hover {
+  background: var(--primary-light);
+  color: var(--primary-dark);
+}
+
+/* ── Section divider (for scheme table, UOM section, etc.) ───────── */
+.scheme-table-wrap,
+.section-wrap {
+  padding: 20px;
+  border-top: 1px solid var(--border);
+  margin-top: 4px;
+}
+
+.scheme-table-heading,
+.section-heading {
+  font-size: var(--font-size-md);
+  font-weight: 600;
+  color: var(--text-heading);
+  margin-bottom: 12px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.scheme-basic-label {
+  font-weight: 400;
+  color: var(--primary);
+  font-size: var(--font-size-base);
+}
+
+/* ── Scheme / editable matrix table ──────────────────────────────── */
+.scheme-scroll {
+  overflow-x: auto;
+  border-radius: var(--radius-sm);
+  border: 1px solid var(--border);
+}
+
+.scheme-matrix {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: var(--font-size-base);
+  min-width: 600px;
+}
+
+.scheme-matrix th,
+.scheme-matrix td {
+  border: 1px solid #dde3e8;
+  padding: 9px 12px;
+  text-align: center;
+  vertical-align: middle;
+  white-space: nowrap;
+}
+
+.scheme-matrix thead th {
+  background: #f0f4f8;
+  font-weight: 600;
+  color: var(--text-heading);
+  font-size: var(--font-size-base);
+}
+
+.scheme-matrix .col-group {
+  background: var(--primary-light);
+  color: #1a6fa0;
+}
+
+.scheme-matrix .sub-header th {
+  background: #fafbfc;
+  font-size: 11px;
+  color: var(--text-muted);
+  font-weight: 500;
+  padding: 4px 8px;
+}
+
+.scheme-matrix tr.row-editing {
+  background: #fffbeb;
+}
+.scheme-matrix tr.row-editing td {
+  border-color: #fbbf24;
+}
+
+.editable-matrix { min-width: 900px; }
+
+/* x-badge and offset display inside scheme table */
+.x-badge {
+  display: inline-block;
+  background: #dcfce7;
+  color: #166534;
+  padding: 2px 8px;
+  border-radius: 10px;
+  font-size: var(--font-size-sm);
+  font-weight: 600;
+}
+.x-placeholder { font-style: italic; color: var(--text-muted); }
+
+.offset-display {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2px;
+}
+.offset-input {
+  width: 90px;
+  padding: 4px 8px;
+  border: 1.5px solid var(--primary);
+  border-radius: var(--radius-sm);
+  font-size: var(--font-size-base);
+  text-align: center;
+  outline: none;
+  box-sizing: border-box;
+}
+.offset-input:focus {
+  box-shadow: 0 0 0 3px rgba(67,191,231,0.18);
+}
+.computed-pill {
+  background: #dbeafe;
+  color: #1d4ed8;
+  padding: 2px 8px;
+  border-radius: 10px;
+  font-size: 11px;
+  font-weight: 600;
+}
+.date-input {
+  width: 128px;
+  padding: 4px 6px;
+  border: 1.5px solid var(--primary);
+  border-radius: var(--radius-sm);
+  font-size: var(--font-size-sm);
+  outline: none;
+  box-sizing: border-box;
+}
+.size-cell { font-weight: 700; color: var(--text-heading); }
+.x-cell    { min-width: 100px; }
+.offset-cell { min-width: 140px; }
+.date-cell   { min-width: 120px; font-size: var(--font-size-sm); }
+
+.edit-row-btn,
+.save-row-btn {
+  padding: 4px 12px;
+  border: none;
+  border-radius: var(--radius-sm);
+  cursor: pointer;
+  font-size: var(--font-size-sm);
+  font-weight: 600;
+}
+.edit-row-btn { background: var(--primary-light); color: #1a6fa0; }
+.edit-row-btn:hover { background: #cce5f5; }
+.save-row-btn { background: #dcfce7; color: #166534; }
+.save-row-btn:hover { background: #bbf7d0; }
+
+/* ── Action buttons ───────────────────────────────────────────────── */
+.action-buttons {
+  padding: 20px;
+  display: flex;
+  gap: 10px;
+  border-top: 1px solid var(--border);
+  background: var(--bg-header);
+}
+
+.submit-btn {
+  background: var(--primary);
+  border: none;
+  color: white;
+  padding: 8px 22px;
+  border-radius: var(--radius-sm);
+  cursor: pointer;
+  font-size: var(--font-size-base);
+  font-weight: 600;
+  height: var(--input-h);
+  transition: background 0.15s, transform 0.1s;
+  font-family: inherit;
+}
+.submit-btn:hover { background: var(--primary-dark); }
+.submit-btn:active { transform: scale(0.97); }
+
+.draft-btn {
+  background: var(--bg-white);
+  border: 1px solid var(--primary);
+  color: var(--primary);
+  padding: 8px 22px;
+  border-radius: var(--radius-sm);
+  cursor: pointer;
+  font-size: var(--font-size-base);
+  font-weight: 500;
+  height: var(--input-h);
+  transition: background 0.15s;
+  font-family: inherit;
+}
+.draft-btn:hover { background: var(--primary-light); }
+
+.cancel-btn {
+  background: var(--bg-white);
+  border: 1px solid var(--border);
+  color: var(--text-label);
+  padding: 8px 22px;
+  border-radius: var(--radius-sm);
+  cursor: pointer;
+  font-size: var(--font-size-base);
+  font-weight: 500;
+  height: var(--input-h);
+  transition: background 0.15s;
+  font-family: inherit;
+}
+.cancel-btn:hover { background: #f1f5f9; }
+
+/* ── Responsive ───────────────────────────────────────────────────── */
+@media (max-width: 1200px) {
+  .create-grid,
+  .basic-info { grid-template-columns: repeat(3, 1fr); }
+}
+@media (max-width: 900px) {
+  .create-grid,
+  .basic-info { grid-template-columns: repeat(2, 1fr); }
+}
+@media (max-width: 600px) {
+  .create-grid,
+  .basic-info { grid-template-columns: 1fr; }
+  .create-container { width: 100%; border-radius: 0; }
+  .action-buttons { flex-wrap: wrap; }
+}

@@ -1,0 +1,331 @@
+/* ════════════════════════════════════════════
+   CREATE GIN  — CreateGIN.css
+   Consistent with PO styling system
+════════════════════════════════════════════ */
+
+.cgin-page {
+  min-height: 100vh;
+  background: #f4f6f9;
+  padding: 12px;
+  font-family: Arial, sans-serif;
+}
+
+/* ── HEADER ── */
+.cgin-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: #fff;
+  border-radius: 8px;
+  padding: 10px 16px;
+  margin-bottom: 10px;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.07);
+  flex-wrap: wrap;
+  gap: 8px;
+}
+.cgin-header-left {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+.cgin-header h2,
+.cgin-header-left h2 {
+  font-size: 18px;
+  color: #1e293b;
+  font-weight: 700;
+}
+
+/* Unified back button */
+.back-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  height: var(--back-btn-h, 34px);
+  padding: 0 var(--back-btn-px, 14px);
+  background: var(--back-btn-bg, #2563eb);
+  color: var(--back-btn-color, #fff);
+  border: none;
+  border-radius: var(--back-btn-radius, 8px);
+  font-size: var(--back-btn-font, 13px);
+  font-weight: 700;
+  cursor: pointer;
+  white-space: nowrap;
+  transition: background 0.2s, transform 0.15s, box-shadow 0.2s;
+  box-shadow: 0 2px 8px rgba(37,99,235,0.18);
+  flex-shrink: 0;
+}
+.back-btn:hover {
+  background: var(--back-btn-bg-hover, #1d4ed8);
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(37,99,235,0.28);
+}
+
+/* ── CARD ── */
+.cgin-card {
+  background: #fff;
+  border-radius: 8px;
+  padding: 12px 16px;
+  margin-bottom: 10px;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.07);
+}
+.cgin-card-title {
+  font-size: 13px;
+  font-weight: 700;
+  color: #1e293b;
+  margin-bottom: 10px;
+  padding-bottom: 8px;
+  border-bottom: 1px solid #e2e8f0;
+}
+
+/* ── GRID ── */
+.cgin-grid {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 10px;
+}
+
+/* ── FORM FIELD ── */
+.cgin-field {
+  display: flex;
+  flex-direction: column;
+  position: relative; /* typeahead positioning */
+}
+.cgin-field label {
+  font-size: 11px;
+  font-weight: 600;
+  color: #334155;
+  margin-bottom: 3px;
+}
+.cgin-field input,
+.cgin-field select,
+.cgin-field textarea {
+  width: 100%;
+  border: 1px solid #cbd5e1;
+  border-radius: 6px;
+  padding: 0 8px;
+  font-size: 12px;
+  outline: none;
+  background: #fff;
+}
+.cgin-field input,
+.cgin-field select {
+  height: 34px;
+}
+.cgin-field textarea {
+  padding: 7px 8px;
+  resize: vertical;
+}
+.cgin-field input:focus,
+.cgin-field select:focus,
+.cgin-field textarea:focus {
+  border-color: #2563eb;
+}
+
+/* ── TYPEAHEAD / SUGGESTION (shared style used in GIN) ── */
+.cgin-suggestions {
+  position: absolute;
+  top: calc(100% + 2px);
+  left: 0;
+  width: 100%;
+  min-width: 200px;
+  max-height: 220px;
+  overflow-y: auto;
+  background: #fff;
+  border: 1.5px solid #93c5fd;
+  border-radius: 6px;
+  list-style: none;
+  z-index: 1200;
+  box-shadow: 0 8px 24px rgba(37,99,235,0.12);
+  scrollbar-width: thin;
+}
+.cgin-suggestions li {
+  padding: 7px 12px;
+  font-size: 12px;
+  cursor: pointer;
+  border-bottom: 1px solid #f1f5f9;
+  color: #1e293b;
+}
+.cgin-suggestions li:last-child { border-bottom: none; }
+.cgin-suggestions li:hover { background: #eff6ff; color: #1d4ed8; }
+
+/* ── FULL WIDTH TEXTAREA ROW ── */
+.gin-full-width {
+  width: 100%;
+  margin-top: 12px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+}
+
+/* ── ACTION BUTTONS ── */
+.cgin-actions {
+  margin-top: 12px;
+  display: flex;
+  justify-content: flex-end;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+.btn-reset {
+  background: #f1f5f9;
+  color: #475569;
+  border: 1px solid #cbd5e1;
+  padding: 8px 22px;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 13px;
+  font-weight: 600;
+}
+.btn-reset:hover { background: #e2e8f0; }
+.btn-save {
+  background: #16a34a;
+  color: white;
+  border: none;
+  padding: 8px 26px;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 13px;
+  font-weight: 600;
+}
+.btn-save:hover { background: #15803d; }
+
+/* ── ITEMS SECTION ── */
+.cgin-items-section {
+  margin-top: 12px;
+  border: 1px solid #ddd;
+  border-radius: 6px;
+  overflow: hidden;
+}
+.cgin-items-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px 14px;
+  background: #f5f7fa;
+  border-bottom: 1px solid #ddd;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+.cgin-items-title {
+  font-size: 14px;
+  font-weight: 700;
+  color: #333;
+}
+.cgin-del-rows-btn {
+  background: #dc3545;
+  color: #fff;
+  border: none;
+  padding: 5px 14px;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 12px;
+}
+.cgin-del-rows-btn:hover { background: #b02a37; }
+
+.cgin-items-table-wrap {
+  overflow-x: auto;
+  max-height: 320px;
+  overflow-y: auto;
+}
+.cgin-items-table {
+  width: 100%;
+  border-collapse: collapse;
+  min-width: 900px;
+}
+.cgin-items-table thead th {
+  background: #eef1f7;
+  border: 1px solid #d5d8de;
+  padding: 8px 10px;
+  font-size: 12px;
+  font-weight: 600;
+  color: #333;
+  white-space: nowrap;
+  position: sticky;
+  top: 0;
+  z-index: 1;
+}
+.cgin-items-table tbody td {
+  border: 1px solid #e4e6eb;
+  padding: 3px 4px;
+  vertical-align: middle;
+  position: relative;
+}
+.cgin-items-table tbody tr:nth-child(even) { background: #fafbfd; }
+.cgin-items-table tbody tr:hover           { background: #f0f4ff; }
+.cgin-row-checked { background: #fff3cd !important; }
+
+.cgin-sno-cell {
+  text-align: center;
+  font-size: 12px;
+  font-weight: 600;
+  color: #555;
+  width: 40px;
+}
+.cgin-check-cell {
+  text-align: center;
+  width: 44px;
+}
+
+.cgin-item-input {
+  width: 100%;
+  height: 28px;
+  border: 1px solid #cfd3da;
+  border-radius: 3px;
+  padding: 0 6px;
+  font-size: 12px;
+  background: #fff;
+  box-sizing: border-box;
+  outline: none;
+}
+.cgin-item-input:focus {
+  border-color: #0d6efd;
+  background: #f0f7ff;
+}
+.cgin-item-wide { min-width: 130px; }
+.cgin-item-num  { max-width: 80px; }
+.cgin-item-sm   { max-width: 60px; }
+
+/* ── INSERT ROW BAR ── */
+.cgin-insert-row-bar {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 8px;
+  padding: 10px 14px;
+  background: #f5f7fa;
+  border-top: 1px solid #ddd;
+  flex-wrap: wrap;
+}
+.cgin-insert-count {
+  width: 60px;
+  height: 30px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  padding: 0 8px;
+  font-size: 13px;
+  text-align: center;
+}
+.cgin-insert-row-btn {
+  background: #0d6efd;
+  color: #fff;
+  border: none;
+  padding: 6px 16px;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 13px;
+  font-weight: 600;
+}
+.cgin-insert-row-btn:hover { background: #0b5ed7; }
+
+/* ── RESPONSIVE ── */
+@media (max-width: 1300px) { .cgin-grid { grid-template-columns: repeat(4, 1fr); } }
+@media (max-width: 1000px) { .cgin-grid { grid-template-columns: repeat(3, 1fr); } }
+@media (max-width: 700px)  {
+  .cgin-grid { grid-template-columns: repeat(2, 1fr); }
+  .gin-full-width { grid-template-columns: 1fr; }
+  .cgin-header h2, .cgin-header-left h2 { font-size: 15px; }
+}
+@media (max-width: 480px)  {
+  .cgin-grid { grid-template-columns: 1fr; }
+  .cgin-page { padding: 8px; }
+}

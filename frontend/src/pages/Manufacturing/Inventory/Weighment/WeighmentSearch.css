@@ -1,0 +1,270 @@
+/* ══════════════════════════════════════════════════════════════
+   WeighmentSearch.css  — compact, full-screen result, responsive
+══════════════════════════════════════════════════════════════ */
+
+/* ── Page shell ── */
+.weighment-page {
+  height: 100vh;
+  max-height: 100vh;
+  background: #f0f2f5;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;   /* entire page locked — inner areas scroll */
+}
+
+/* ── Header — same style as InwardOutwardNote page ── */
+.gin-search-header {
+  width: 100%;
+  min-height: 48px;
+  background: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 6px 16px;
+  border-bottom: 1px solid #e2e8f0;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+  flex-wrap: wrap;
+  gap: 6px;
+  flex-shrink: 0;
+}
+
+/* ── Create button ── */
+.create-btn {
+  background: #2563eb;
+  color: #fff;
+  border: none;
+  padding: 6px 14px;
+  border-radius: 6px;
+  font-size: 12px;
+  font-weight: 600;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  transition: background 0.2s;
+  white-space: nowrap;
+}
+.create-btn:hover { background: #1d4ed8; }
+
+/* ── Create dropdown ── */
+.create-dropdown-wrap { position: relative; display: inline-block; }
+.create-menu {
+  position: absolute;
+  top: calc(100% + 4px);
+  right: 0;
+  background: #fff;
+  border: 1px solid #dde3ec;
+  border-radius: 8px;
+  box-shadow: 0 8px 24px rgba(0,0,0,0.12);
+  min-width: 170px;
+  z-index: 999;
+  overflow: hidden;
+  animation: menuSlide 0.15s ease;
+}
+@keyframes menuSlide {
+  from { opacity: 0; transform: translateY(-5px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+.create-menu-item {
+  display: block;
+  width: 100%;
+  padding: 9px 16px;
+  text-align: left;
+  background: transparent;
+  border: none;
+  border-bottom: 1px solid #f0f4f8;
+  font-size: 13px;
+  color: #1e293b;
+  cursor: pointer;
+  transition: background 0.15s;
+}
+.create-menu-item:last-child { border-bottom: none; }
+.create-menu-item:hover { background: #eff6ff; color: #1d4ed8; font-weight: 600; }
+
+/* ── Search panel — compact ── */
+.search-panel {
+  background: #fff;
+  margin: 8px 10px 0;
+  padding: 10px 12px 8px;
+  border: 1px solid #e2e8f0;
+  border-radius: 8px;
+  box-shadow: 0 1px 4px rgba(0,0,0,0.04);
+  flex-shrink: 0;
+}
+
+/* 9 fields across in 3 rows × 3 cols, then compact */
+.search-grid {
+  display: grid;
+  grid-template-columns: repeat(9, 1fr);
+  gap: 6px 8px;
+}
+
+/* ── Filter field — compact ── */
+.field {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.field label {
+  font-size: 10px;
+  font-weight: 700;
+  color: #111827;
+  text-transform: uppercase;
+  letter-spacing: 0.4px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.field input,
+.field select {
+  height: 28px;
+  border: 1px solid #d1d5db;
+  border-radius: 5px;
+  padding: 0 7px;
+  font-size: 11px;
+  color: #111827;
+  background: #fff;
+  outline: none;
+  width: 100%;
+}
+.field input:focus,
+.field select:focus { border-color: #2563eb; }
+.field input::placeholder { color: #bdc6d0; font-size: 10px; }
+
+/* ── Bottom actions — compact ── */
+.bottom-actions {
+  margin-top: 7px;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  gap: 6px;
+}
+
+.reset-btn {
+  background: #f1f5f9;
+  color: #475569;
+  border: 1px solid #cbd5e1;
+  padding: 5px 14px;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 11px;
+  font-weight: 600;
+}
+.reset-btn:hover { background: #e2e8f0; }
+
+.apply-btn {
+  background: #2563eb;
+  color: white;
+  border: none;
+  padding: 5px 18px;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 11px;
+  font-weight: 600;
+  transition: background 0.2s;
+}
+.apply-btn:hover { background: #1d4ed8; }
+
+/* ── Result area — fills remaining screen, no outer scroll ── */
+.result-area {
+  background: white;
+  margin: 6px 10px 10px;
+  border: 1px solid #e2e8f0;
+  border-radius: 8px;
+  box-shadow: 0 1px 4px rgba(0,0,0,0.04);
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  min-height: 0;
+  overflow: hidden;
+  max-width: 100%;
+}
+
+.placeholder {
+  color: #9ca3af;
+  font-size: 14px;
+  margin: auto;
+  padding: 32px;
+  text-align: center;
+}
+
+/* ── Table wrapper — scrolls inside, not the page ── */
+.result-table-wrap {
+  width: 100%;
+  flex: 1;
+  overflow: auto;
+  min-height: 0;
+  -webkit-overflow-scrolling: touch;
+}
+
+/* ── Table ── */
+.result-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 12px;
+  min-width: 900px;   /* keeps columns from squashing on wide screens */
+}
+
+.result-table thead {
+  position: sticky;
+  top: 0;
+  z-index: 2;
+}
+
+.result-table th {
+  background: #f8fafc;
+  border-bottom: 2px solid #e2e8f0;
+  padding: 8px 10px;
+  text-align: left;
+  white-space: nowrap;
+  font-size: 11px;
+  font-weight: 700;
+  color: #374151;
+  text-transform: uppercase;
+  letter-spacing: 0.4px;
+}
+
+.result-table td {
+  border-bottom: 1px solid #f1f5f9;
+  padding: 7px 10px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 200px;
+  color: #111827;
+  font-size: 12px;
+}
+
+/* Weighment No column — allow badge to show fully */
+.result-table td:nth-child(2) {
+  max-width: none;
+  white-space: nowrap;
+}
+
+.result-table tbody tr:last-child td { border-bottom: none; }
+.result-table tbody tr:hover { background: #f0f7ff; cursor: pointer; }
+.result-table tbody tr:nth-child(even) { background: #fafbfc; }
+.result-table tbody tr:nth-child(even):hover { background: #f0f7ff; }
+
+/* ── Misc leftovers (keep for compatibility) ── */
+.header-actions { display: flex; gap: 8px; align-items: center; }
+.weighment-header { display: none; }
+.old-btn {
+  background: #fff; color: #5a6785; border: 1px solid #c8d0e0;
+  padding: 5px 12px; border-radius: 5px; font-size: 12px; cursor: pointer;
+}
+.checkbox-wrap { display: flex; gap: 8px; align-items: center; }
+.editing-row { background: #fffbe6 !important; }
+.action-cell { white-space: nowrap; }
+
+/* ── Responsive ── */
+@media (max-width: 1200px) { .search-grid { grid-template-columns: repeat(5, 1fr); } }
+@media (max-width: 900px)  { .search-grid { grid-template-columns: repeat(3, 1fr); } }
+@media (max-width: 600px)  {
+  .search-grid { grid-template-columns: repeat(2, 1fr); }
+  .search-panel { margin: 6px 6px 0; padding: 8px; }
+  .result-area  { margin: 4px 6px 6px; }
+}
+@media (max-width: 420px)  { .search-grid { grid-template-columns: 1fr; } }

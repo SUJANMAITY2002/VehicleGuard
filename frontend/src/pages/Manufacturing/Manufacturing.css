@@ -1,0 +1,156 @@
+
+
+.manufacturing-container {
+  width: 100%;
+  min-height: 100vh;
+  background: #f5f6f8;
+  font-family: Arial, sans-serif;
+}
+
+
+/* TOP NAVBAR */
+
+.top-navbar {
+  height: 70px;
+
+  background: linear-gradient(
+    90deg,
+    #7ea8ff,
+    #a8c8ff,
+    #dcecff
+  );
+
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  padding: 0 25px;
+
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+}
+
+
+/* TITLE */
+
+.top-left h1 {
+  margin: 0;
+
+  color: white;
+
+  font-size: 34px;
+  font-weight: 600;
+}
+
+
+/* RIGHT ICONS */
+
+.top-right {
+  display: flex;
+  gap: 18px;
+
+  font-size: 22px;
+
+  color: #0b4ea2;
+
+  cursor: pointer;
+}
+
+
+/* CARD SECTION */
+
+.card-section {
+  padding: 20px;
+
+  display: grid;
+
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+
+  gap: 20px;
+}
+
+
+/* CARD */
+
+.sap-card {
+  background: #f9f9f9;
+
+  border-radius: 14px;
+
+  padding: 20px;
+
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+
+  transition: 0.3s;
+
+  cursor: pointer;
+}
+
+
+.sap-card:hover {
+  transform: translateY(-4px);
+
+  box-shadow: 0 6px 18px rgba(0,0,0,0.12);
+}
+
+
+/* LEFT SIDE */
+
+.card-left {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+
+
+/* CIRCLE */
+
+.circle-icon {
+  width: 50px;
+  height: 50px;
+
+  border-radius: 50%;
+
+  background: #ebe1ff;
+
+  color: #7d2eff;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  font-weight: bold;
+  font-size: 18px;
+}
+
+
+/* TEXT */
+
+.card-text h3 {
+  margin: 0;
+
+  font-size: 22px;
+
+  color: #333;
+
+  text-transform: capitalize;
+}
+
+
+.card-text p {
+  margin-top: 5px;
+
+  color: gray;
+
+  font-size: 14px;
+}
+
+
+/* RIGHT ICON */
+
+.module-icon {
+  font-size: 32px;
+}

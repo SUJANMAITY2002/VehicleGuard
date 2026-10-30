@@ -1,0 +1,233 @@
+/* =========================
+   MAIN PAGE
+========================= */
+
+.sales-main-container{
+  min-height: 100vh;
+
+  background: #efefef;
+
+  font-family: Arial, sans-serif;
+}
+
+/* =========================
+   TOP BANNER
+========================= */
+
+.sales-top-banner{
+  height: 72px;
+
+  display: flex;
+  align-items: center;
+
+  padding-left: 22px;
+
+  background:
+    linear-gradient(
+      135deg,
+      #5f92e5,
+      #9dc6ef,
+      #dceffc
+    );
+
+  border-bottom:
+    1px solid rgba(255,255,255,0.2);
+}
+
+/* =========================
+   TITLE
+========================= */
+
+.sales-page-title{
+  color: white;
+
+  font-size: 26px;
+  font-weight: 600;
+
+  letter-spacing: 0.3px;
+}
+
+/* =========================
+   CARD WRAPPER
+========================= */
+
+.sales-card-wrapper{
+  padding: 25px;
+
+  display: grid;
+
+  grid-template-columns:
+    repeat(3, 1fr);
+
+  gap: 25px;
+}
+
+/* =========================
+   CARD
+========================= */
+
+.sales-module-card{
+  background: #ffffff;
+
+  border-radius: 18px;
+
+  padding: 28px;
+
+  min-height: 120px;
+
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  cursor: pointer;
+
+  transition: all 0.3s ease;
+
+  box-shadow:
+    0 4px 12px rgba(0,0,0,0.12);
+}
+
+.sales-module-card:hover{
+  transform: translateY(-3px);
+
+  box-shadow:
+    0 5px 16px rgba(0,0,0,0.16);
+}
+
+/* Disabled / "coming soon" cards (steps not built yet) */
+.sales-module-card.disabled{
+  cursor: not-allowed;
+  opacity: 0.55;
+}
+.sales-module-card.disabled:hover{
+  transform: none;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.12);
+}
+
+/* =========================
+   LEFT SIDE
+========================= */
+
+.sales-module-left{
+  display: flex;
+  align-items: center;
+
+  gap: 14px;
+}
+
+/* =========================
+   ICON CIRCLE
+========================= */
+
+.sales-module-icon-circle{
+  width: 42px;
+  height: 42px;
+
+  border-radius: 50%;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  font-size: 15px;
+  font-weight: 600;
+}
+
+/* PURPLE */
+.sales-module-icon-circle.purple{
+  background: #eadcf7;
+  color: #7f2ce4;
+}
+
+/* BLUE */
+.sales-module-icon-circle.blue{
+  background: #dde9f5;
+  color: #1d69b5;
+}
+
+/* GREEN */
+.sales-module-icon-circle.green{
+  background: #dcf7e3;
+  color: #1a9e4c;
+}
+
+/* ORANGE */
+.sales-module-icon-circle.orange{
+  background: #fdead0;
+  color: #c9720b;
+}
+
+/* TEAL */
+.sales-module-icon-circle.teal{
+  background: #d7f3f1;
+  color: #0f8a82;
+}
+
+/* RED */
+.sales-module-icon-circle.red{
+  background: #fbdede;
+  color: #c0392b;
+}
+
+/* =========================
+   DETAILS
+========================= */
+
+.sales-module-details h3{
+  margin: 0;
+  color: #333;
+  font-size: 16px;
+  font-weight: 500;
+}
+
+.sales-module-details p{
+  margin-top: 4px;
+  color: #777;
+  font-size: 14px;
+}
+
+/* =========================
+   RIGHT SIDE
+========================= */
+
+.sales-module-right{
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 12px;
+}
+
+/* =========================
+   MODULE CODE
+========================= */
+
+.sales-module-code{
+  color: #777;
+  font-size: 14px;
+}
+
+/* "Soon" badge on disabled cards */
+.sales-module-soon{
+  background: #eee;
+  color: #888;
+  font-size: 11px;
+  font-weight: 600;
+  padding: 3px 9px;
+  border-radius: 10px;
+  text-transform: uppercase;
+  letter-spacing: 0.4px;
+}
+
+/* =========================
+   RESPONSIVE
+========================= */
+@media (max-width: 1100px){
+  .sales-card-wrapper{
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+@media (max-width: 700px){
+  .sales-card-wrapper{
+    grid-template-columns: 1fr;
+  }
+}

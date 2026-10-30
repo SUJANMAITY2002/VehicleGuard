@@ -1,0 +1,215 @@
+/* ════════════════════════════════════════════
+   VEHICLE OUTWARD WEIGHMENT — VehicleOutwardWeighmentSearch.css
+   Search/landing page for the Weighment module card on Sales.
+   Same visual language as VehicleOutwardWeighment.css (orange
+   theme), own "vows-" prefix so nothing collides.
+════════════════════════════════════════════ */
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Segoe UI", sans-serif;
+}
+
+.vows-page {
+  width: 100%;
+  min-height: 100vh;
+  background: #f4f6f9;
+}
+
+.vows-topbar {
+  height: 60px;
+  background: #ffffff;
+  border-bottom: 1px solid #dcdcdc;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 25px;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+.vows-topbar-left, .vows-topbar-right {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+.vows-back-btn {
+  background: transparent;
+  border: none;
+  font-size: 20px;
+  font-weight: 600;
+  color: #1f2937;
+  cursor: pointer;
+}
+
+.vows-body { padding: 20px; }
+
+.vows-filter-card {
+  width: 100%;
+  background: white;
+  border-radius: 8px;
+  padding: 20px;
+  border: 1px solid #e5e7eb;
+  margin-bottom: 16px;
+}
+
+.vows-filter-row { display: grid; gap: 16px; margin-bottom: 14px; }
+.vows-filter-row:last-child { margin-bottom: 0; }
+.vows-grid-4 { grid-template-columns: repeat(4, 1fr); }
+.vows-grid-row2 { grid-template-columns: repeat(3, 1fr) auto; align-items: end; }
+
+.vows-input-wrap { display: flex; flex-direction: column; }
+.vows-label { margin-bottom: 4px; font-size: 12px; font-weight: 600; color: #374151; }
+.vows-field-row { display: flex; align-items: center; gap: 6px; }
+
+.vows-input {
+  height: 36px;
+  width: 100%;
+  border: 1px solid #d1d5db;
+  border-radius: 4px;
+  padding: 0 8px;
+  font-size: 13px;
+  background: white;
+  transition: 0.2s;
+}
+.vows-input:focus {
+  outline: none;
+  border-color: #c2410c;
+  box-shadow: 0 0 3px rgba(194, 65, 12, 0.25);
+}
+
+.vows-x {
+  background: #f1f5f9;
+  border: none;
+  border-radius: 4px;
+  width: 26px;
+  height: 26px;
+  cursor: pointer;
+  font-size: 11px;
+  color: #64748b;
+  flex-shrink: 0;
+}
+.vows-x:hover { background: #e2e8f0; }
+
+.vows-filter-actions { display: flex; gap: 10px; }
+.vows-btn-clear, .vows-btn-search {
+  height: 36px;
+  padding: 0 18px;
+  border: none;
+  border-radius: 4px;
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+  white-space: nowrap;
+}
+.vows-btn-clear { background: #f1f5f9; color: #475569; }
+.vows-btn-clear:hover { background: #e2e8f0; }
+.vows-btn-search { background: #c2410c; color: white; }
+.vows-btn-search:hover { background: #9a3412; }
+.vows-btn-search:disabled { opacity: 0.6; cursor: not-allowed; }
+
+.vows-error {
+  background: #fee2e2;
+  color: #991b1b;
+  padding: 12px 15px;
+  border-radius: 4px;
+  margin-bottom: 15px;
+  font-size: 14px;
+}
+
+.vows-table-card {
+  width: 100%;
+  background: white;
+  border-radius: 8px;
+  border: 1px solid #e5e7eb;
+  overflow: hidden;
+}
+
+.vows-empty {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 60px 20px;
+  text-align: center;
+}
+.vows-empty-icon { font-size: 34px; margin-bottom: 10px; }
+.vows-empty-title { font-size: 15px; font-weight: 600; color: #1f2937; margin-bottom: 4px; }
+.vows-empty-sub { font-size: 13px; color: #6b7280; }
+
+.vows-count {
+  padding: 12px 18px;
+  font-size: 13px;
+  font-weight: 600;
+  color: #475569;
+  border-bottom: 1px solid #e5e7eb;
+}
+
+.vows-table-wrap { overflow-x: auto; }
+.vows-table { width: 100%; border-collapse: collapse; min-width: 900px; }
+.vows-table thead th {
+  background: #f8fafc;
+  border-bottom: 1px solid #e5e7eb;
+  padding: 10px 14px;
+  font-size: 12px;
+  font-weight: 700;
+  color: #374151;
+  text-align: left;
+  white-space: nowrap;
+}
+.vows-table tbody td {
+  border-bottom: 1px solid #f1f5f9;
+  padding: 10px 14px;
+  font-size: 13px;
+  color: #1e293b;
+  white-space: nowrap;
+}
+.vows-table tbody tr:hover { background: #fff7ed; }
+
+.vows-link {
+  background: none;
+  border: none;
+  color: #c2410c;
+  font-weight: 700;
+  font-size: 13px;
+  cursor: pointer;
+  padding: 0;
+}
+.vows-link:hover { text-decoration: underline; }
+
+.vows-status-badge {
+  padding: 5px 12px;
+  border-radius: 20px;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.3px;
+  text-transform: uppercase;
+  white-space: nowrap;
+}
+.vows-stage-gate-in       { background: #f1f5f9; color: #475569; }
+.vows-stage-empty-weighed { background: #e0f2fe; color: #0369a1; }
+.vows-stage-loaded        { background: #fef3c7; color: #92400e; }
+.vows-stage-weighed       { background: #ede9fe; color: #6d28d9; }
+.vows-stage-exited        { background: #d1fae5; color: #065f46; }
+
+.vows-actions-cell { display: flex; gap: 8px; }
+.vows-action-btn {
+  border: none;
+  padding: 7px 14px;
+  border-radius: 4px;
+  font-size: 12px;
+  font-weight: 600;
+  cursor: pointer;
+}
+.vows-edit { background: #c2410c; color: white; }
+.vows-edit:hover { background: #9a3412; }
+
+@media (max-width: 1000px) {
+  .vows-grid-4 { grid-template-columns: repeat(2, 1fr); }
+  .vows-grid-row2 { grid-template-columns: repeat(2, 1fr); }
+}
+@media (max-width: 600px) {
+  .vows-grid-4, .vows-grid-row2 { grid-template-columns: 1fr; }
+  .vows-topbar { flex-direction: column; height: auto; padding: 10px; }
+}

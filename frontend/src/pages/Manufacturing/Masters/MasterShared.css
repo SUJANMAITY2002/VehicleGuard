@@ -1,0 +1,888 @@
+
+/* ── Shared font & reset (safe to repeat if Masters.css not loaded) ─ */
+:root {
+  --c-primary:       #43bfe7;
+  --c-primary-dk:    #2aa8d0;
+  --c-primary-lt:    #e8f6fb;
+  --c-primary-ring:  rgba(67, 191, 231, 0.18);
+  --c-page:          #f0f3f7;
+  --c-white:         #ffffff;
+  --c-header-bg:     #f7f9fc;
+  --c-border:        #dde3ec;
+  --c-border-dk:     #c8d3de;
+  --c-text-h:        #1a2332;
+  --c-text-body:     #374151;
+  --c-text-label:    #4b5563;
+  --c-text-muted:    #9ca3af;
+  --c-text-sub:      #6b7280;
+  --c-success:       #16a34a;
+  --c-success-lt:    #dcfce7;
+  --c-danger:        #dc2626;
+  --c-danger-lt:     #fee2e2;
+  --c-warning:       #d97706;
+  --input-h:         36px;
+  --btn-h:           36px;
+  --radius-xs:       3px;
+  --radius-sm:       5px;
+  --radius-md:       8px;
+  --radius-lg:       12px;
+  --fz-xs:           11px;
+  --fz-sm:           12px;
+  --fz-base:         13px;
+  --fz-md:           14px;
+  --fz-lg:           16px;
+  --fz-xl:           20px;
+  --fz-2xl:          24px;
+  --fz-3xl:          28px;
+  --shadow-card:     0 1px 3px rgba(0,0,0,0.07), 0 4px 14px rgba(0,0,0,0.04);
+  --shadow-topbar:   0 1px 4px rgba(0,0,0,0.07);
+  --font:            "Inter", "Segoe UI", system-ui, -apple-system, sans-serif;
+}
+
+*, *::before, *::after { box-sizing: border-box; }
+
+/* ════════════════════════════════════════════════════════════════════
+   1. LIST / SEARCH PAGES
+   Classes: transaction-page, transaction-topbar, search-container,
+            search-grid, table-container, table, action btns
+   ════════════════════════════════════════════════════════════════════ */
+
+/* ── Page wrapper ─────────────────────────────────────────────────── */
+.transaction-page {
+  min-height: 100vh;
+  background: var(--c-page);
+  font-family: var(--font);
+  color: var(--c-text-body);
+}
+
+/* ── Top bar ──────────────────────────────────────────────────────── */
+.transaction-topbar {
+  background: var(--c-white);
+  border-bottom: 1px solid var(--c-border);
+  padding: 14px 24px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  box-shadow: var(--shadow-topbar);
+}
+
+.transaction-topbar h1 {
+  font-size: var(--fz-2xl);
+  font-weight: 700;
+  color: var(--c-text-h);
+  margin: 0;
+  letter-spacing: -0.4px;
+}
+
+/* Right-side button cluster */
+.topbar-actions {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+/* ── Buttons — topbar ─────────────────────────────────────────────── */
+.create-btn {
+  height: var(--btn-h);
+  padding: 0 20px;
+  background: var(--c-primary);
+  color: white;
+  border: none;
+  border-radius: var(--radius-sm);
+  font-size: var(--fz-base);
+  font-weight: 600;
+  cursor: pointer;
+  font-family: var(--font);
+  white-space: nowrap;
+  transition: background 0.15s;
+}
+.create-btn:hover { background: var(--c-primary-dk); }
+
+.upload-btn {
+  height: var(--btn-h);
+  padding: 0 18px;
+  background: #0f766e;
+  color: white;
+  border: none;
+  border-radius: var(--radius-sm);
+  font-size: var(--fz-base);
+  font-weight: 600;
+  cursor: pointer;
+  font-family: var(--font);
+  white-space: nowrap;
+  transition: background 0.15s;
+}
+.upload-btn:hover { background: #0d6561; }
+
+/* ── Search card ──────────────────────────────────────────────────── */
+.search-container {
+  width: 96%;
+  max-width: 1500px;
+  margin: 20px auto;
+  background: var(--c-white);
+  border: 1px solid var(--c-border);
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-card);
+  overflow: visible;
+}
+
+.search-title {
+  padding: 14px 20px;
+  border-bottom: 1px solid var(--c-border);
+  font-size: var(--fz-lg);
+  font-weight: 700;
+  color: var(--c-text-h);
+  background: var(--c-header-bg);
+  border-radius: var(--radius-md) var(--radius-md) 0 0;
+  letter-spacing: -0.1px;
+}
+
+/* ── Search filter grid ───────────────────────────────────────────── */
+.search-grid {
+  padding: 18px 20px 0;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 16px;
+}
+
+/* ── Form group — shared between search + create ──────────────────── */
+.form-group {
+  display: flex;
+  flex-direction: column;
+  position: relative;
+}
+
+.form-group label {
+  margin-bottom: 6px;
+  font-size: var(--fz-base);
+  font-weight: 500;
+  color: var(--c-text-label);
+  letter-spacing: 0.1px;
+}
+
+.form-group input,
+.form-group select {
+  height: var(--input-h);
+  border: 1px solid var(--c-border);
+  border-radius: var(--radius-sm);
+  padding: 0 10px;
+  font-size: var(--fz-base);
+  color: var(--c-text-body);
+  background: var(--c-white);
+  outline: none;
+  transition: border-color 0.15s, box-shadow 0.15s;
+  width: 100%;
+  font-family: var(--font);
+  -webkit-appearance: none;
+  appearance: none;
+}
+
+/* Custom select arrow */
+.form-group select {
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%239ca3af' stroke-width='1.5' fill='none' stroke-linecap='round'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 10px center;
+  padding-right: 30px;
+}
+
+.form-group input:focus,
+.form-group select:focus {
+  border-color: var(--c-primary);
+  box-shadow: 0 0 0 3px var(--c-primary-ring);
+}
+
+.form-group input::placeholder {
+  color: var(--c-text-muted);
+  font-size: var(--fz-base);
+}
+
+.form-group input[readonly],
+.form-group input:disabled,
+.form-group select:disabled {
+  background: #f8fafc;
+  color: var(--c-text-muted);
+  cursor: not-allowed;
+  border-color: #e8ecf2;
+}
+
+/* Small helper text below inputs */
+.form-group > span,
+.computed-value {
+  font-size: var(--fz-sm);
+  color: var(--c-text-muted);
+  margin-top: 4px;
+  line-height: 1.4;
+}
+
+/* ── Typeahead suggestion dropdown ────────────────────────────────── */
+.suggestion-list {
+  position: absolute;
+  top: calc(100% + 3px);
+  left: 0;
+  right: 0;
+  background: var(--c-white);
+  border: 1px solid var(--c-border-dk);
+  border-radius: var(--radius-sm);
+  box-shadow: 0 6px 20px rgba(0,0,0,0.11);
+  list-style: none;
+  margin: 0;
+  padding: 4px 0;
+  z-index: 1000;
+  max-height: 210px;
+  overflow-y: auto;
+}
+
+.suggestion-list li {
+  padding: 8px 12px;
+  font-size: var(--fz-base);
+  color: var(--c-text-body);
+  cursor: pointer;
+  transition: background 0.1s;
+}
+
+.suggestion-list li:hover {
+  background: var(--c-primary-lt);
+  color: var(--c-primary-dk);
+}
+
+/* ── Button row below search grid ─────────────────────────────────── */
+.button-group {
+  padding: 14px 20px 18px;
+  display: flex;
+  gap: 10px;
+}
+
+.search-btn {
+  height: var(--btn-h);
+  padding: 0 24px;
+  background: var(--c-primary);
+  border: none;
+  color: white;
+  border-radius: var(--radius-sm);
+  cursor: pointer;
+  font-size: var(--fz-base);
+  font-weight: 600;
+  font-family: var(--font);
+  transition: background 0.15s;
+}
+.search-btn:hover { background: var(--c-primary-dk); }
+
+.reset-btn {
+  height: var(--btn-h);
+  padding: 0 20px;
+  background: var(--c-white);
+  border: 1px solid var(--c-primary);
+  color: var(--c-primary);
+  border-radius: var(--radius-sm);
+  cursor: pointer;
+  font-size: var(--fz-base);
+  font-weight: 500;
+  font-family: var(--font);
+  transition: background 0.15s;
+}
+.reset-btn:hover { background: var(--c-primary-lt); }
+
+/* ── Data table ───────────────────────────────────────────────────── */
+.table-container {
+  overflow-x: auto;
+  border-top: 1px solid var(--c-border);
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  background: var(--c-white);
+  font-size: var(--fz-base);
+  font-family: var(--font);
+}
+
+table th {
+  background: #edf2f7;
+  border: 1px solid #d0dce8;
+  padding: 10px 13px;
+  font-size: var(--fz-base);
+  font-weight: 600;
+  color: var(--c-text-h);
+  text-align: left;
+  white-space: nowrap;
+  letter-spacing: 0.1px;
+}
+
+table td {
+  border: 1px solid #e4eaf0;
+  padding: 9px 13px;
+  font-size: var(--fz-base);
+  color: var(--c-text-body);
+  vertical-align: middle;
+}
+
+table tbody tr:hover {
+  background: #fafcff;
+}
+
+/* Inline-edit inputs inside table cells */
+table td input,
+table td select {
+  height: 30px;
+  border: 1px solid var(--c-border);
+  border-radius: var(--radius-xs);
+  padding: 0 7px;
+  font-size: var(--fz-base);
+  color: var(--c-text-body);
+  background: var(--c-white);
+  outline: none;
+  width: 100%;
+  min-width: 80px;
+  font-family: var(--font);
+  transition: border-color 0.12s, box-shadow 0.12s;
+}
+table td input:focus,
+table td select:focus {
+  border-color: var(--c-primary);
+  box-shadow: 0 0 0 2px var(--c-primary-ring);
+}
+
+/* ── Table row action buttons ─────────────────────────────────────── */
+.edit-btn {
+  height: 28px;
+  padding: 0 12px;
+  background: var(--c-primary-lt);
+  color: var(--c-primary-dk);
+  border: 1px solid #b3ddef;
+  border-radius: var(--radius-xs);
+  cursor: pointer;
+  font-size: var(--fz-sm);
+  font-weight: 600;
+  margin-right: 6px;
+  font-family: var(--font);
+  white-space: nowrap;
+  transition: background 0.13s;
+}
+.edit-btn:hover { background: #c8e9f5; }
+
+.delete-btn {
+  height: 28px;
+  padding: 0 12px;
+  background: var(--c-danger-lt);
+  color: var(--c-danger);
+  border: 1px solid #fca5a5;
+  border-radius: var(--radius-xs);
+  cursor: pointer;
+  font-size: var(--fz-sm);
+  font-weight: 600;
+  font-family: var(--font);
+  white-space: nowrap;
+  transition: background 0.13s;
+}
+.delete-btn:hover { background: #fecaca; }
+
+.save-btn {
+  height: 28px;
+  padding: 0 14px;
+  background: var(--c-success-lt);
+  color: var(--c-success);
+  border: 1px solid #86efac;
+  border-radius: var(--radius-xs);
+  cursor: pointer;
+  font-size: var(--fz-sm);
+  font-weight: 600;
+  margin-right: 6px;
+  font-family: var(--font);
+  white-space: nowrap;
+  transition: background 0.13s;
+}
+.save-btn:hover { background: #bbf7d0; }
+
+/* ── No data state ────────────────────────────────────────────────── */
+.no-data {
+  text-align: center;
+  color: var(--c-text-muted);
+  padding: 48px 20px;
+  font-size: var(--fz-md);
+}
+
+/* ════════════════════════════════════════════════════════════════════
+   2. CREATE / EDIT PAGES
+   Classes: create-page, create-header, create-container,
+            create-title, basic-info, create-grid, action-buttons
+   ════════════════════════════════════════════════════════════════════ */
+
+/* ── Page wrapper ─────────────────────────────────────────────────── */
+.create-page {
+  min-height: 100vh;
+  background: var(--c-page);
+  font-family: var(--font);
+  color: var(--c-text-body);
+}
+
+/* ── Top header bar ───────────────────────────────────────────────── */
+.create-header {
+  background: var(--c-white);
+  border-bottom: 1px solid var(--c-border);
+  padding: 14px 24px;
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  box-shadow: var(--shadow-topbar);
+}
+
+.create-header h1 {
+  font-size: var(--fz-2xl);
+  color: var(--c-text-h);
+  font-weight: 700;
+  margin: 0;
+  letter-spacing: -0.4px;
+}
+
+/* Back button */
+.back-btn {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+
+  height: 40px;
+  padding: 0 18px;
+
+  background: linear-gradient(
+    135deg,
+    #2563eb,
+    #1d4ed8
+  );
+
+  color: #ffffff;
+
+  border: none;
+  border-radius: 10px;
+
+  font-size: 14px;
+  font-weight: 600;
+
+  cursor: pointer;
+
+  box-shadow:
+    0 4px 12px rgba(37, 99, 235, 0.25);
+
+  transition: all 0.25s ease;
+}
+
+.back-btn:hover {
+  transform: translateY(-2px);
+
+  background: linear-gradient(
+    135deg,
+    #1d4ed8,
+    #1e40af
+  );
+
+  box-shadow:
+    0 8px 18px rgba(37, 99, 235, 0.35);
+}
+
+.back-btn:active {
+  transform: scale(0.97);
+}
+
+/* ── Main card ────────────────────────────────────────────────────── */
+.create-container {
+  width: 96%;
+  max-width: 1500px;
+  margin: 20px auto;
+  background: var(--c-white);
+  border: 1px solid var(--c-border);
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-card);
+  overflow: hidden;
+}
+
+/* Card section title */
+.create-title {
+  padding: 14px 20px;
+  border-bottom: 1px solid var(--c-border);
+  font-size: var(--fz-lg);
+  font-weight: 700;
+  color: var(--c-text-h);
+  background: var(--c-header-bg);
+  letter-spacing: -0.1px;
+}
+
+/* ── Top row of basic fields (scheme, item pages) ─────────────────── */
+.basic-info {
+  padding: 20px 20px 0;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 16px;
+}
+
+/* ── Main form grid ───────────────────────────────────────────────── */
+.create-grid {
+  padding: 20px;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 16px;
+}
+
+/* ── Action button row ────────────────────────────────────────────── */
+.action-buttons {
+  padding: 18px 20px;
+  display: flex;
+  gap: 10px;
+  border-top: 1px solid var(--c-border);
+  background: var(--c-header-bg);
+}
+
+.submit-btn {
+  height: var(--btn-h);
+  padding: 0 24px;
+  background: var(--c-primary);
+  border: none;
+  color: white;
+  border-radius: var(--radius-sm);
+  cursor: pointer;
+  font-size: var(--fz-base);
+  font-weight: 600;
+  font-family: var(--font);
+  transition: background 0.15s, transform 0.1s;
+}
+.submit-btn:hover  { background: var(--c-primary-dk); }
+.submit-btn:active { transform: scale(0.97); }
+
+.draft-btn {
+  height: var(--btn-h);
+  padding: 0 20px;
+  background: var(--c-white);
+  border: 1px solid var(--c-primary);
+  color: var(--c-primary);
+  border-radius: var(--radius-sm);
+  cursor: pointer;
+  font-size: var(--fz-base);
+  font-weight: 500;
+  font-family: var(--font);
+  transition: background 0.15s;
+}
+.draft-btn:hover { background: var(--c-primary-lt); }
+
+.cancel-btn {
+  height: var(--btn-h);
+  padding: 0 20px;
+  background: var(--c-white);
+  border: 1px solid var(--c-border);
+  color: var(--c-text-label);
+  border-radius: var(--radius-sm);
+  cursor: pointer;
+  font-size: var(--fz-base);
+  font-weight: 500;
+  font-family: var(--font);
+  transition: background 0.15s;
+}
+.cancel-btn:hover { background: #f1f5f9; }
+
+/* ════════════════════════════════════════════════════════════════════
+   3. PARTY DETAIL PAGE
+   ════════════════════════════════════════════════════════════════════ */
+
+.party-code-link {
+  color: var(--c-primary-dk);
+  font-weight: 600;
+  text-decoration: none;
+}
+.party-code-link:hover { text-decoration: underline; }
+
+.detail-grid {
+  padding: 20px;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 14px;
+}
+
+.detail-item {
+  border: 1px solid var(--c-border);
+  background: var(--c-white);
+  border-radius: var(--radius-sm);
+  padding: 12px 14px;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.detail-item span {
+  font-size: var(--fz-xs);
+  font-weight: 600;
+  color: var(--c-text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.detail-item strong {
+  font-size: var(--fz-md);
+  font-weight: 600;
+  color: var(--c-text-h);
+  word-break: break-word;
+}
+
+.detail-message {
+  padding: 20px;
+  color: var(--c-text-muted);
+  font-size: var(--fz-md);
+}
+
+/* ════════════════════════════════════════════════════════════════════
+   4. SCHEME MASTER — editable price matrix
+   ════════════════════════════════════════════════════════════════════ */
+
+/* Section wrapper */
+.scheme-table-wrap {
+  padding: 20px;
+  border-top: 1px solid var(--c-border);
+}
+
+/* Heading row above table */
+.scheme-table-heading {
+  font-size: var(--fz-md);
+  font-weight: 700;
+  color: var(--c-text-h);
+  margin-bottom: 12px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.scheme-basic-label {
+  font-weight: 400;
+  color: var(--c-primary);
+  font-size: var(--fz-base);
+}
+
+/* Horizontal scroll wrapper */
+.scheme-scroll {
+  overflow-x: auto;
+  border: 1px solid var(--c-border);
+  border-radius: var(--radius-sm);
+}
+
+/* Base matrix table */
+.scheme-matrix {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: var(--fz-base);
+  font-family: var(--font);
+  min-width: 560px;
+}
+
+.scheme-matrix th,
+.scheme-matrix td {
+  border: 1px solid #dde3ec;
+  padding: 9px 12px;
+  text-align: center;
+  vertical-align: middle;
+  white-space: nowrap;
+}
+
+.scheme-matrix thead th {
+  background: #edf2f7;
+  font-weight: 600;
+  color: var(--c-text-h);
+}
+
+.scheme-matrix td:first-child {
+  font-weight: 700;
+  background: #f7f9fc;
+  text-align: left;
+}
+
+/* Editable matrix — wider variant */
+.editable-matrix {
+  min-width: 920px;
+}
+
+/* Grouped column header */
+.col-group {
+  background: var(--c-primary-lt) !important;
+  color: #1a6fa0 !important;
+}
+
+/* Sub-header row: "X fixed / + Offset" */
+.sub-header th {
+  background: #fafbfc !important;
+  font-size: var(--fz-xs) !important;
+  color: var(--c-text-muted) !important;
+  font-weight: 500 !important;
+  padding: 4px 8px !important;
+}
+
+/* Editing row highlight */
+.row-editing {
+  background: #fffbeb !important;
+}
+.row-editing td {
+  border-color: #fbbf24 !important;
+}
+
+/* Size label cell */
+.size-cell { font-weight: 700; color: var(--c-text-h); min-width: 52px; }
+.x-cell    { min-width: 100px; }
+.offset-cell { min-width: 140px; }
+.date-cell { min-width: 118px; font-size: var(--fz-sm); color: var(--c-text-sub); }
+
+/* X badge (green locked value) */
+.x-badge {
+  display: inline-block;
+  background: #dcfce7;
+  color: #15803d;
+  padding: 2px 9px;
+  border-radius: 10px;
+  font-size: var(--fz-sm);
+  font-weight: 600;
+  white-space: nowrap;
+}
+.x-placeholder { font-style: italic; color: var(--c-text-muted); }
+
+/* Offset display (view mode) */
+.offset-display {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 3px;
+}
+
+/* Offset input (edit mode) */
+.offset-input {
+  width: 88px;
+  height: 30px;
+  padding: 0 8px;
+  border: 1.5px solid var(--c-primary);
+  border-radius: var(--radius-xs);
+  font-size: var(--fz-base);
+  text-align: center;
+  outline: none;
+  font-family: var(--font);
+  transition: box-shadow 0.13s;
+}
+.offset-input:focus { box-shadow: 0 0 0 3px var(--c-primary-ring); }
+
+/* Computed result pill */
+.computed-pill {
+  display: inline-block;
+  background: #dbeafe;
+  color: #1d4ed8;
+  padding: 2px 8px;
+  border-radius: 10px;
+  font-size: var(--fz-xs);
+  font-weight: 600;
+  white-space: nowrap;
+}
+
+/* Date input (edit mode) */
+.date-input {
+  width: 126px;
+  height: 30px;
+  padding: 0 6px;
+  border: 1.5px solid var(--c-primary);
+  border-radius: var(--radius-xs);
+  font-size: var(--fz-sm);
+  outline: none;
+  font-family: var(--font);
+}
+
+/* Row edit / done buttons */
+.edit-row-btn,
+.save-row-btn {
+  height: 26px;
+  padding: 0 12px;
+  border: none;
+  border-radius: var(--radius-xs);
+  cursor: pointer;
+  font-size: var(--fz-sm);
+  font-weight: 600;
+  font-family: var(--font);
+  white-space: nowrap;
+  transition: background 0.13s;
+}
+.edit-row-btn { background: var(--c-primary-lt); color: #1a6fa0; }
+.edit-row-btn:hover { background: #c8e9f5; }
+.save-row-btn { background: var(--c-success-lt); color: #15803d; }
+.save-row-btn:hover { background: #bbf7d0; }
+
+/* List view — offset badge + final price */
+.offset-pill {
+  display: inline-block;
+  background: #fff7ed;
+  color: #c2410c;
+  padding: 2px 7px;
+  border-radius: 10px;
+  font-size: var(--fz-xs);
+  font-weight: 600;
+  margin-right: 4px;
+}
+.final-val {
+  font-size: var(--fz-base);
+  color: var(--c-primary-dk);
+  font-weight: 600;
+}
+
+/* ════════════════════════════════════════════════════════════════════
+   5. SCHEME PRICE CALCULATOR
+   ════════════════════════════════════════════════════════════════════ */
+
+.calc-result-box {
+  margin: 16px 20px;
+  background: #f0f7ff;
+  border: 1px solid #bfdbfe;
+  border-radius: var(--radius-md);
+  padding: 16px 20px;
+  max-width: 440px;
+}
+
+.calc-result-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 7px 0;
+  border-bottom: 1px dashed #bfdbfe;
+  font-size: var(--fz-md);
+}
+.calc-result-row:last-child { border-bottom: none; }
+
+.calc-label { color: var(--c-text-label); font-weight: 500; }
+.calc-value { font-weight: 600; color: var(--c-text-h); }
+.offset-add { color: var(--c-warning); }
+
+.total-row {
+  padding-top: 10px !important;
+  border-top: 2px solid #93c5fd !important;
+  border-bottom: none !important;
+}
+.final-price {
+  font-size: 20px !important;
+  color: #1d4ed8 !important;
+  font-weight: 700 !important;
+}
+
+/* ════════════════════════════════════════════════════════════════════
+   6. RESPONSIVE
+   ════════════════════════════════════════════════════════════════════ */
+
+@media (max-width: 1200px) {
+  .search-grid  { grid-template-columns: repeat(3, 1fr); }
+  .create-grid  { grid-template-columns: repeat(3, 1fr); }
+  .basic-info   { grid-template-columns: repeat(3, 1fr); }
+  .detail-grid  { grid-template-columns: repeat(3, 1fr); }
+}
+
+@media (max-width: 900px) {
+  .search-grid  { grid-template-columns: repeat(2, 1fr); }
+  .create-grid  { grid-template-columns: repeat(2, 1fr); }
+  .basic-info   { grid-template-columns: repeat(2, 1fr); }
+  .detail-grid  { grid-template-columns: repeat(2, 1fr); }
+}
+
+@media (max-width: 768px) {
+  .transaction-topbar { flex-direction: column; align-items: flex-start; gap: 10px; }
+  .search-container,
+  .create-container    { width: 100%; border-radius: 0; margin: 10px auto; }
+  .search-grid,
+  .create-grid,
+  .basic-info,
+  .detail-grid         { grid-template-columns: 1fr; }
+  .action-buttons      { flex-wrap: wrap; }
+  .topbar-actions      { width: 100%; justify-content: flex-start; }
+}

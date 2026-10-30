@@ -1,0 +1,136 @@
+/* ════════════════════════════════════════════
+   VEHICLE OUTWARD — GATE IN — CreateVehicleOutward.css
+   Only styles needed for the Gate In form.
+   (Weighment-stage styles now live in VehicleOutwardWeighment.css)
+════════════════════════════════════════════ */
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Segoe UI", sans-serif;
+}
+
+.dp-page {
+  width: 100%;
+  min-height: 100vh;
+  background: #f4f6f9;
+}
+
+.dp-topbar {
+  height: 60px;
+  background: #ffffff;
+  border-bottom: 1px solid #dcdcdc;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 25px;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+.dp-topbar-left, .dp-topbar-right {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+.dp-back-btn {
+  background: transparent;
+  border: none;
+  font-size: 22px;
+  font-weight: 600;
+  color: #1f2937;
+  cursor: pointer;
+}
+
+.dp-body { padding: 20px; }
+.dp-card {
+  width: 100%;
+  background: white;
+  border-radius: 8px;
+  padding: 25px;
+  border: 1px solid #e5e7eb;
+}
+
+.dp-section-title {
+  font-size: 18px;
+  font-weight: 600;
+  color: #1f2937;
+  margin-bottom: 15px;
+  margin-top: 20px;
+  padding-bottom: 8px;
+  border-bottom: 1px solid #e5e7eb;
+}
+.dp-section-title:first-child { margin-top: 0; }
+
+.dp-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 18px;
+  margin-bottom: 20px;
+}
+.dp-group { display: flex; flex-direction: column; position: relative; }
+
+.dp-label {
+  margin-bottom: 4px;
+  font-size: 12px;
+  font-weight: 600;
+  color: #374151;
+}
+.dp-req { color: red; }
+
+.dp-input {
+  height: 36px;
+  width: 100%;
+  border: 1px solid #d1d5db;
+  border-radius: 4px;
+  padding: 0 8px;
+  font-size: 13px;
+  transition: 0.3s;
+  background: white;
+}
+.dp-input:focus {
+  outline: none;
+  border-color: #c2410c;
+  box-shadow: 0 0 3px rgba(194, 65, 12, 0.25);
+}
+
+.dp-alert { padding: 12px 15px; border-radius: 4px; margin-bottom: 15px; font-size: 14px; }
+.dp-alert-ok  { background: #d1fae5; color: #065f46; }
+.dp-alert-err { background: #fee2e2; color: #991b1b; }
+.dp-alert-info { background: #fff7ed; color: #c2410c; border: 1px solid #fdba74; }
+
+.dp-btn-row { display: flex; justify-content: flex-end; gap: 12px; margin-top: 25px; flex-wrap: wrap; }
+.dp-btn { border: none; padding: 12px 28px; border-radius: 5px; font-size: 14px; font-weight: 600; cursor: pointer; }
+.dp-btn:disabled { opacity: 0.6; cursor: not-allowed; }
+.dp-btn-save   { background: #c2410c; color: white; }
+.dp-btn-save:hover   { background: #9a3412; }
+.dp-btn-cancel { background: #dc2626; color: white; }
+.dp-btn-cancel:hover { background: #b91c1c; }
+
+.dp-loading {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 200px;
+  gap: 12px;
+  color: #64748b;
+}
+.dp-spinner {
+  width: 36px;
+  height: 36px;
+  border: 3px solid #e2e8f0;
+  border-top-color: #c2410c;
+  border-radius: 50%;
+  animation: dpspin 0.7s linear infinite;
+}
+@keyframes dpspin { to { transform: rotate(360deg); } }
+
+@media (max-width: 1200px) { .dp-grid { grid-template-columns: repeat(3, 1fr); } }
+@media (max-width: 900px)  { .dp-grid { grid-template-columns: repeat(2, 1fr); } }
+@media (max-width: 600px)  {
+  .dp-grid { grid-template-columns: 1fr; }
+  .dp-topbar { flex-direction: column; height: auto; padding: 10px; gap: 10px; }
+  .dp-btn-row { flex-direction: column; }
+  .dp-btn { width: 100%; }
+}
