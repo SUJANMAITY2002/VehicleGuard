@@ -8,18 +8,25 @@ dotenv.config();
 const app = express();
 
 /* MIDDLEWARE */
-app.use(
-  cors({
-    origin: [
-      "https://maasheetla.netlify.app",
-      "https://maa-sheetla.vercel.app",
-      "http://localhost:5173",
-    ],
-    methods: ["GET", "POST", "PUT", "DELETE"],
-    credentials: true,
-  })
-);
+
+/* MIDDLEWARE */
+
+const allowedOrigins = [
+  "https://vehicleguard-sujan.netlify.app",
+  // "https://maasheetla.netlify.app",
+  // "https://maa-sheetla.vercel.app",
+  "http://localhost:5173"
+];
+
+app.use(cors({
+  origin: allowedOrigins,
+  methods: ["GET", "POST", "PUT", "PATCH", "DELETE", "OPTIONS"],
+  allowedHeaders: ["Content-Type", "Authorization"],
+  credentials: true
+}));
+
 app.use(express.json());
+
 app.use("/uploads", express.static(path.join(__dirname, "uploads")));
 console.log(process.env.FRONTEND_URL);
 
