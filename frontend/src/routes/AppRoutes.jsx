@@ -140,7 +140,7 @@ const AppRoutes = () => {
       <Route path="/sys_admin" element={<SystemAdmin />} />
 
       {/* ── PROTECTED ROUTES — require a valid token, or bounce to /signin ── */}
-      <Route element={<RequireAuth />}>
+      {/* <Route element={<RequireAuth />}> */}
 
         {/* HOME */}
         <Route path="/" element={<Home />} />
@@ -274,7 +274,7 @@ const AppRoutes = () => {
         {/* MASTERS — batch 3 */}
         <Route path="/create-sales-party"        element={<CreateSalesParty />} />
         <Route path="/sales-party-master"        element={<SalesPartyMaster />} />
-      </Route>
+      {/* </Route> */}
     </Routes>
   );
 };
